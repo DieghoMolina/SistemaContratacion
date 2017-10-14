@@ -39,31 +39,33 @@ public class ProcesarIdioma extends HttpServlet {
         CrudIdioma cdm=new CrudIdioma();
         String val = null;
         
-        idm.setIdIdioma(Integer.parseInt(request.getParameter("codigo")));
-        idm.setNombre(request.getParameter("nombre"));
-        try 
-        {
-            if(request.getParameter("btnInsertar")!=null)
+        
+        try {
+            
+             idm.setIdIdioma(Integer.parseInt(request.getParameter("codigo")));
+             idm.setNombre(request.getParameter("nombre"));
+            if(request.getParameter("bntInsertar") !=null)
             {
                 cdm.insertarIdioma(idm);
-                val="Datos insertados correctamente";
-            }
-            if(request.getParameter("btnModificar")!=null)
+              
+            }else
+            if(request.getParameter("bntModificar") !=null)
             {
                 cdm.modificarIdioma(idm);
-                val="Datos modificados correctamente";
-            }
-            if(request.getParameter("btnEliminar")!=null)
+             
+            }else
+            if(request.getParameter("bntEliminar") !=null)
             {
                 cdm.eliminarIdioma(idm);
-                val="Datos eliminados correctamente";
+              
             }
-            rd=request.getRequestDispatcher("/admin/dashboard/idioma.jsp");
-            request.setAttribute("valor", val);
+            
+    rd= request.getRequestDispatcher("/admin/dashboard/idioma.jsp");
+
         } 
         catch (Exception e) 
         {
-            request.setAttribute("error", e.toString());
+            request.setAttribute("error", e.toString() );
         }
         rd.forward(request, response);
     }

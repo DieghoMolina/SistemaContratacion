@@ -48,15 +48,7 @@
        out.print("<script>location.replace('../../login.jsp');</script>");
        }
     %>
-    <%
-        if(request.getAttribute("valor")!=null)
-        {
-    %>
-    <script>
-        alert("<% request.getAttribute("valor"); %>");
-    </script>
-    <% } %>
-<!--Header-part-->
+    <!--Header-part-->
 <div id="header">
   <h1><a href="dashboard.html">Vacantes sisten</a></h1>
 </div>
@@ -92,7 +84,7 @@
           
         <div class="widget-content" >
             
-            <form action="procesarIdioma" method="get" name="frm" class="form-horizontal">
+            <form action="../../procesarIdioma" method="get" name="frm" class="form-horizontal">
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
@@ -107,10 +99,10 @@
             </div>
             <div class="form-actions">
               <center>
-              <button type="submit" name="bntInsertar" onclick="confirmar()" class="btn btn-success">Insertar</button>&nbsp;&nbsp;
-              <button type="submit" name="bntModificar" onclick="confirmar()" class="btn btn-success">Modificar</button>&nbsp;
-              <button type="submit" name="bntEliminar" onclick="confirmar()" class="btn btn-success">Eliminar</button>&nbsp;&nbsp;
-              <button type="reset" name="bntCancelar" onclick="confirmar()" class="btn btn-success">Cancelar</button>
+              <input type="submit" name="bntInsertar"   class="btn btn-success"  value="Insertar">&nbsp;&nbsp;
+              <input  type="submit" name="bntModificar"  class="btn btn-success" value="Modificar">&nbsp;&nbsp;
+              <input  type="submit" name="bntEliminar" onclick="confirmar()" class="btn btn-success" value="Eliminar">&nbsp;&nbsp;
+              <button  type="reset" name="bntCancelar" class="btn btn-success">Cancelar</button>
               </center>
             </div>
           </form>

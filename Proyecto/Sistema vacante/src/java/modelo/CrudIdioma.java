@@ -78,7 +78,7 @@ public class CrudIdioma extends Conexion{
       public void eliminarIdioma(Idioma idi)throws Exception{
     
     this.conectar();
-    String sql="delete from idioma where ididioma=?";
+    String sql="delete from idioma where ididioma=? ;";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {
