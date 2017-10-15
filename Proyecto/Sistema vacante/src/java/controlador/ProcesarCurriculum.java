@@ -62,7 +62,7 @@ public class ProcesarCurriculum extends HttpServlet {
                 crud.eliminarCurriculum(cur);
                 val="Datos Eliminados exitosamente";
             }
-              rd=request.getRequestDispatcher("curriculum.jsp");
+              rd=request.getRequestDispatcher("/admin/dashboard/pcurriculum.jsp");
               request.setAttribute("Valor", val);
         }catch(Exception e){
             request.setAttribute("Error", e.toString());

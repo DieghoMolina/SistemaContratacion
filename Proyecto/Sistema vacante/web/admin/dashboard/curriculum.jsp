@@ -1,3 +1,5 @@
+<%@page import="modelo.Candidato"%>
+<%@page import="modelo.CrudCandidato"%>
 <%@page import="modelo.Curriculum"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.CrudCurriculum"%>
@@ -83,7 +85,7 @@ if(request.getAttribute("Valor")!=null)
           
         <div class="widget-content" >
             
-          <form action="procesarCurriculum" method="get" class="form-horizontal" name="frm1">
+          <form action="../../procesarCurriculum" method="get" class="form-horizontal" name="frm1">
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
@@ -105,14 +107,21 @@ if(request.getAttribute("Valor")!=null)
             <div class="control-group">
               <label class="control-label">Candidato.</label>
               <div class="controls">
+                  <%
+                      CrudCandidato  c = new CrudCandidato();
+                  List<Candidato>lst = c.mostrarCandidato() ;
+                      for(Candidato v: lst)
+                      {
+                      %>
                    <select name="candidato">
-                      <option value="Candidato">candidato</option>
+                       <option value="<%= v.getIdCandidato()  %>"> <%= v.getNombre()  %></option>
                   </select>
+                   <% } %>
               </div>
             </div>
             <div class="form-actions">
               <center>
-                  <button type="submit" class="btn btn-success" name="btnInsertar">Insertar</button>&nbsp;&nbsp;
+                  <input type="submit" class="btn btn-success" name="btnInsertar" value="insertar">&nbsp;&nbsp;
               <button type="submit" class="btn btn-success" name="btnModificar">Modificar</button>&nbsp;&nbsp;
               <button type="submit" class="btn btn-success" name="btnEliminar">Eliminar</button>&nbsp;&nbsp;
               <button type="reset" class="btn btn-success" name="btnLimpiar">Limpiar</button>
@@ -149,6 +158,7 @@ if(request.getAttribute("Valor")!=null)
               <tbody>
                   <%
                       CrudCurriculum crud = new CrudCurriculum();
+                      
                       List<Curriculum>lista = crud.mostrarCurriculum();
                       for(Curriculum ver:lista)
                       {

@@ -38,12 +38,12 @@ public class ProcesarIdioma extends HttpServlet {
         Idioma idm=new Idioma();
         CrudIdioma cdm=new CrudIdioma();
         String val = null;
-        
+        idm.setIdIdioma(Integer.parseInt(request.getParameter("codigo")));
+             idm.setNombre(request.getParameter("nombre"));
         
         try {
             
-             idm.setIdIdioma(Integer.parseInt(request.getParameter("codigo")));
-             idm.setNombre(request.getParameter("nombre"));
+             
             if(request.getParameter("bntInsertar") !=null)
             {
                 cdm.insertarIdioma(idm);
@@ -60,7 +60,7 @@ public class ProcesarIdioma extends HttpServlet {
               
             }
             
-    rd= request.getRequestDispatcher("/admin/dashboard/idioma.jsp");
+    rd= request.getRequestDispatcher("/admin/dashboard/pidioma.jsp");
 
         } 
         catch (Exception e) 
