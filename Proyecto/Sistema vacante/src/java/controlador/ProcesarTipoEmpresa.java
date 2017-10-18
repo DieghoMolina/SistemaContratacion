@@ -13,12 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.*;
-
 /**
  *
- * @author Alexander_Arrué
+ * @author diego
  */
-public class ProcesarCurriculum extends HttpServlet {
+public class ProcesarTipoEmpresa extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,43 +32,41 @@ public class ProcesarCurriculum extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        RequestDispatcher rd=null;
+        TipoEmpresa tp=new TipoEmpresa();
+        CrudTipoEmpresa cdt=new CrudTipoEmpresa();
+        String val=null;
         
-        CrudCurriculum crud = new CrudCurriculum();
-        Curriculum cur = new Curriculum();
-        RequestDispatcher rd = null;
-       
-          cur.setIdCurriculum(Integer.parseInt(request.getParameter("codigo")));
-            cur.setCurriculum(request.getParameter("curri"));
-            cur.setFechaModi(request.getParameter("fechamodi"));
-            cur.setIdCandidato(Integer.parseInt(request.getParameter("candidato")));
-        try
+        tp.setIdTipoEmpresa(Integer.parseInt(request.getParameter("codigo")));
+        tp.setNombre(request.getParameter("nombre"));
+        
+        try 
         {
-          
-            
-            if(request.getParameter("btnInsertar")!= null)
+            if(request.getParameter("btnInsertar")!=null)
             {
-                crud.insertarCurriculum(cur);
-              
+                cdt.insertarTipoEmpresa(tp);
+                val="Datos insertados correctamente";
             }
-            
-             if(request.getParameter("btnModificar")!=null)
+            if(request.getParameter("btnModificar")!=null)
             {
-                crud.modificarCurriculum(cur);
-                
+                cdt.modificarTipoEmpresa(tp);
+                val="Datos modificados correctamente";
             }
-             
-              if(request.getParameter("btnEliminar")!=null)
+            if(request.getParameter("btnEliminar")!=null)
             {
-                crud.eliminarCurriculum(cur);
-              
+                cdt.eliminarTipoEmpresa(tp);
+                val="Datos eliminados correctamente";
             }
-              rd=request.getRequestDispatcher("/admin/dashboard/curriculum.jsp");
-            
-        }catch(Exception e){
-            request.setAttribute("Error", e.toString());
+            rd=request.getRequestDispatcher("/admin/dashboard/ptipoEmpresa.jsp");
+            request.setAttribute("valor", val);
+        } 
+        catch (Exception e) 
+        {
+            request.setAttribute("error", e.toString());
         }
         rd.forward(request, response);
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -101,7 +101,7 @@
           
         <div class="widget-content" >
             
-            <form action="#" name="frm" method="get" class="form-horizontal">
+            <form action="../../procesarOferta" name="frm" method="get" class="form-horizontal">
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
@@ -123,25 +123,25 @@
             <div class="control-group">
               <label class="control-label">Salario:</label>
               <div class="controls">
-                  <input type="number" class="span11" name="salario" placeholder="salario" tab="0.00"/>
+                  <input type="text" class="span11" name="salario" placeholder="salario" tab="0.00"/>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Vacante:</label>
               <div class="controls">
-                  <input type="text" class="span11" placeholder="vacanta" name="vacante"/>
+                  <input type="text" class="span11" placeholder="vacante"  name="vacante"/>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Edad requeerida:</label>
               <div class="controls">
-                  <input type="number" min="18" max="50" class="span11" name="edadr" placeholder="edad" />
+                  <input type="text" class="span11" name="edadr" placeholder="edad" />
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Experiencia requerida:</label>
               <div class="controls">
-                <input type="text" class="span11" name="experiencir" placeholder="experiencia" />
+                <input type="text" class="span11" name="experienciar" placeholder="experiencia" />
               </div>
             </div>
             <div class="control-group">
@@ -159,7 +159,7 @@
             <div class="control-group">
               <label class="control-label">Empresa:</label>
               <div class="controls">
-                  <select name="empresa">
+                  <select name="empresar">
                       <%
                           List<Empresa> lemp= cde.mostrarEmpresa();
                           for(Empresa emp:lemp){
@@ -173,10 +173,10 @@
             </div>
             <div class="form-actions">
               <center>
-              <button type="submit" name="bntInsertar" onclick="confirmar()" class="btn btn-success">Insertar</button>&nbsp;&nbsp;
-              <button type="submit" name="bntModificar" onclick="confirmar()" class="btn btn-success">Modificar</button>&nbsp;&nbsp;
-              <button type="submit" name="bntEliminar" onclick="confirmar()" class="btn btn-success">Eliminar</button>&nbsp;&nbsp;
-              <button type="reset" name="bntCancelar" onclick="confirmar()" class="btn btn-success">Cancelar</button>
+              <button type="submit" name="btnInsertar" onclick="confirmar()" class="btn btn-success">Insertar</button>&nbsp;&nbsp;
+              <button type="submit" name="btnModificar" onclick="confirmar()" class="btn btn-success">Modificar</button>&nbsp;&nbsp;
+              <button type="submit" name="btnEliminar" onclick="confirmar()" class="btn btn-success">Eliminar</button>&nbsp;&nbsp;
+              <button type="reset" name="bntCancelar"  class="btn btn-success">Cancelar</button>
               </center>
             </div>
           </form>

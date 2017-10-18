@@ -13,12 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.*;
-
 /**
  *
- * @author Alexander_Arrué
+ * @author diego
  */
-public class ProcesarCurriculum extends HttpServlet {
+public class ProcesarOferta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,44 +31,50 @@ public class ProcesarCurriculum extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+     PrintWriter out = response.getWriter();
         
-        CrudCurriculum crud = new CrudCurriculum();
-        Curriculum cur = new Curriculum();
-        RequestDispatcher rd = null;
-       
-          cur.setIdCurriculum(Integer.parseInt(request.getParameter("codigo")));
-            cur.setCurriculum(request.getParameter("curri"));
-            cur.setFechaModi(request.getParameter("fechamodi"));
-            cur.setIdCandidato(Integer.parseInt(request.getParameter("candidato")));
-        try
+        RequestDispatcher rd=null;
+        Oferta ofer=new Oferta();
+        CrudOferta cdof=new CrudOferta();
+        String val=null;
+        
+        ofer.setIdoferta(Integer.parseInt(request.getParameter("codigo")));
+        ofer.setNombre(request.getParameter("nombre"));
+        ofer.setDescripcion(request.getParameter("descripcion"));
+        ofer.setSalario(Double.parseDouble(request.getParameter("salario")));
+        ofer.setVacante(Integer.parseInt(request.getParameter("vacante")));
+        ofer.setEdadRequerida(request.getParameter("edadr"));
+        ofer.setExpRequerida(Integer.parseInt(request.getParameter("experienciar")));
+        ofer.setGeneroRequerido(request.getParameter("generor"));
+        ofer.setTipoContratacion(request.getParameter("tipoc"));
+        ofer.setIdEmpresa(Integer.parseInt(request.getParameter("empresar")));
+        try 
         {
-          
-            
-            if(request.getParameter("btnInsertar")!= null)
+            if(request.getParameter("btnInsertar")!=null)
             {
-                crud.insertarCurriculum(cur);
-              
+                cdof.InsertarOferta(ofer);
+                val="Datos insertados correctamente";
             }
-            
-             if(request.getParameter("btnModificar")!=null)
+            if(request.getParameter("btnModificar")!=null)
             {
-                crud.modificarCurriculum(cur);
-                
+                cdof.ModificarOferta(ofer);
+                val="Datos modificados correctamente";
             }
-             
-              if(request.getParameter("btnEliminar")!=null)
+            if(request.getParameter("btnEliminar")!=null)
             {
-                crud.eliminarCurriculum(cur);
-              
+                cdof.EliminarOferta(ofer);
+                val="Datos eliminados correctamente";
             }
-              rd=request.getRequestDispatcher("/admin/dashboard/curriculum.jsp");
-            
-        }catch(Exception e){
-            request.setAttribute("Error", e.toString());
+            rd=request.getRequestDispatcher("/admin/dashboard/oferta.jsp");
+            request.setAttribute("valor", val);
+        } 
+        catch (Exception e) 
+        {
+            request.setAttribute("error", e.toString());
         }
         rd.forward(request, response);
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

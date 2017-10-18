@@ -94,7 +94,7 @@
           
         <div class="widget-content" >
             
-          <form action="#" method="get" name="frm" class="form-horizontal">
+          <form action="../../procesarUsuario" method="get" name="frm" class="form-horizontal">
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">

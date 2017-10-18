@@ -12,13 +12,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.*;
+import modelo.CrudProfesion;
+import modelo.Profesion;
 
 /**
  *
- * @author Alexander_Arrué
+ * @author diego
  */
-public class ProcesarCurriculum extends HttpServlet {
+public class ProcesarProfesion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,43 +35,40 @@ public class ProcesarCurriculum extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        CrudCurriculum crud = new CrudCurriculum();
-        Curriculum cur = new Curriculum();
-        RequestDispatcher rd = null;
-       
-          cur.setIdCurriculum(Integer.parseInt(request.getParameter("codigo")));
-            cur.setCurriculum(request.getParameter("curri"));
-            cur.setFechaModi(request.getParameter("fechamodi"));
-            cur.setIdCandidato(Integer.parseInt(request.getParameter("candidato")));
-        try
+        RequestDispatcher rd=null;
+        Profesion pro=new Profesion();
+        CrudProfesion cdp=new CrudProfesion();
+        String val=null;
+        
+        pro.setIdProfesion(Integer.parseInt(request.getParameter("codigo")));
+        pro.setNombre(request.getParameter("nombre") );
+        
+        try 
         {
-          
-            
-            if(request.getParameter("btnInsertar")!= null)
+            if(request.getParameter("btnInsertar")!=null)
             {
-                crud.insertarCurriculum(cur);
-              
+                cdp.insertarProfesion(pro);
+                val="Datos insertados correctamente";
             }
-            
-             if(request.getParameter("btnModificar")!=null)
+            if(request.getParameter("btnModificar")!=null)
             {
-                crud.modificarCurriculum(cur);
-                
+                cdp.modificarProfesion(pro);
+                val="Datos modificados correctamente";
             }
-             
-              if(request.getParameter("btnEliminar")!=null)
+            if(request.getParameter("btnEliminar")!=null)
             {
-                crud.eliminarCurriculum(cur);
-              
+                cdp.eliminarProfesion(pro);
+                val="Datos eliminados correctamente";
             }
-              rd=request.getRequestDispatcher("/admin/dashboard/curriculum.jsp");
-            
-        }catch(Exception e){
-            request.setAttribute("Error", e.toString());
+            rd=request.getRequestDispatcher("/admin/dashboard/pprofesion.jsp");
+            request.setAttribute("valor", val);
+        } 
+        catch (Exception e) 
+        {
+            request.setAttribute("error", e.toString());
         }
         rd.forward(request, response);
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

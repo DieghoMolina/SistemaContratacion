@@ -87,7 +87,7 @@ public class CrudUsuario extends Conexion{
     
     this.conectar();
     String sql="delete from usuario where idusuario=?";
-    PreparedStatement ps=this.getCon().prepareStatement(sql);
+    PreparedStatement ps= this.getCon().prepareStatement(sql);
     
         try {
             ps.setInt(1, us.getIdUsuario());

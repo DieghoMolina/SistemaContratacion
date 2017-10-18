@@ -20,6 +20,22 @@
         <servlet-name>ProcesarNivelAcademico</servlet-name>
         <servlet-class>controlador.ProcesarNivelAcademico</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcesarOferta</servlet-name>
+        <servlet-class>controlador.ProcesarOferta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcesarProfesion</servlet-name>
+        <servlet-class>controlador.ProcesarProfesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcesarTipoEmpresa</servlet-name>
+        <servlet-class>controlador.ProcesarTipoEmpresa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcesarUsuario</servlet-name>
+        <servlet-class>controlador.ProcesarUsuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControlCandidato</servlet-name>
         <url-pattern>/controlCandidato</url-pattern>
@@ -39,6 +55,22 @@
     <servlet-mapping>
         <servlet-name>ProcesarNivelAcademico</servlet-name>
         <url-pattern>/procesarNivelAcademico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesarOferta</servlet-name>
+        <url-pattern>/procesarOferta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesarProfesion</servlet-name>
+        <url-pattern>/procesarProfesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesarTipoEmpresa</servlet-name>
+        <url-pattern>/procesarTipoEmpresa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesarUsuario</servlet-name>
+        <url-pattern>/procesarUsuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

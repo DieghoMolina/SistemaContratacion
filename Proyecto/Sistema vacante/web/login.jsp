@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : 10-08-2017, 01:56:15 PM
-    Author     : Marvin Antillon, Preba github
+    Author     : Marvin Antillon.
 --%>
 
 <%@page import="modelado.Operaciones"%>
