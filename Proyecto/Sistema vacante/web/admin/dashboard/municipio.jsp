@@ -8,25 +8,17 @@
 <title>Vacantes</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<!--   
+VISTA FUNCIONAL! INSERTA MODIFICA Y ELIMINA, SI TOCAN ALGO QUE SE ESTETICO NO LO VAYAN 
+A CHINGAR :V ATT: DIEGO
+-->
 <%@include file="../../layouts/stylesheets.jsp" %>
 <script Language="JavaScript">
-    function cragar(cod,nom,depa)
+    function cargar(cod,nom,depa)
     {
         document.frm.codigo.value=cod;
         document.frm.nombre.value=nom;
         document.frm.departamento.value=depa;
-    }
-    function confirmar()
-    {
-        if(confirm("Desea realizar la siguiente operación?")!= null)
-        {
-            true;
-        }
-        else
-        {
-            false;
-        }
     }
 </script>
 </head>
@@ -93,7 +85,7 @@
           
         <div class="widget-content" >
             
-            <form action="procesarMunicipio" name="frm" method="get" class="form-horizontal">
+            <form action="../../procesarMunicipio" name="frm" method="get" class="form-horizontal">
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
@@ -103,7 +95,7 @@
               <div class="control-group">
               <label class="control-label">Nombre:</label>
               <div class="controls">
-                  <input type="text" name="nombre" class="span11" placeholder="codigo" />
+                  <input type="text" name="nombre" class="span11" placeholder="nombre" />
               </div>
             </div>
             <div class="control-group">
@@ -123,8 +115,8 @@
             </div>
             <div class="form-actions">
               <center>
-              <button type="submit" name="bntInsertar" onclick="confirmar()" class="btn btn-success">Insertar</button>&nbsp;&nbsp;
-              <button type="submit" name="bntModificar" onclick="confirmar()" class="btn btn-success">Modificar</button>&nbsp;&nbsp;
+                  <input type="submit" name="bntInsertar"  class="btn btn-success" value="Insertar">&nbsp;&nbsp;
+                  <input type="submit" name="bntModificar"  class="btn btn-success" value="Modificar">&nbsp;&nbsp;
               <button type="submit" name="bntEliminar" onclick="confirmar()" class="btn btn-success">Eliminar</button>&nbsp;&nbsp;
               <button type="reset" name="bntCancelar" onclick="confirmar()" class="btn btn-success">Cancelar</button>
               </center>
@@ -162,7 +154,7 @@
                   <td><%= mn.getIdMunicipio() %></td>
                   <td><%= mn.getNombre() %></td>
                   <td><%= mn.getIdDepto() %></td>
-                  <td><a href="javascript:cargar(<%= mn.getIdMunicipio() %>,'<%= mn.getNombre() %>','<%= mn.getIdDepto() %>')">Seleccionar</a></td>
+                  <td><a   href="javascript:cargar(<%=  mn.getIdMunicipio()  %>, '<%=  mn.getNombre()  %>', '<%=  mn.getIdDepto()  %>') ">Seleccionar</a></td>
                 </tr> 
                 <% } %>
               </tbody>

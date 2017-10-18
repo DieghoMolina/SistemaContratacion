@@ -12,17 +12,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<!--
+INTENTE HACER EL CRUD PARA ESTA VISTAPERO NO LO PUDE HACER, LA JSP LLAMADA PCURRICULUM
+LA IBA A UTILIZAR PARA EL REDIRECCIONAMIENTO REVISENLA USTEDES TALVEZ HAY ALGO QUE YO NO VEO ATT: DIEGO
+-->
+
+
 <%@include file="../../layouts/stylesheets.jsp" %>
-<%
-if(request.getAttribute("Valor")!=null)
-{
-%>
-<script>
-    alert('<%= request.getAttribute("Valor") %>');
-</script>
-<%
-}
-%>
+
 <script Language="JavaScript">
     function llenar(cod,curr,fecha,candi)
     {
@@ -101,7 +98,7 @@ if(request.getAttribute("Valor")!=null)
             <div class="control-group">
               <label class="control-label">Fecha de modificación:</label>
               <div class="controls">
-                  <input name="fechamodi" type="date" class="span11" placeholder="fecha">
+                  <input name="fechamodi" type="text" class="span11" placeholder="fecha">
               </div>
             </div> 
             <div class="control-group">
@@ -114,7 +111,7 @@ if(request.getAttribute("Valor")!=null)
                       {
                       %>
                    <select name="candidato">
-                       <option value="<%= v.getIdCandidato()  %>"> <%= v.getNombre()  %></option>
+                       <option value="<%= v.getIdCandidato()  %>"> <%= v.getNombre()  %> </option>
                   </select>
                    <% } %>
               </div>

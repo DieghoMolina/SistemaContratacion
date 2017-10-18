@@ -70,7 +70,7 @@ public class CrudMunicipio extends Conexion{
         try { 
             ps.setString(1, m.getNombre());
             ps.setInt(2, m.getIdDepto());
-            ps.setInt(2, m.getIdMunicipio());
+            ps.setInt(3, m.getIdMunicipio());
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;

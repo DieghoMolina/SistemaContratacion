@@ -100,7 +100,7 @@ Candidato can = new Candidato();
           
         <div class="widget-content" >
             
-            <form action="procesarCandidato" method="get" class="form-horizontal" name="frm1">
+            <form action="../../procesarCandidato" method="get" class="form-horizontal" name="frm1">
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
@@ -145,7 +145,7 @@ Candidato can = new Candidato();
             <div class="control-group">
               <label class="control-label">Foto:</label>
               <div class="controls">
-                <input type="file" class="span11" name="foto" />
+                <input type="text" class="span11" name="foto" />
             </div>
             <div class="control-group">
               <label class="control-label">Genero:</label>

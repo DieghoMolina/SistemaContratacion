@@ -36,34 +36,35 @@ public class ProcesarCurriculum extends HttpServlet {
         
         CrudCurriculum crud = new CrudCurriculum();
         Curriculum cur = new Curriculum();
-        RequestDispatcher rd=null;
-        String val=null;
-        try
-        {
-            cur.setIdCurriculum(Integer.parseInt(request.getParameter("codigo")));
-            cur.setCurriculum(request.getParameter("curriculum"));
+        RequestDispatcher rd = null;
+       
+          cur.setIdCurriculum(Integer.parseInt(request.getParameter("codigo")));
+            cur.setCurriculum(request.getParameter("curri"));
             cur.setFechaModi(request.getParameter("fechamodi"));
             cur.setIdCandidato(Integer.parseInt(request.getParameter("candidato")));
+        try
+        {
+          
             
-            if(request.getParameter("btnInsertar")!=null)
+            if(request.getParameter("btnInsertar")!= null)
             {
                 crud.insertarCurriculum(cur);
-                val="Datos Insertados exitosamente";
+              
             }
             
              if(request.getParameter("btnModificar")!=null)
             {
                 crud.modificarCurriculum(cur);
-                val="Datos Modificados exitosamente";
+                
             }
              
               if(request.getParameter("btnEliminar")!=null)
             {
                 crud.eliminarCurriculum(cur);
-                val="Datos Eliminados exitosamente";
+              
             }
-              rd=request.getRequestDispatcher("/admin/dashboard/pcurriculum.jsp");
-              request.setAttribute("Valor", val);
+              rd=request.getRequestDispatcher("/admin/dashboard/pmunicipio/curriculum.jsp");
+            
         }catch(Exception e){
             request.setAttribute("Error", e.toString());
         }

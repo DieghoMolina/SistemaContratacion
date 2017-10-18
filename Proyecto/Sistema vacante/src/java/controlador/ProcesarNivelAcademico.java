@@ -57,7 +57,7 @@ public class ProcesarNivelAcademico extends HttpServlet {
                 cdnv.eliminarNivelAca(nvl);
                 val="Datos eliminados correctamente";
             }
-            rd=request.getRequestDispatcher("nivelAcademico.jsp");
+            rd=request.getRequestDispatcher("/admin/dashboard/PnivelAcademico.jsp");
             request.setAttribute("valor", val);
         } 
         catch (Exception e) 

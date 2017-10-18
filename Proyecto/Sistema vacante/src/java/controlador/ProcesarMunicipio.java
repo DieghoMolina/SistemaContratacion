@@ -44,22 +44,22 @@ public class ProcesarMunicipio extends HttpServlet {
         mpo.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
         try 
         {
-            if(request.getParameter("btnInsertar")!=null)
+            if(request.getParameter("bntInsertar")!=null)
             {
                 cdm.insertarMunicipio(mpo);
                 val="Datos insertados correctamente";
             }
-            if(request.getParameter("btnModificar")!=null)
+            if(request.getParameter("bntModificar")!=null)
             {
                 cdm.modificarMunicipio(mpo);
                 val="Datos modificados correctamente";
             }
-            if(request.getParameter("btnEliminar")!=null)
+            if(request.getParameter("bntEliminar")!=null)
             {
                 cdm.eliminarMunicipio(mpo);
                 val="Datos eliminados correctamente";
             }
-            rd=request.getRequestDispatcher("municipio.jsp");
+            rd=request.getRequestDispatcher("/admin/dashboard/pmunicipio.jsp");
             request.setAttribute("valor", val);
         } 
         catch (Exception e) 
