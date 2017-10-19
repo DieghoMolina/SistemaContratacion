@@ -30,7 +30,7 @@ public class CrudExpLaboral extends Conexion{
             while(rs.next()){
             ExpLaboral exp=new ExpLaboral();
             exp.setIdExpLaboral(rs.getInt("idexplaboral"));
-            exp.setNombre(rs.getString("nombre"));
+            exp.setNombre(rs.getString("nombreempresa"));
             exp.setCargo(rs.getString("cargo"));
             exp.setFechaInicio(rs.getString("fechainicio"));
             exp.setFechaFin(rs.getString("fechafin"));
@@ -40,6 +40,7 @@ public class CrudExpLaboral extends Conexion{
         } catch (Exception e) {
             throw e;
         }
+        
         return ls;
     }
     
@@ -59,6 +60,7 @@ public class CrudExpLaboral extends Conexion{
             ps.setString(4, exp.getFechaInicio());
             ps.setString(5, exp.getFechaFin());
             ps.setInt(6, exp.getIdCandidato());
+            mostrarExpLaboral();
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;
@@ -71,7 +73,7 @@ public class CrudExpLaboral extends Conexion{
      public void modificarExplaboral(ExpLaboral exp)throws Exception{
     
     this.conectar();
-    String sql="update explaboral set nombre=?, cargo=?, fechainicio=?, fechafin=?, idcandidato=? where idexplaboral=?";
+    String sql="update explaboral set nombreempresa=?, cargo=?, fechainicio=?, fechafin=?, idcandidato=? where idexplaboral=?";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {           
@@ -81,6 +83,7 @@ public class CrudExpLaboral extends Conexion{
             ps.setString(4, exp.getFechaFin());
             ps.setInt(5, exp.getIdCandidato());
             ps.setInt(6, exp.getIdExpLaboral());
+            ps.executeUpdate();
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;
@@ -97,6 +100,7 @@ public class CrudExpLaboral extends Conexion{
     
         try {
             ps.setInt(1, exp.getIdExpLaboral());
+            ps.executeUpdate();
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;
