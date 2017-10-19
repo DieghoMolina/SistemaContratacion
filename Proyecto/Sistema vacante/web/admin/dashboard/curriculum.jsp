@@ -24,9 +24,9 @@ LA IBA A UTILIZAR PARA EL REDIRECCIONAMIENTO REVISENLA USTEDES TALVEZ HAY ALGO Q
     function llenar(cod,curr,fecha,candi)
     {
         document.frm1.codigo.value=cod;
-        document.frm1.codigo.value=curr;
-        document.frm1.codigo.value=fecha;
-        document.frm1.codigo.value=candi;
+        document.frm1.curri.value=curr;
+        document.frm1.fechamodi.value=fecha;
+        document.frm1.candidato.value=candi;
     }
 </script>
 </head>
@@ -92,35 +92,37 @@ LA IBA A UTILIZAR PARA EL REDIRECCIONAMIENTO REVISENLA USTEDES TALVEZ HAY ALGO Q
             <div class="control-group">
               <label class="control-label">Currículum:</label>
               <div class="controls">
-                  <input name="curri" type="text" class="span11" >
+                  <input type="text" name="curri"  class="span11" >
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Fecha de modificación:</label>
               <div class="controls">
-                  <input name="fechamodi" type="text" class="span11" placeholder="fecha">
+                  <input name="fechamodi" type="date" class="span11" >
               </div>
             </div> 
             <div class="control-group">
-              <label class="control-label">Candidato.</label>
+              <label class="control-label">Candidato:</label>
               <div class="controls">
+                   <select name="candidato">
                   <%
                       CrudCandidato  c = new CrudCandidato();
                   List<Candidato>lst = c.mostrarCandidato() ;
                       for(Candidato v: lst)
                       {
                       %>
-                   <select name="candidato">
+                  
                        <option value="<%= v.getIdCandidato()  %>"> <%= v.getNombre()  %> </option>
-                  </select>
-                   <% } %>
+                    <% } %>
+                   </select>
+                 
               </div>
             </div>
             <div class="form-actions">
               <center>
-                  <input type="submit" class="btn btn-success" name="btnInsertar" value="insertar">&nbsp;&nbsp;
-              <button type="submit" class="btn btn-success" name="btnModificar">Modificar</button>&nbsp;&nbsp;
-              <button type="submit" class="btn btn-success" name="btnEliminar">Eliminar</button>&nbsp;&nbsp;
+                  <button type="submit" class="btn btn-success" onclick="return alert('Exito al insertar')" name="btnInsertar" >Insertar</button> &nbsp;&nbsp;
+                  <button type="submit" class="btn btn-success" onclick="return confirm('¿Desea Modificar?')" name="btnModificar">Modificar</button>&nbsp;&nbsp;
+              <button type="submit" class="btn btn-success" onclick="return confirm('¿Desea Eliminar?')" name="btnEliminar">Eliminar</button>&nbsp;&nbsp;
               <button type="reset" class="btn btn-success" name="btnLimpiar">Limpiar</button>
               </center>
             </div>
@@ -145,9 +147,9 @@ LA IBA A UTILIZAR PARA EL REDIRECCIONAMIENTO REVISENLA USTEDES TALVEZ HAY ALGO Q
                 <tr>
                   <th>ID Curriculum</th>
                   <th>Curriculum</th>
-                  <th>Cargo</th>
                   <th>Fecha de modificacion</th>
                   <th>Candidato</th>
+                  <th>Seleccionar</th>
                   
                   
                 </tr>

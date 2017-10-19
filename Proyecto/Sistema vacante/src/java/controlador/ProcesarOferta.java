@@ -36,7 +36,6 @@ public class ProcesarOferta extends HttpServlet {
         RequestDispatcher rd=null;
         Oferta ofer=new Oferta();
         CrudOferta cdof=new CrudOferta();
-        String val=null;
         
         ofer.setIdoferta(Integer.parseInt(request.getParameter("codigo")));
         ofer.setNombre(request.getParameter("nombre"));
@@ -48,25 +47,25 @@ public class ProcesarOferta extends HttpServlet {
         ofer.setGeneroRequerido(request.getParameter("generor"));
         ofer.setTipoContratacion(request.getParameter("tipoc"));
         ofer.setIdEmpresa(Integer.parseInt(request.getParameter("empresar")));
+        
         try 
         {
             if(request.getParameter("btnInsertar")!=null)
             {
                 cdof.InsertarOferta(ofer);
-                val="Datos insertados correctamente";
+                
             }
-            if(request.getParameter("btnModificar")!=null)
+            else if(request.getParameter("btnModificar")!=null)
             {
                 cdof.ModificarOferta(ofer);
-                val="Datos modificados correctamente";
+                
             }
-            if(request.getParameter("btnEliminar")!=null)
+            else if(request.getParameter("btnEliminar")!=null)
             {
                 cdof.EliminarOferta(ofer);
-                val="Datos eliminados correctamente";
+                
             }
-            rd=request.getRequestDispatcher("/admin/dashboard/oferta.jsp");
-            request.setAttribute("valor", val);
+            rd=request.getRequestDispatcher("/admin/dashboard/poferta.jsp");
         } 
         catch (Exception e) 
         {

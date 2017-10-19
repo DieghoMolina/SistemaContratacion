@@ -52,18 +52,18 @@ public class ProcesarCurriculum extends HttpServlet {
               
             }
             
-             if(request.getParameter("btnModificar")!=null)
+            else if(request.getParameter("btnModificar")!=null)
             {
-                crud.modificarCurriculum(cur);
+                crud.modificarCurriculum(cur); 
                 
             }
              
-              if(request.getParameter("btnEliminar")!=null)
+            else if(request.getParameter("btnEliminar")!=null)
             {
                 crud.eliminarCurriculum(cur);
               
             }
-              rd=request.getRequestDispatcher("/admin/dashboard/curriculum.jsp");
+              rd=request.getRequestDispatcher("/admin/dashboard/pcurriculum.jsp");
             
         }catch(Exception e){
             request.setAttribute("Error", e.toString());

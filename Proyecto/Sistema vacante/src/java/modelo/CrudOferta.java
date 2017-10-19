@@ -50,9 +50,10 @@ public class CrudOferta extends Conexion{
     public void InsertarOferta(Oferta o) throws Exception
     {
         try {
-            this.getCon();
+            this.conectar();
             String sql="insert into oferta values(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps=this.getCon().prepareStatement(sql);
+           
             ps.setInt(1, o.getIdoferta());
             ps.setString(2, o.getNombre());
             ps.setString(3, o.getDescripcion());
@@ -73,20 +74,20 @@ public class CrudOferta extends Conexion{
     public void ModificarOferta(Oferta o) throws Exception
     {
         try {
-            this.getCon();
-            String sql="update  oferta set nombre=?, descripcion=?, salario=?, vacante=?, edadrequerida=?, exprequerida=?, generorequerido=?, tipocontratacion=?, idempresa=? where idoferta=?)";
+            this.conectar();
+            String sql="update  oferta set nombre=?, descripcion=?, salario=?, vacante=?, edadrequerida=?, exprequerida=?, generorequerido=?, tipocontratacion=?, idempresa=? where idoferta=?";
             PreparedStatement ps=this.getCon().prepareStatement(sql);
             
-            ps.setInt(1, o.getIdEmpresa());
-            ps.setInt(2, o.getIdoferta());
-            ps.setString(3, o.getNombre());
-            ps.setString(4, o.getDescripcion());
-            ps.setDouble(5, o.getSalario());
-            ps.setInt(6, o.getVacante());
-            ps.setString(7, o.getEdadRequerida());
-            ps.setInt(8, o.getExpRequerida());
-            ps.setString(9, o.getGeneroRequerido());
-            ps.setString(10, o.getTipoContratacion());            
+            ps.setString(1 , o.getNombre());
+            ps.setString(2 , o.getDescripcion());
+            ps.setDouble(3 , o.getSalario());
+            ps.setInt(4 , o.getVacante());
+            ps.setString(5 , o.getEdadRequerida());
+            ps.setInt(6 , o.getExpRequerida());
+            ps.setString(7 , o.getGeneroRequerido());
+            ps.setString(8 , o.getTipoContratacion());            
+            ps.setInt(9 , o.getIdEmpresa());
+            ps.setInt(10 , o.getIdoferta());
             ps.executeUpdate();
         } catch (Exception e) {
         throw e;
@@ -96,7 +97,7 @@ public class CrudOferta extends Conexion{
     public void EliminarOferta(Oferta o) throws Exception
     {
         try {
-            this.getCon();
+            this.conectar();
             String sql="delete from  oferta where idoferta=?";
             PreparedStatement ps=this.getCon().prepareStatement(sql);
            ps.setInt(1, o.getIdoferta());

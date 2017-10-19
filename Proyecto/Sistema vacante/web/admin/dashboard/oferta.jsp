@@ -19,7 +19,7 @@
         document.frm.salario.value=sala;
         document.frm.vacante.value=vacnt;
         document.frm.edadr.value=edadr;
-        document.frm.experiencir.value=expr;
+        document.frm.experienciar.value=expr;
         document.frm.generor.value=genr;
         document.frm.tipoc.value=tcon;
         document.frm.empresar.value=empr;
@@ -57,14 +57,6 @@
        }
         %>
 
-    <%
-        if(request.getAttribute("valor")!=null)
-        {
-    %>
-    <script>
-        alert("<% request.getAttribute("valor"); %>");
-    </script>
-    <% } %>
 <!--Header-part-->
 <div id="header">
   <h1><a href="dashboard.html">Vacantes sisten</a></h1>
@@ -117,13 +109,13 @@
             <div class="control-group">
               <label class="control-label">Descripción</label>
               <div class="controls">
-                  <input name="descripcion" type="textarea" class="span11" placeholder="descripcion" />
+                  <input name="descripcion" type="text" class="span11" placeholder="descripcion" />
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Salario:</label>
               <div class="controls">
-                  <input type="text" class="span11" name="salario" placeholder="salario" tab="0.00"/>
+                  <input type="text" class="span11" name="salario" placeholder="salario"/>
               </div>
             </div>
             <div class="control-group">
@@ -141,13 +133,13 @@
             <div class="control-group">
               <label class="control-label">Experiencia requerida:</label>
               <div class="controls">
-                <input type="text" class="span11" name="experienciar" placeholder="experiencia" />
+                <input type="text" class="span11" name="experienciar" placeholder="años de experiencia" />
               </div>
             </div>
-            <div class="control-group">
-              <label class="control-label">Genero requerido</label>
+           <div class="control-group">
+              <label class="control-label">Genero:</label>
               <div class="controls">
-                  <input type="text" name="generor" class="span11" placeholder="genero" />
+                  Masculino  <input type="radio" name="generor" value="Masculino" class="span1"/>   Femenino   <input type="radio" name="generor" value="Femenino" class="span1" />
               </div>
             </div>
             <div class="control-group">
@@ -173,10 +165,10 @@
             </div>
             <div class="form-actions">
               <center>
-              <button type="submit" name="btnInsertar" onclick="confirmar()" class="btn btn-success">Insertar</button>&nbsp;&nbsp;
-              <button type="submit" name="btnModificar" onclick="confirmar()" class="btn btn-success">Modificar</button>&nbsp;&nbsp;
-              <button type="submit" name="btnEliminar" onclick="confirmar()" class="btn btn-success">Eliminar</button>&nbsp;&nbsp;
-              <button type="reset" name="bntCancelar"  class="btn btn-success">Cancelar</button>
+                  <button type="submit" name="btnInsertar" onclick="return alert('Exito al insertar')" class="btn btn-success">Insertar</button>&nbsp;&nbsp;
+                  <button type="submit" name="btnModificar" onclick="return confirm('¿Desea modificar?')" class="btn btn-success">Modificar</button>&nbsp;&nbsp;
+                  <button type="submit" name="btnEliminar"  onclick="return confirm('¿Desea eliminar?')" class="btn btn-success">Eliminar</button>&nbsp;&nbsp;
+              <button type="reset" name="bntCancelar"   class="btn btn-success">Limpiar</button>
               </center>
             </div>
           </form>
@@ -228,7 +220,7 @@
                   <td><%= of.getGeneroRequerido() %></td>
                   <td><%= of.getTipoContratacion() %></td>
                   <td><%= of.getIdEmpresa() %></td>
-                  <td><a href="javascript:cargar(<%= of.getIdoferta()%>,'<%= of.getNombre() %>','<%= of.getDescripcion()%>','<%= of.getSalario()%>','<%= of.getVacante()%>','<%= of.getEdadRequerida()%>','<%= of.getExpRequerida()%>','<%= of.getExpRequerida()%>','<%= of.getGeneroRequerido()%>','<%= of.getTipoContratacion()%>','<%= of.getIdEmpresa()%>')">Seleccionar</a></td>
+                  <td><a href="javascript:cargar(<%= of.getIdoferta()%>,'<%= of.getNombre() %>','<%= of.getDescripcion()%>','<%= of.getSalario()%>','<%= of.getVacante()%>','<%= of.getEdadRequerida()%>','<%= of.getExpRequerida()%>','<%= of.getGeneroRequerido()%>','<%= of.getTipoContratacion()%>','<%= of.getIdEmpresa() %>')">Seleccionar</a></td>
                 </tr> 
                 <% } %>
               </tbody>
