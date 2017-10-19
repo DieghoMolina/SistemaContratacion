@@ -1,3 +1,5 @@
+<%@page import="modelo.ExpLaboral"%>
+<%@page import="modelo.CrudExpLaboral"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.Candidato"%>
 <%@page import="modelo.CrudCandidato"%>
@@ -173,7 +175,16 @@ Candidato can = new Candidato();
               <label class="control-label">Experiencia Laboral</label>
               <div class="controls">
                   <select name="experiencia">
-                      <option value="experiencia">Experiencia</option>
+                      <%
+                         CrudExpLaboral cel = new CrudExpLaboral();
+                         List<ExpLaboral> lsel = cel.mostrarExpLaboral();
+                         for(ExpLaboral ver:lsel)
+                         {
+                             %>
+                             <option value="<%= ver.getIdExpLaboral() %>"><%= ver.getCargo() %></option>
+                             <%
+                         }
+                      %>
                   </select>
               </div>
             </div>
