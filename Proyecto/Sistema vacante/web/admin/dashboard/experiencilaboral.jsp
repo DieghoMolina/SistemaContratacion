@@ -31,7 +31,7 @@
         document.frm1.fechafin.value=f2;
         document.frm1.candidato.value=candi;
     }
-    
+  <!--Con Mensajitos de confirmacion-->  
     function confirmar1()
     {
         if(confirm("¿Desea Insertar los datos en su formulario?")!= null)
