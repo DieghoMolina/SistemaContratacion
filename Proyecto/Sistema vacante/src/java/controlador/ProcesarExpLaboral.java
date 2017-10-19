@@ -63,7 +63,7 @@ public class ProcesarExpLaboral extends HttpServlet {
                crud.eliminarExpLaboral(exp);
                val = "Datos Eliminados Exitosamente";
            }
-           rd = request.getRequestDispatcher("admin/dashboard/experiencilaboral.jsp");
+           rd = request.getRequestDispatcher("admin/dashboard/pExpLaboral.jsp");
            request.setAttribute("Valor", val);
         }catch(Exception e)
         {

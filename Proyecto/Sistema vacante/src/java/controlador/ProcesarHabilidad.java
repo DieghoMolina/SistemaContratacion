@@ -62,7 +62,7 @@ public class ProcesarHabilidad extends HttpServlet {
                 crud.eliminarHabilidad(hab);
                 val="Datos Eliminados Exitosamente";
             }
-            rd = request.getRequestDispatcher("admin/dashboard/habilidad.jsp");
+            rd = request.getRequestDispatcher("admin/dashboard/pHabilidad.jsp");
             request.setAttribute("Valor", val);
         }catch(Exception e)
         {

@@ -30,7 +30,7 @@ public class CrudExpLaboral extends Conexion{
             while(rs.next()){
             ExpLaboral exp=new ExpLaboral();
             exp.setIdExpLaboral(rs.getInt("idexplaboral"));
-            exp.setNombre(rs.getString("nombre"));
+            exp.setNombre(rs.getString("nombreempresa"));
             exp.setCargo(rs.getString("cargo"));
             exp.setFechaInicio(rs.getString("fechainicio"));
             exp.setFechaFin(rs.getString("fechafin"));
