@@ -24,6 +24,10 @@
         <servlet-name>ProcesarExpLaboral</servlet-name>
         <servlet-class>controlador.ProcesarExpLaboral</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcesarHabilidad</servlet-name>
+        <servlet-class>controlador.ProcesarHabilidad</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControlCandidato</servlet-name>
         <url-pattern>/controlCandidato</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ProcesarExpLaboral</servlet-name>
         <url-pattern>/procesarExpLaboral</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesarHabilidad</servlet-name>
+        <url-pattern>/procesarHabilidad</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -18,6 +18,42 @@
         document.frm1.codigo.value=id;
         document.frm1.nombre.value=nom;
     }
+    
+    function confirmar1()
+    {
+        if(confirm("¿Desea Insertar los datos en su formulario?")!= null)
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
+    }
+    
+    function confirmar2()
+    {
+        if(confirm("¿Desea modificar los siguientes datos ?")!= null)
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
+    }
+    
+    function confirmar3()
+    {
+        if(confirm("¿Desea eliminar los siguientes datos ?")!= null)
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
+    }
 </script>
 
 <%
@@ -81,24 +117,24 @@
           
         <div class="widget-content" >
             
-          <form action="procesarHabilidad" method="get" class="form-horizontal" name='frm1' >
+          <form action="../../procesarHabilidad" method="get" class="form-horizontal" name='frm1' >
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
-                  <input type="text" name="codigo" class="span11" placeholder="codigo" />
+                  <input type="text" name="codigo" class="span11" placeholder="codigo" required />
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Nombre:</label>
               <div class="controls">
-                  <input type="text" name="nombre" class="span11" placeholder="Nombre" />
+                  <input type="text" name="nombre" class="span11" placeholder="Nombre" required />
               </div>
             </div>
             <div class="form-actions">
               <center>
-              <button type="submit" class="btn btn-success" name='btnInsertar'>Insertar</button>&nbsp;&nbsp;
-              <button type="submit" class="btn btn-success" name='btnModificar'>Modificar</button>&nbsp;&nbsp;
-              <button type="submit" class="btn btn-success" name='btnEliminar'>Eliminar</button>&nbsp;&nbsp;
+                  <button type="submit" class="btn btn-success" name='btnInsertar' onclick="confirmar1()">Insertar</button>&nbsp;&nbsp;
+                  <button type="submit" class="btn btn-success" name='btnModificar' onclick="confirmar2()">Modificar</button>&nbsp;&nbsp;
+                  <button type="submit" class="btn btn-success" name='btnEliminar' onclick="confirmar3()">Eliminar</button>&nbsp;&nbsp;
               <button type="reset" class="btn btn-success" name='btnLimpiar'>Limpiar</button>
               </center>
             </div>
