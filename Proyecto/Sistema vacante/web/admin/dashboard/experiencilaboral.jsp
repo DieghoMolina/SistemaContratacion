@@ -31,6 +31,42 @@
         document.frm1.fechafin.value=f2;
         document.frm1.candidato.value=candi;
     }
+  <!--Con Mensajitos de confirmacion-->  
+    function confirmar1()
+    {
+        if(confirm("¿Desea Insertar los datos en su formulario?")!= null)
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
+    }
+    
+    function confirmar2()
+    {
+        if(confirm("¿Desea modificar los siguientes datos ?")!= null)
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
+    }
+    
+    function confirmar3()
+    {
+        if(confirm("¿Desea eliminar los siguientes datos ?")!= null)
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
+    }
 </script>
 </head>
 <body>
@@ -39,7 +75,6 @@
         String usuario;
         String nivel;
         
-
        if(sesion.getAttribute("user")!=null && sesion.getAttribute("nivel")!=null){
            usuario=sesion.getAttribute("user").toString();
            nivel=sesion.getAttribute("nivel").toString();
@@ -85,48 +120,48 @@
           
         <div class="widget-content" >
             
-            <form action="procesarEL" method="get" class="form-horizontal" name="frm1">
+            <form action="../../procesarExpLaboral" method="get" class="form-horizontal" name="frm1">
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
-                  <input type="text" name="codigo" class="span11" placeholder="codigo" />
+                  <input type="text" name="codigo" class="span11" placeholder="codigo" required />
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label">Nombre:</label>
+              <label class="control-label">Nombre Empresa:</label>
               <div class="controls">
-                  <input type="text" name="nombre" class="span11" placeholder="Nombre" />
+                  <input type="text" name="nombre" class="span11" placeholder="Nombre" required />
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Cargo:</label>
               <div class="controls">
-                  <input type="text" name="cargo" class="span11" placeholder="carga" />
+                  <input type="text" name="cargo" class="span11" placeholder="carga" required />
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Fecha de inicio:</label>
               <div class="controls">
-                  <input name="fechaini" type="date" class="span11" placeholder="fecha">
+                  <input name="fechaini" type="date" class="span11" placeholder="fecha" required >
               </div>
             </div>
               <div class="control-group">
               <label class="control-label">Fecha de finalización</label>
               <div class="controls">
-                  <input name="fechafin" type="date" class="span11" placeholder="fecha">
+                  <input name="fechafin" type="date" class="span11" placeholder="fecha" required >
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Candidato</label>
               <div class="controls">
-                  <input type="text" name="candidato" class="span11" placeholder="carga" />
+                  <input type="number" name="candidato" class="span11" placeholder="carga" required />
               </div>
             </div>
             <div class="form-actions">
               <center>
-              <button type="submit" class="btn btn-success" name='btnInsertar'>Insertar</button>&nbsp;&nbsp;
-              <button type="submit" class="btn btn-success" name='btnModificar'>Modificar</button>&nbsp;&nbsp;
-              <button type="submit" class="btn btn-success" name='btnEliminar'>Eliminar</button>&nbsp;&nbsp;
+                  <button type="submit" class="btn btn-success" name='btnInsertar' onclick="confirmar1()">Insertar</button>&nbsp;&nbsp;
+                  <button type="submit" class="btn btn-success" name='btnModificar' onclick="confirmar2()">Modificar</button>&nbsp;&nbsp;
+                  <button type="submit" class="btn btn-success" name='btnEliminar' onclick="confirmar3()">Eliminar</button>&nbsp;&nbsp;
               <button type="reset" class="btn btn-success" name='btnLimpiar'>Limpiar</button>
               </center>
             </div>
