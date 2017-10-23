@@ -1,3 +1,9 @@
+<%@page import="modelo.CrudTipoEmpresa"%>
+<%@page import="modelo.TipoEmpresa"%>
+<%@page import="modelo.CrudMunicipio"%>
+<%@page import="modelo.Municipio"%>
+<%@page import="modelo.CrudDepto"%>
+<%@page import="modelo.Depto"%>
 <%@page import="modelo.Empresa"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.CrudEmpresa"%>
@@ -32,6 +38,41 @@ if(request.getAttribute("Valor")!=null)
         document.frm1.municipio.value=muni;
         document.frm1.tempresa.value=tipo;
         document.frm1.user.value=user;
+    }
+     function confirmar1()
+    {
+        if(confirm("¿Desea Insertar los datos en su formulario?")!= null)
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
+    }
+    
+    function confirmar2()
+    {
+        if(confirm("¿Desea modificar los siguientes datos ?")!= null)
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
+    }
+    
+    function confirmar3()
+    {
+        if(confirm("¿Desea eliminar los siguientes datos ?")!= null)
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
     }
 </script>
 </head>
@@ -87,7 +128,7 @@ if(request.getAttribute("Valor")!=null)
           
         <div class="widget-content" >
             
-          <form action="procesarEmpresa" method="get" class="form-horizontal" name="frm1">
+          <form action="../../procesarEmpresa" method="get" class="form-horizontal" name="frm1">
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
@@ -112,41 +153,74 @@ if(request.getAttribute("Valor")!=null)
                   <input type="file" class="span11" name="logo" />
             </div>
             </div>
-            <div class="control-group">
-              <label class="control-label">Municipio</label>
-              <div class="controls">
-                  <select name="municipio">
-                      <option value="Municipio">Municipio</option>
-                  </select>
-              </div>
-            </div>
+           
             <div class="control-group">
               <label class="control-label">Departamento</label>
               <div class="controls">
-                  <select name="departento">
-                      <option value="Departamento">Departamento</option>
+                  <select name="departamento">
+                      <%
+                          Depto d = new Depto();
+                          CrudDepto crud = new CrudDepto();
+                          List<Depto> listaD = crud.mostrarDepto();
+                          for(Depto ver:listaD)
+                          {
+                             %>
+                             <option value="<%= ver.getIdDepto() %>"><%= ver.getNombre() %></option>
+                             <%
+                          }
+                      %>
                   </select>
               </div>
             </div>
+              
+               <div class="control-group">
+              <label class="control-label">Municipio</label>
+              <div class="controls">
+                  <select name="municipio">
+                      <%
+                          Municipio mu = new Municipio();
+                          CrudMunicipio crud1 = new CrudMunicipio();
+                          List<Municipio> listaM = crud1.mostrarMunicipio();
+                          for(Municipio ver:listaM)
+                          {
+                              %>
+                              <option value="<%= ver.getIdMunicipio() %>"><%= ver.getNombre() %></option>
+                              <%
+                          }
+                      %>
+                  </select>
+              </div>
+            </div>
+              
             <div class="control-group">
               <label class="control-label">Tipo de empresa:</label>
               <div class="controls">
                   <select name="Tempresa">
-                      <option value="Tepresa">tipo</option>
+                      <%
+                          TipoEmpresa tipo = new TipoEmpresa();
+                          CrudTipoEmpresa cte = new CrudTipoEmpresa();
+                          List<TipoEmpresa> listaT = cte.mostrarTipoEmpresa();
+                          for(TipoEmpresa ver:listaT)
+                          {
+                              %>
+                              <option value="<%= ver.getIdTipoEmpresa() %>"><%= ver.getNombre() %></option>
+                              <%
+                          }
+                      %>
                   </select>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Usuario:</label>
               <div class="controls">
-                <input type="text" class="span11" placeholder="usuario" name="user"/>
+                <input type="number" class="span11" placeholder="usuario" name="user"/>
               </div>
             </div>
             <div class="form-actions">
               <center>
-              <button type="submit" class="btn btn-success" name='btnInsertar'>Insertar</button>&nbsp;&nbsp;
-              <button type="submit" class="btn btn-success" name='btnModificar'>Modificar</button>&nbsp;&nbsp;
-              <button type="submit" class="btn btn-success" name='btnEliminar'>Eliminar</button>&nbsp;&nbsp;
+                  <button type="submit" class="btn btn-success" name='btnInsertar' onclick="confirmar1()">Insertar</button>&nbsp;&nbsp;
+                  <button type="submit" class="btn btn-success" name='btnModificar' onclick="confirmar2()">Modificar</button>&nbsp;&nbsp;
+                  <button type="submit" class="btn btn-success" name='btnEliminar' onclick="confirmar3()">Eliminar</button>&nbsp;&nbsp;
               <button type="reset" class="btn btn-success" name='btnLimpiar'>Limpiar</button>
               </center>
             </div>
@@ -182,8 +256,8 @@ if(request.getAttribute("Valor")!=null)
               </thead>
               <tbody>
                   <%
-                      CrudEmpresa crud = new CrudEmpresa();
-                      List<Empresa> lista = crud.mostrarEmpresa();
+                      CrudEmpresa crudE = new CrudEmpresa();
+                      List<Empresa> lista = crudE.mostrarEmpresa();
                       for(Empresa ver:lista)
                       {
                    %>

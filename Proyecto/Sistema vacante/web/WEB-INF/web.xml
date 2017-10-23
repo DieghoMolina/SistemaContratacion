@@ -44,6 +44,10 @@
         <servlet-name>ProcesarExpLaboral</servlet-name>
         <servlet-class>controlador.ProcesarExpLaboral</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcesarEmpresa</servlet-name>
+        <servlet-class>controlador.ProcesarEmpresa</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControlCandidato</servlet-name>
         <url-pattern>/controlCandidato</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>ProcesarExpLaboral</servlet-name>
         <url-pattern>/procesarExpLaboral</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesarEmpresa</servlet-name>
+        <url-pattern>/procesarEmpresa</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
