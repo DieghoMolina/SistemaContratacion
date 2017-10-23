@@ -134,7 +134,7 @@ if(request.getAttribute("Valor")!=null)
                   <th>Year</th>
                   <th>Candidato</th>
                   
-                   <th>Seleccionar/th>
+                   <th>Seleccionar</th>
                 </tr>
               </thead>
               <tbody>
