@@ -1,5 +1,5 @@
 
-    <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Gestionar</span> <span class="label label-important">14</span></a>
+    <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Gestionar</span> <span class="label label-important">15</span></a>
       <ul>
         <li><a href="usuario.jsp">Usuario</a></li>
         <li><a href="empresa.jsp">Empresa</a></li>
@@ -15,6 +15,8 @@
         <li><a href="experiencilaboral.jsp">Experiencia laboral</a></li>
         <li><a href="departamento.jsp">Departamento</a></li>
         <li><a href="curso.jsp">Curso</a></li>
+        <li><a href="idioma_candidato.jsp">Idioma_Candidato</a></li>
+        
       </ul>
     </li>
    

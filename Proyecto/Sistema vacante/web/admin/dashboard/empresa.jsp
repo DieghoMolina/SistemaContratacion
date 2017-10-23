@@ -27,16 +27,16 @@ if(request.getAttribute("Valor")!=null)
 }
 %>
 
-<script laguage="javaScript">
+<script Language="JavaScript">
     function llenar(id,nom,desc,logo,depto,muni,tipo,user)
     {
         document.frm1.codigo.value=id;
         document.frm1.nombre.value=nom;
-        document.frm1.departamento.value=depto;
-        document.frm1.logo.value=logo;
         document.frm1.descripcion.value=desc;
+        //document.frm1.logo.value=logo;
+        document.frm1.departamento.value=depto;
         document.frm1.municipio.value=muni;
-        document.frm1.tempresa.value=tipo;
+        document.frm1.Tempresa.value=tipo;
         document.frm1.user.value=user;
     }
      function confirmar1()
@@ -144,7 +144,7 @@ if(request.getAttribute("Valor")!=null)
             <div class="control-group">
               <label class="control-label">Descripción</label>
               <div class="controls">
-                <input type="textarea" class="span11" placeholder="descripcion" name="descripcion"/>
+                  <input type="text" class="span11" placeholder="descripcion" name="descripcion"/>
               </div>
             </div>
             <div class="control-group">
@@ -237,7 +237,7 @@ if(request.getAttribute("Valor")!=null)
       <div class="span12">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
-            <h5>Datos de epresa</h5>
+            <h5>Datos de empresa</h5>
           </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered table-striped">
@@ -247,8 +247,8 @@ if(request.getAttribute("Valor")!=null)
                   <th>Nombre</th>
                   <th>Descripción</th>
                   <th>Logo</th>
-                  <th>Municipio</th>
                   <th>Departamento</th>
+                  <th>Municipio</th>
                   <th>Tipo de empresa</th>
                   <th>Usuario</th>
                   <th>Seleccionar</th>
@@ -267,11 +267,11 @@ if(request.getAttribute("Valor")!=null)
                    <td class="center"> <%= ver.getNombre() %></td>
                    <td class="center"> <%= ver.getDescripcion() %></td>
                    <td class="center"> <%= ver.getLogo() %></td>
-                    <td class="center"> <%= ver.getIdMunicipio() %></td>
-                   <td class="center"> <%= ver.getIdDepto() %></td>
+                   <td class="center"> <%= ver.getIdDepto() %></td> 
+                   <td class="center"> <%= ver.getIdMunicipio() %></td>
                    <td class="center"> <%= ver.getIdTipoEmpresa() %></td>
                    <td class="center"> <%= ver.getIdUsuario() %></td>
-                   <td class="center"> <a href="JavaScript:llenar(<%= ver.getIdEmpresa() %>,'<%= ver.getNombre() %>','<%= ver.getDescripcion() %>','<%= ver.getLogo() %>','<%= ver.getIdMunicipio() %>','<%= ver.getIdDepto() %>','<%= ver.getIdTipoEmpresa() %>','<%= ver.getIdUsuario() %>')">Seleccionar</a></td>
+                   <td class="center"> <a href="JavaScript:llenar(<%= ver.getIdEmpresa() %>,'<%= ver.getNombre() %>','<%= ver.getDescripcion() %>','<%= ver.getLogo() %>','<%= ver.getIdDepto()%>','<%= ver.getIdMunicipio()%>','<%= ver.getIdTipoEmpresa() %>','<%= ver.getIdUsuario() %>')">Seleccionar</a></td>
                 </tr> 
                    <%
                       }
