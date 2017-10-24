@@ -23,7 +23,7 @@
            nivel=sesion.getAttribute("nivel").toString();
        
        }else{
-       out.print("<script>location.replace('../../login.jsp');</script>");
+       out.print("<script>location.replace('../login.jsp');</script>");
        }
     %>
        Guardando los cambios!

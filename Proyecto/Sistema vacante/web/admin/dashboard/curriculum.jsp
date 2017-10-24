@@ -41,14 +41,15 @@ LA IBA A UTILIZAR PARA EL REDIRECCIONAMIENTO REVISENLA USTEDES TALVEZ HAY ALGO Q
        if(sesion.getAttribute("user")!=null && sesion.getAttribute("nivel")!=null){
            usuario=sesion.getAttribute("user").toString();
            nivel=sesion.getAttribute("nivel").toString();
-           out.print("<a href='../../login.jsp?cerrar=true'><h5>Cerrar Sesion "+usuario+"</h5></a>");    
+           out.print("<a href='../login.jsp?cerrar=true'><h5>Cerrar Sesion "+usuario+"</h5></a>");    
        }else{
-       out.print("<script>location.replace('../../login.jsp');</script>");
+       out.print("<script>location.replace('../login.jsp');</script>");
        }
         %>
 <!--Header-part-->
+
 <div id="header">
-  <h1><a href="dashboard.html">Vacantes sisten</a></h1>
+  
 </div>
 <!--close-Header-part--> 
 

@@ -52,11 +52,7 @@
               HttpSession sesion = request.getSession();
               
               switch(op.loguear(nombre, contra)){
-              case 1 :
-                  sesion.setAttribute("user", nombre);
-                  sesion.setAttribute("nivel", "1");
-                  response.sendRedirect("admin/dashboard/candidato.jsp");
-                      break;
+          
                       
               case 2 :
                   sesion.setAttribute("user", nombre);
