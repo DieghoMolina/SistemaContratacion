@@ -1,3 +1,15 @@
+<%@page import="modelo.Municipio"%>
+<%@page import="modelo.CrudMunicipio"%>
+<%@page import="modelo.Depto"%>
+<%@page import="modelo.CrudDepto"%>
+<%@page import="modelo.Idioma"%>
+<%@page import="modelo.CrudIdioma"%>
+<%@page import="modelo.Habilidad"%>
+<%@page import="modelo.CrudHabilidad"%>
+<%@page import="modelo.NivelAcademico"%>
+<%@page import="modelo.CrudNivelAcademico"%>
+<%@page import="modelo.Profesion"%>
+<%@page import="modelo.CrudProfesion"%>
 <%@page import="modelo.ExpLaboral"%>
 <%@page import="modelo.CrudExpLaboral"%>
 <%@page import="java.util.List"%>
@@ -29,7 +41,7 @@ Candidato can = new Candidato();
     }
  %>
  <script Languge="JavaScript">
-     function llenar(id,nom,apelli,email,tel,gen,fecha,foto,idioma,habi,labor,depto,muni,profe,nivel)
+     function llenar(id,nom,apelli,email,tel,gen,fecha,foto,idioma,habi,labor,depto,muni,profe,nivel,usu)
      {
          document.frm1.codigo.value=id;
          document.frm1.nombre.value=nom;
@@ -46,8 +58,45 @@ Candidato can = new Candidato();
          document.frm1.departamento.value=depto;
          document.frm1.municipio.value=muni;
          document.frm1.profesion.value=profe;
+         document.frm1.user.value=usu;
          
      }
+     
+      function confirmar1()
+    {
+        if(confirm("¿Desea Insertar los datos en su formulario?")!= null)
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
+    }
+    
+    function confirmar2()
+    {
+        if(confirm("¿Desea modificar los siguientes datos ?")!= null)
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
+    }
+    
+    function confirmar3()
+    {
+        if(confirm("¿Desea eliminar los siguientes datos ?")!= null)
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
+    }
  </script>
 </head>
 <body>
@@ -105,7 +154,7 @@ Candidato can = new Candidato();
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
-                <input type="text" class="span11" placeholder="codigo" name="codigo" />
+                <input type="text" class="span11" placeholder="codigo" name="codigo" readonly />
               </div>
             </div>
               
@@ -146,7 +195,7 @@ Candidato can = new Candidato();
             <div class="control-group">
               <label class="control-label">Foto:</label>
               <div class="controls">
-                <input type="file" class="span11" name="foto" />
+                <input type="text" class="span11" name="foto" />
             </div>
             <div class="control-group">
               <label class="control-label">Genero:</label>
@@ -157,7 +206,18 @@ Candidato can = new Candidato();
             <div class="control-group">
               <label class="control-label">Habilidad</label>
               <div class="controls">
-                  <input type="text" class="span11" placeholder="Habilidad" name="habilidad" />
+                  <select name="habilidad">
+                      <%
+                        CrudHabilidad crudha = new CrudHabilidad();
+                        List<Habilidad> listha = crudha.mostrarHabilidad();
+                        for(Habilidad ver:listha)
+                        {
+                            %>
+                            <option value="<%= ver.getIdHabilidad() %>" ><%= ver.getNombre() %></option>
+                            <%
+                        }
+                      %>
+                  </select>
               </div>
             </div>
               
@@ -165,7 +225,16 @@ Candidato can = new Candidato();
               <label class="control-label">Profesion</label>
               <div class="controls">
                   <select name="profesion">
-                      <option value="doctor">Experiencia</option>
+                      <%
+                        CrudProfesion cpro = new CrudProfesion();
+                        List<Profesion> listpro = cpro.mostrarProfesion();
+                        for(Profesion ver:listpro)
+                        {
+                            %>
+                            <option value="<%= ver.getIdProfesion() %>" ><%= ver.getNombre() %></option>
+                            <%
+                        }
+                      %>
                   </select>
               </div>
             </div>
@@ -191,7 +260,16 @@ Candidato can = new Candidato();
               <label class="control-label">Nivel academico:</label>
               <div class="controls">
                   <select name="nivel">
-                      <option value="nivel">nivel</option>
+                      <%
+                        CrudNivelAcademico cna = new CrudNivelAcademico();
+                        List<NivelAcademico> listNA = cna.mostrarNivelAcad();
+                        for(NivelAcademico ver:listNA)
+                        {
+                          %>
+                          <option value="<%= ver.getIdNivelAca() %>"><%= ver.getNombre() %></option>
+                          <%
+                        }
+                      %>
                   </select>
               </div>
             </div>
@@ -202,7 +280,17 @@ Candidato can = new Candidato();
               <label class="control-label">Idioma:</label>
               <div class="controls">
                   <select name="idioma">
-                      <option value="idioma">Idioma</option>
+                      <%
+                         CrudIdioma crudi = new CrudIdioma();
+                         List<Idioma> listaI = crudi.mostrarIdioma();
+                         for(Idioma ver:listaI)
+                         {
+                             %>
+                             <option value="<%= ver.getIdIdioma() %>"><%= ver.getNombre() %></option>
+                             <%
+                         }
+                         
+                      %>
                   </select>
               </div>
             </div>
@@ -211,7 +299,16 @@ Candidato can = new Candidato();
               <label class="control-label">Departamento</label>
               <div class="controls">
                   <select name="departamento">
-                      <option value="depa">Departamento</option>
+                      <%
+                        CrudDepto cdep = new CrudDepto();
+                        List<Depto> listaD = cdep.mostrarDepto();
+                        for(Depto ver:listaD)
+                        {
+                            %>
+                            <option value="<%= ver.getIdDepto() %>"><%= ver.getNombre() %></option>
+                            <%
+                        }
+                      %>
                   </select>
               </div>
             </div>
@@ -222,16 +319,34 @@ Candidato can = new Candidato();
               <div class="controls">
                   
                   <select name="municipio">
-                      <option value="municioi">Municipio</option>
+                      <%
+                          CrudMunicipio crudMuni = new CrudMunicipio();
+                          List<Municipio> listMu = crudMuni.mostrarMunicipio();
+                          for(Municipio ver:listMu)
+                          {
+                              %>
+                              <option value="<%= ver.getIdMunicipio() %>"><%= ver.getNombre() %></option>
+                              <%
+                          }
+                      %>
                   </select>
+              </div>
+            </div>
+                  
+             <div class="control-group">
+              <label class="control-label">USUARIO:</label>
+              <div class="controls">
+                <input type="text" class="span11" placeholder="Usuario" name="user" />
               </div>
             </div>
             
             <div class="form-actions">
               <center>
-              <button type="submit" class="btn btn-success" name="btnInsertar">Insertar</button>&nbsp;&nbsp;
-              <button type="submit" class="btn btn-success" name="btnModificar">Modificar</button>&nbsp;&nbsp;
-              <button type="submit" class="btn btn-success" name="btnEliminar">Eliminar</button>&nbsp;&nbsp;
+               <!--
+               <button type="submit" class="btn btn-success" name="btnInsertar" onclick="confirmar1()">Insertar</button>&nbsp;&nbsp;
+               -->
+              <button type="submit" class="btn btn-success" name="btnModificar" onclick="confirmar2()" >Modificar</button>&nbsp;&nbsp;
+              <button type="submit" class="btn btn-success" name="btnEliminar" onclick="confirmar3()" >Eliminar</button>&nbsp;&nbsp;
               <button type="reset" class="btn btn-success" name="btnLimpiar">Limpiar</button>
               </center>
             </div>
@@ -253,7 +368,11 @@ Candidato can = new Candidato();
           <div class="widget-content nopadding">
             <table class="table table-bordered table-striped">
               <thead>
-                <tr>
+              <th colspan="17">Datos Candidato</th>
+              </thead>
+              <tbody>
+                  <tr>
+                  
                   <th>Codigo Candidato</th>
                   <th>Nombre</th>
                   <th>Apellido</th>
@@ -269,10 +388,9 @@ Candidato can = new Candidato();
                   <th>Id Municipio</th>
                   <th>Id Profesion</th>
                   <th>Id Nivel Academico</th>
+                  <th>Id Usuario</th>
                   <th>Seleccionar</th>
                 </tr>
-              </thead>
-              <tbody>
                   <%
                   List<Candidato> ls = crud.mostrarCandidato();
                   for(Candidato cn : ls){
@@ -295,7 +413,7 @@ Candidato can = new Candidato();
             <td ><center><%= cn.getIdMunicipio() %> </center></td>
             <td ><center><%= cn.getIdProfecion() %> </center></td>
             <td ><center><%= cn.getIdNivelAcad() %> </center></td>
-            <td ><center><a href="JavaScript:llenar(<%= cn.getIdCandidato() %>,'<%= cn.getNombre() %>','<%= cn.getApellido() %>','<%= cn.getCorreo() %>','<%= cn.getGenero() %>','<%= cn.getFechaNac() %>','<%= cn.getFoto() %>','<%= cn.getIdioma() %>','<%= cn.getExpLaboral() %>','<%= cn.getIdDepto() %>','<%= cn.getIdMunicipio() %>','<%= cn.getIdProfecion() %>','<%= cn.getIdNivelAcad() %>')">Seleccionar</a></center></td>
+            <td ><center><a href="JavaScript:llenar(<%= cn.getIdCandidato() %>,'<%= cn.getNombre() %>','<%= cn.getApellido() %>','<%= cn.getCorreo() %>','<%= cn.getGenero() %>','<%= cn.getFechaNac() %>','<%= cn.getFoto() %>','<%= cn.getIdioma() %>','<%= cn.getExpLaboral() %>','<%= cn.getIdDepto() %>','<%= cn.getIdMunicipio() %>','<%= cn.getIdProfecion() %>','<%= cn.getIdNivelAcad() %>','<%= cn.getIdUsuario() %>')">Seleccionar</a></center></td>
             
             
                   

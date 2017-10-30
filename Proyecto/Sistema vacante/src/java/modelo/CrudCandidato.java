@@ -87,7 +87,7 @@ public class CrudCandidato extends Conexion{
     {
         try {
             this.conectar();
-            String sql="update  candidato set nombre=?, apellido=?, email=?, tel=?, genero=?, fechanac=?, foto=?, idioma=?, hailidad=?, explaboral=?, iddepto=?, idmunicipio=?, idprofesion=?, idnivelAcad=?, idusuario=? where idcandidato=?)";
+            String sql="update  candidato set nombre=?, apellido=?, email=?, tel=?, genero=?, fechanac=?, foto=?, idioma=?, habilidad=?, explaboral=?, iddepto=?, idmunicipio=?, idprofesion=?, idnivelAcad=?, idusuario=? where idcandidato=?)";
             PreparedStatement ps=this.getCon().prepareStatement(sql);
             ps.setString(1, c.getNombre());
             ps.setString(2, c.getApellido());
@@ -125,6 +125,5 @@ public class CrudCandidato extends Conexion{
         }
     }
     
-    
-    
+      
 }

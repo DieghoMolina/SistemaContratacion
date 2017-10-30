@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Candidato;
 import modelo.CrudCandidato;
+import modelo.CrudUsuario;
+import modelo.Usuario;
 
 /**
  *
@@ -38,37 +40,47 @@ public class ControlCandidato extends HttpServlet {
         
         RequestDispatcher rd=null;
         CrudCandidato cc=new CrudCandidato();
+        Usuario us = new Usuario();
         Candidato c= new Candidato();
-        String msj;
+        CrudUsuario cu = new CrudUsuario();
+        String val=null;
         
         try {
-            c.setIdCandidato(Integer.parseInt(request.getParameter("cod")));
-            c.setNombre((request.getParameter("nom")));
-            c.setApellido((request.getParameter("ape")));
+            c.setIdCandidato(Integer.parseInt(request.getParameter("codigo")));
+            c.setNombre((request.getParameter("nombre")));
+            c.setApellido((request.getParameter("apellido")));
             c.setCorreo((request.getParameter("email")));
             c.setTelefono((request.getParameter("tel")));
             c.setGenero((request.getParameter("genero")));
-            c.setFechaNac((request.getParameter("fec")));
+            c.setFechaNac((request.getParameter("fecha")));
             c.setFoto((request.getParameter("foto")));
-            c.setIdioma((request.getParameter("idi")));
-            c.setHabilidad((request.getParameter("hab")));
-            c.setIdDepto(Integer.parseInt(request.getParameter("ide")));
-            c.setExpLaboral(Integer.parseInt(request.getParameter("exp")));
-            c.setIdMunicipio(Integer.parseInt(request.getParameter("idm")));
-            c.setIdProfecion(Integer.parseInt(request.getParameter("idp")));
-            c.setIdNivelAcad(Integer.parseInt(request.getParameter("idn")));
-            c.setIdUsuario(Integer.parseInt(request.getParameter("idu")));
-            
-            if(request.getParameter("Insertar")!=null){
+            c.setIdioma((request.getParameter("idioma")));
+            c.setHabilidad((request.getParameter("habilidad")));
+            c.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
+            c.setExpLaboral(Integer.parseInt(request.getParameter("experiencia")));
+            c.setIdMunicipio(Integer.parseInt(request.getParameter("municipio")));
+            c.setIdProfecion(Integer.parseInt(request.getParameter("profesion")));
+            c.setIdNivelAcad(Integer.parseInt(request.getParameter("nivel")));
+            c.setIdUsuario(Integer.parseInt(request.getParameter("user")));
+            us.setIdUsuario(Integer.parseInt(request.getParameter("user")));
+            if(request.getParameter("btnInsertar")!=null)
+            {
             cc.InsertarCandidato(c);
-            msj="listo";
-            }else if(request.getParameter("")!=null){
+            val="Datos Insertados Exitosamente";
+            } 
+            if(request.getParameter("btnModificar")!=null)
+            {
             cc.ModificarCandidato(c);
-            }else if(request.getParameter("")!=null){
-            cc.EliminarCandidato(c);
+            val="Datos Modificados Exitosamente";
             }
-            rd=request.getRequestDispatcher("/admin/dashboard/candidato.jsp");
-            request.setAttribute("valor", cc);
+            if(request.getParameter("btnEliminar")!=null)
+            {
+            cc.EliminarCandidato(c);
+            cu.eliminarUsuario(us); 
+            val="Datos Insertados Exitosamente";
+            }
+            rd=request.getRequestDispatcher("/admin/dashboard/pcandidato.jsp");
+            request.setAttribute("valor", val);
         } catch (Exception e) {
             request.setAttribute("error", e.toString());
         }
