@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.io.IOException;
@@ -19,8 +14,10 @@ import modelo.CrudUsuario;
 import modelo.Usuario;
 
 /**
- *
- * @author Marvin Antillon
+ * Nombre Servlet : ControlCandidato
+ * Version : 2.0
+ * @author :Alex Antillon - Héctor Martínez
+ * Fecha : 20/10/2017 - 31/10/2017
  */
 public class ControlCandidato extends HttpServlet {
 
@@ -54,8 +51,8 @@ public class ControlCandidato extends HttpServlet {
             c.setGenero((request.getParameter("genero")));
             c.setFechaNac((request.getParameter("fecha")));
             c.setFoto((request.getParameter("foto")));
-            c.setIdioma((request.getParameter("idioma")));
-            c.setHabilidad((request.getParameter("habilidad")));
+            c.setIdioma(Integer.parseInt(request.getParameter("idioma"))); 
+            c.setHabilidad(Integer.parseInt(request.getParameter("habilidad")));
             c.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
             c.setExpLaboral(Integer.parseInt(request.getParameter("experiencia")));
             c.setIdMunicipio(Integer.parseInt(request.getParameter("municipio")));

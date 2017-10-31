@@ -1,4 +1,3 @@
-
 package modelo; 
 
 import conex.Conexion;
@@ -9,7 +8,8 @@ import java.util.List;
 
 /**
  *
- * @author Marvin Antillon
+ * @author Marvin Antillon - Héctor Martínez
+ * Version : 2.0
  */
 public class CrudCandidato extends Conexion{
  
@@ -37,8 +37,8 @@ public class CrudCandidato extends Conexion{
             c.setGenero(rs.getString("genero"));
             c.setFechaNac(rs.getString("fechanac"));
             c.setFoto(rs.getString("foto"));
-            c.setIdioma(rs.getString("idioma"));
-            c.setHabilidad(rs.getString("habilidad"));
+            c.setIdioma(rs.getInt("ididioma"));
+            c.setHabilidad(rs.getInt("idhabilidad"));
             c.setExpLaboral(rs.getInt("explaboral"));
             c.setIdDepto(rs.getInt("iddepto"));
             c.setIdMunicipio(rs.getInt("idmunicipio"));
@@ -68,8 +68,8 @@ public class CrudCandidato extends Conexion{
             ps.setString(6, c.getGenero());
             ps.setString(7, c.getFechaNac());
             ps.setString(8, c.getFoto());
-            ps.setString(9, c.getIdioma());
-            ps.setString(10, c.getHabilidad());
+            ps.setInt(9, c.getIdioma());
+            ps.setInt(10, c.getHabilidad());
             ps.setInt(11, c.getExpLaboral());
             ps.setInt(12, c.getIdDepto());
             ps.setInt(13, c.getIdMunicipio());
@@ -87,7 +87,7 @@ public class CrudCandidato extends Conexion{
     {
         try {
             this.conectar();
-            String sql="update  candidato set nombre=?, apellido=?, email=?, tel=?, genero=?, fechanac=?, foto=?, idioma=?, habilidad=?, explaboral=?, iddepto=?, idmunicipio=?, idprofesion=?, idnivelAcad=?, idusuario=? where idcandidato=?)";
+            String sql="update  candidato set nombre=?, apellido=?, email=?, tel=?, genero=?, fechanac=?, foto=?, ididioma=?, idhabilidad=?, explaboral=?, iddepto=?, idmunicipio=?, idprofesion=?, idnivelAcad=?, idusuario=? where idcandidato=?)";
             PreparedStatement ps=this.getCon().prepareStatement(sql);
             ps.setString(1, c.getNombre());
             ps.setString(2, c.getApellido());
@@ -96,8 +96,8 @@ public class CrudCandidato extends Conexion{
             ps.setString(5, c.getGenero());
             ps.setString(6, c.getFechaNac());
             ps.setString(7, c.getFoto());
-            ps.setString(8, c.getIdioma());
-            ps.setString(9, c.getHabilidad());
+            ps.setInt(8, c.getIdioma());
+            ps.setInt(9, c.getHabilidad());
             ps.setInt(10, c.getExpLaboral());
             ps.setInt(11, c.getIdDepto());
             ps.setInt(12, c.getIdMunicipio());
@@ -127,3 +127,4 @@ public class CrudCandidato extends Conexion{
     
       
 }
+
