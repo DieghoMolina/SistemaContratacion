@@ -150,7 +150,7 @@ Candidato can = new Candidato();
           
         <div class="widget-content" >
             
-            <form action="procesarCandidato" method="get" class="form-horizontal" name="frm1">
+            <form action="../../controlCandidato" method="get" class="form-horizontal" name="frm1">
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
