@@ -16,7 +16,7 @@
 		<%@include file="layouts/login/stylesheets.jsp" %>
 
     </head>
-    <body>
+    <body >
         <div id="loginbox">            
             <form id="loginform" class="form-vertical" action="login.jsp">
 				 <div class="control-group normal_text"> <h3>Tecolocamos.com</h3></div>
@@ -37,12 +37,18 @@
                     </div>
                 </div>
                 <div class="form-actions">
-                    <span class="pull-left"><input type="submit" name="btnIngresar" value="Ingresar" class="btn btn-success"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="pull-left"><input type="submit" name="btnIngresar" value="Ingresar" class="btn btn-success"></span>
                     <span class="pull-right"><a href="index.jsp"><input type="button"  value="Regresar" class="btn btn-success"></a></span>
+                    <center>
                     <span class="pull-center"><input type="submit"  value="Registrarse" class="btn btn-success"></span>
-                    
+                    </center>
+                    <br><br>
+                    <a href="usuarior/registrarse/registrarUsu.jsp">Registarse como usuario</a><br><br>
+                    <a href="#">Registarse como empresa</a>
               </div>
+
             </form>
+
              <%
     Operaciones op = new Operaciones();
     
