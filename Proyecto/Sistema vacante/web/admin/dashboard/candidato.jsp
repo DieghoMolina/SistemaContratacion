@@ -389,7 +389,7 @@ Candidato can = new Candidato();
                   <th>Id Profesion</th>
                   <th>Id Nivel Academico</th>
                   <th>Id Usuario</th>
-                  <th>Seleccionar</th>
+                  <th></th>
                 </tr>
                   <%
                   List<Candidato> ls = crud.mostrarCandidato();
@@ -413,6 +413,7 @@ Candidato can = new Candidato();
             <td ><center><%= cn.getIdMunicipio() %> </center></td>
             <td ><center><%= cn.getIdProfecion() %> </center></td>
             <td ><center><%= cn.getIdNivelAcad() %> </center></td>
+             <td ><center><%= cn.getIdUsuario() %> </center></td>
             <td ><center><a href="JavaScript:llenar(<%= cn.getIdCandidato() %>,'<%= cn.getNombre() %>','<%= cn.getApellido() %>','<%= cn.getCorreo() %>','<%= cn.getGenero() %>','<%= cn.getFechaNac() %>','<%= cn.getFoto() %>','<%= cn.getIdioma() %>','<%= cn.getExpLaboral() %>','<%= cn.getIdDepto() %>','<%= cn.getIdMunicipio() %>','<%= cn.getIdProfecion() %>','<%= cn.getIdNivelAcad() %>','<%= cn.getIdUsuario() %>')">Seleccionar</a></center></td>
             
             
