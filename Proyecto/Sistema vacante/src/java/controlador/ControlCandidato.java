@@ -17,7 +17,7 @@ import modelo.Usuario;
  * Nombre Servlet : ControlCandidato
  * Version : 2.0
  * @author :Alex Antillon - Héctor Martínez
- * Fecha : 20/10/2017 - 31/10/2017
+ * Fecha : 20/10/2017 - 31/10/2017.
  */
 public class ControlCandidato extends HttpServlet {
 
