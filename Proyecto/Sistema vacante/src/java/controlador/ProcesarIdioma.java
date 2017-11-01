@@ -38,7 +38,7 @@ public class ProcesarIdioma extends HttpServlet {
         Idioma idm=new Idioma();
         CrudIdioma cdm=new CrudIdioma();
         String val = null;
-        idm.setIdIdioma(Integer.parseInt(request.getParameter("codigo")));
+        
              idm.setNombre(request.getParameter("nombre"));
         
         try {

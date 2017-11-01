@@ -43,7 +43,7 @@ public class ControlCandidato extends HttpServlet {
         String val=null;
         
         try {
-            c.setIdCandidato(Integer.parseInt(request.getParameter("codigo")));
+            
             c.setNombre((request.getParameter("nombre")));
             c.setApellido((request.getParameter("apellido")));
             c.setCorreo((request.getParameter("email")));

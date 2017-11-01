@@ -52,6 +52,10 @@
         <servlet-name>ProcesarIdioma_Candidato</servlet-name>
         <servlet-class>controlador.ProcesarIdioma_Candidato</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcesarCurso</servlet-name>
+        <servlet-class>controlador.ProcesarCurso</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControlCandidato</servlet-name>
         <url-pattern>/controlCandidato</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>ProcesarIdioma_Candidato</servlet-name>
         <url-pattern>/procesarIdioma_Candidato</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesarCurso</servlet-name>
+        <url-pattern>/procesarCurso</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

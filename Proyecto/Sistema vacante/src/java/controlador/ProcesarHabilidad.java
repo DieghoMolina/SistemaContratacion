@@ -42,7 +42,7 @@ public class ProcesarHabilidad extends HttpServlet {
         
         try
         {
-            hab.setIdHabilidad(Integer.parseInt(request.getParameter("codigo")));
+            
             hab.setNombre(request.getParameter("nombre"));
             
             if(request.getParameter("btnInsertar")!=null)

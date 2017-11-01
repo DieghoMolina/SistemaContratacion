@@ -46,14 +46,13 @@ public class CrudUsuario extends Conexion{
     public void insertarUsuario(Usuario us)throws Exception{
     
     this.conectar();
-    String sql="insert into usuario values (?,?,?,?)";
+    String sql="insert into usuario(usuario,pass,nivel) values (?,?,?)";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {
-            ps.setInt(1, us.getIdUsuario());
-            ps.setString(2, us.getUsuario());
-            ps.setString(3, us.getPass());
-            ps.setInt(4, us.getNivel());
+            ps.setString(1, us.getUsuario());
+            ps.setString(2, us.getPass());
+            ps.setInt(3, us.getNivel());
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;
