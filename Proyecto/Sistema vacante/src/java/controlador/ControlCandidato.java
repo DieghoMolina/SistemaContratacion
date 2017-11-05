@@ -51,8 +51,8 @@ public class ControlCandidato extends HttpServlet {
             c.setGenero((request.getParameter("genero")));
             c.setFechaNac((request.getParameter("fecha")));
             c.setFoto((request.getParameter("foto")));
-            c.setIdioma(Integer.parseInt(request.getParameter("idioma"))); 
-            c.setHabilidad(Integer.parseInt(request.getParameter("habilidad")));
+            c.setIdioma(request.getParameter("idioma")); 
+            c.setHabilidad(request.getParameter("habilidad"));
             c.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
             c.setExpLaboral(Integer.parseInt(request.getParameter("experiencia")));
             c.setIdMunicipio(Integer.parseInt(request.getParameter("municipio")));

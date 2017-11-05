@@ -28,7 +28,7 @@ public class CrudIdioma_Candidato extends Conexion{
             rs=ps.executeQuery();
             while(rs.next()){
             Idioma_Candidato ic=new Idioma_Candidato();
-            ic.setIdIdiomaCandidato(rs.getInt("ididiomacandidato"));
+            ic.setIdIdiomaCandidato(rs.getInt("idIdiomaCandidato"));
             ic.setIdCandidato(rs.getInt("idcandidato"));
             ic.setIdIdioma(rs.getInt("ididioma"));
             ls.add(ic);

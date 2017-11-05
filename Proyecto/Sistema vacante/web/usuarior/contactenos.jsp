@@ -1,3 +1,10 @@
+<%@page import="modelo.Usuario"%>
+<%@page import="modelo.CrudUsuario"%>
+<%@page import="modelo.Municipio"%>
+<%@page import="modelo.CrudMunicipio"%>
+<%@page import="modelo.CrudDepto"%>
+<%@page import="modelo.Depto"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,15 +32,15 @@ http://www.templatemo.com/tm-395-urbanic
         <link href="../css/bootstrap.css" rel='stylesheet' type='text/css'>
 
         <!-- Custom styles for this template -->
-        <link href="../js/colorbox/colorbox.css"  rel='stylesheet' type='text/css'>
-        <link href="../css/templatemo_style.css"  rel='stylesheet' type='text/css'>
+        <link href="js/colorbox/colorbox.css"  rel='stylesheet' type='text/css'>
+        <link href="css/templatemo_style.css"  rel='stylesheet' type='text/css'>
         <meta name="description" content="Arrow Navigation Styles: Ideas and styles for arrow navigations" />
         <meta name="keywords" content="arrow navigation, effect, web design, inspiration" />
         <meta name="author" content="Codrops" />
-        <link rel="shortcut icon" href="../../favicon.ico">
-        <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="../css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="../css/component.css" />
+        <link rel="shortcut icon" href="../favicon.ico">
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/component.css" />
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
          <link rel="stylesheet" href="css/normalize.css">
@@ -84,37 +91,71 @@ http://www.templatemo.com/tm-395-urbanic
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
                 <div class="title_sec">
-                    <h1>Registrase</h1>
+                    <h1>Registrase Empresa</h1>
                     <h2>Tecolocamos.com, un millon de oportuniades en 1 sitio web.</h2>
                 </div>          
             </div>      
-            <div class="col-sm-6"> 
+            <div class="col-sm-5"> 
                 <div id="cnt_form">
-                    <form id="contact-form" class="contact" name="contact-form" method="post" action="../../controlRegistroUsuario">
+                    <form id="contact-form" class="contact" name="contact-form" method="post" action="">
                         <div class="form-group">Nombre
                         <input type="text" name="nombre" class="form-control name-field" required="required" placeholder="nombre">
                         <br>
                         </div>
-                        <div class="form-group">Apellido
-                        <input type="text" name="apellido" class="form-control name-field" required="required" placeholder="Apellidos">
+                        <div class="form-group">Descripcion
+                        <input type="text" name="descripcion" class="form-control name-field" required="required" placeholder="descripcion">
                         </div>
                         <br>
-                        Correo Electronico
+                        Logo de la Empresa
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control mail-field" required="required" placeholder="Correo Electronico">
+                            <input type="file" name="logo" class="form-control mail-field">
                         </div> 
-            <br>
+                          <br>
                         <div class="form-group">
-                            Genero<br><br>
-                         Masculino&nbsp;&nbsp;<input type="radio" name="genero" class="control name-field" required="required" value="Maculino" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          Femenino&nbsp;&nbsp;<input type="radio" name="genero" class="control name-field" required="required" value="Femenino">
+                            Departamento<br><br>
+                        <select name="departamento">
+                  <%
+                      CrudDepto cdd=new CrudDepto();
+                      List<Depto> ltd=cdd.mostrarDepto();
+                      for(Depto dto:ltd)
+                      {
+                  %>
+                   
+                  <option value="<%= dto.getIdDepto() %>"><%= dto.getNombre() %></option>
+                   <% } %>
+                  </select> 
                         </div>
                         <br>
-                        <div class="form-group">Fecha Nacimiento
-                            <input type="date" name="fecha" class="form-control date-field" required="required">
+                        <div class="form-group">Municipio<br><br>
+                        <select name="municipio">
+                      <%
+                          CrudMunicipio crudMuni = new CrudMunicipio();
+                          List<Municipio> listMu = crudMuni.mostrarMunicipio();
+                          for(Municipio ver:listMu)
+                          {
+                              %>
+                              <option value="<%= ver.getIdMunicipio() %>"><%= ver.getNombre() %></option>
+                              <%
+                          }
+                      %>
+                  </select>    
                         </div> 
                             
-                   
+                    <br>
+                        <div class="form-group">Usuario<br><br>
+                        <select name="usuario">
+                      <%
+                          CrudUsuario cu= new CrudUsuario();
+                          List<Usuario> listus = cu.mostrarUsuario();
+                          for(Usuario ver:listus)
+                          {
+                              %>
+                              <option value="<%= ver.getIdUsuario()%>"><%= ver.getIdUsuario()%></option>
+                              <%
+                          }
+                      %>
+                  </select>    
+                        </div> 
                         
                     
                 </div>
@@ -125,8 +166,9 @@ http://www.templatemo.com/tm-395-urbanic
                     <ul>
                         <li><i class="fa fa-facebook"></i><p>Informacion de la cuenta</p></li>
                         <li>Nombre de Usuario<br><input type="text" name="usuario" class="form-control date-field" required="required" placeholder="Nombre de Usuario"></li>
-                        <li>Password<br><input type="password" name="pass" class="form-control text-field" required="required" placeholder="Password"></li>
-                         </ul>
+                        <li>Password<br><input type="text" name="pass" class="form-control text-field" required="required" placeholder="Password"></li>
+                        <li>Repeta su Password<br><input type="text" name="passr" class="form-control text-field" required="required" placeholder="Repita su Password"></li>
+                    </ul>
                 </div>
 
             </div> 
@@ -198,11 +240,11 @@ http://www.templatemo.com/tm-395-urbanic
    
 
 
-        <script src="../js/jquery.min.js" type="text/javascript"></script>
-        <script src="../js/bootstrap.min.js"  type="text/javascript"></script>
-        <script src="../js/stickUp.min.js"  type="text/javascript"></script>
-        <script src="../js/colorbox/jquery.colorbox-min.js"  type="text/javascript"></script>
-        <script src="../js/templatemo_script.js"  type="text/javascript"></script>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js"  type="text/javascript"></script>
+        <script src="js/stickUp.min.js"  type="text/javascript"></script>
+        <script src="js/colorbox/jquery.colorbox-min.js"  type="text/javascript"></script>
+        <script src="js/templatemo_script.js"  type="text/javascript"></script>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="js/vendor/jquery-1.11.2.min.js"></script>

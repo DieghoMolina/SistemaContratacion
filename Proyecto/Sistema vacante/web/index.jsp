@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -61,7 +62,7 @@ http://www.templatemo.com/tm-395-urbanic
                             <ul class="nav navbar-brand navbar-right" style="margin-top: 40px;">
                                 <a href="">Inicio</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="">Publicar ofertas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="login.jsp">Login</a>
+                                <a href="login/login.jsp">Login</a>
                                 
                             </ul>
                         </div><!--/.nav-collapse -->
@@ -83,10 +84,9 @@ http://www.templatemo.com/tm-395-urbanic
                     <div class="item active">
                         <div class="container">
                             <div class="carousel-caption">
-                                <h1>BIENVENIDOS A TECOLOCAMOS.COM</h1>
+                                <font color='black'> <h1>BIENVENIDOS A TECOLOCAMOS.COM</h1>
                                 <p>MOSTRANDO TODAS LAS OPORTUNIDADES QUE HAY PARA TI</p>
-                                <p><a class="btn btn-lg btn-green" href="#" role="button" style="margin: 20px;">View Demo</a> 
-                                	<a class="btn btn-lg btn-orange" href="#" role="button">Free Download</a></p>
+                                </p> </font>
 
                             </div>
                         </div>

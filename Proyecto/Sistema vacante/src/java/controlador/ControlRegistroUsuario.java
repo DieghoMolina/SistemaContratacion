@@ -12,12 +12,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.*;
+import modelo.Candidato;
+import modelo.CrudCandidato;
+import modelo.CrudRegistroUsuario;
+import modelo.CrudUsuario;
+import modelo.Usuario;
+
 /**
  *
  * @author diego
  */
-public class ProcesarUsuario extends HttpServlet {
+public class ControlRegistroUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,47 +36,38 @@ public class ProcesarUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+         PrintWriter out = response.getWriter();
+        
         RequestDispatcher rd=null;
+        CrudRegistroUsuario cc=new CrudRegistroUsuario();
+        Usuario us = new Usuario();
+        Candidato c= new Candidato();
+    
+            
+        
         String val=null;
-        Usuario us=new Usuario();
-        CrudUsuario cdu=new CrudUsuario();
         
-        
+        try {
+            
         us.setUsuario(request.getParameter("usuario"));
         us.setPass(request.getParameter("pass"));
-        us.setNivel(Integer.parseInt(request.getParameter("nivel")));
-        
-        try 
-        {
-            if(request.getParameter("bntInsertar")!=null)
+            if(request.getParameter("btnInsertar")!=null)
             {
-                cdu.insertarUsuario(us);
-                val="Datos insertados correctamente";
-            }
-            if(request.getParameter("bntModificar")!=null)
-            {
-                 us.setIdUsuario(Integer.parseInt(request.getParameter("codigo")));
-                cdu.modificarUsuario(us);
-                val="Datos modificados correctamente";
-            }
-            if(request.getParameter("bntEliminar")!=null)
-            {
-                us.setIdUsuario(Integer.parseInt(request.getParameter("codigo")));
-                cdu.eliminarUsuario(us);
-                val="Datos eliminados correctamente";
-            }
-            rd=request.getRequestDispatcher("/admin/dashboard/pusuario.jsp");
+                cc.InsertarCandidato(c, us);
+            cc.insertarUsuario(us);
+           
+            val="Datos Insertados Exitosamente";
+            } 
+            
+            rd=request.getRequestDispatcher("/usuarior/registrarse/registrarUsu.jsp");
             request.setAttribute("valor", val);
-        }
-        
-        
-        catch (Exception e) 
-        {
+        } catch (Exception e) {
             request.setAttribute("error", e.toString());
         }
         rd.forward(request, response);
+      
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
