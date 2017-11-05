@@ -141,8 +141,8 @@ A CHINGAR :V ATT: DIEGO
               <thead>
                 <tr>
                   <th>Codigo</th>
-                  <th>Nombre</th>
                   <th>Municipio</th>
+                  <th>Departamento</th>
                   </tr>
               </thead>
               <tbody>
@@ -153,7 +153,21 @@ A CHINGAR :V ATT: DIEGO
                 <tr class="odd gradeX">
                   <td><%= mn.getIdMunicipio() %></td>
                   <td><%= mn.getNombre() %></td>
-                  <td><%= mn.getIdDepto() %></td>
+                    <%
+                        
+                     %>
+                    <td>
+                        <% 
+                            int ss = mn.getIdDepto();
+                        List<Depto> lsd=cdd.mostrarNombreDepto(ss);
+                        for(Depto dto:lsd)
+                        {
+                        %>
+                        <b><%= dto.getNombre() %></b>
+                        <%
+                        } 
+                        %>
+                    </td>
                   <td><a   href="javascript:cargar(<%=  mn.getIdMunicipio()  %>, '<%=  mn.getNombre()  %>', '<%=  mn.getIdDepto()  %>') ">Seleccionar</a></td>
                 </tr> 
                 <% } %>

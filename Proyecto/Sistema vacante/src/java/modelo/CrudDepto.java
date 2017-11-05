@@ -89,4 +89,25 @@ public class CrudDepto extends Conexion{
             throw e;
         }
     }
+      
+       public List mostrarNombreDepto(int ss)throws Exception{
+        List ls = new ArrayList();
+        String algo=null;
+    
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql="select * from depto where iddepto="+ss;
+            PreparedStatement ps=this.getCon().prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            Depto d=new Depto();
+            d.setNombre(rs.getString("nombre"));
+            ls.add(d);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return ls;
+    }
 }
