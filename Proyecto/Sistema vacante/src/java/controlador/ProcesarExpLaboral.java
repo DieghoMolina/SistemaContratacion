@@ -41,7 +41,7 @@ public class ProcesarExpLaboral extends HttpServlet {
         RequestDispatcher rd = null;
         try
         {
-           exp.setIdExpLaboral(Integer.parseInt(request.getParameter("codigo")));
+           
            exp.setNombre(request.getParameter("nombreempresa"));
            exp.setCargo(request.getParameter("cargo"));
            exp.setFechaInicio(request.getParameter("fechaini"));

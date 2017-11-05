@@ -47,7 +47,7 @@ public class CrudIdioma extends Conexion{
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {
-  
+            
             ps.setString(1, idi.getNombre());
             ps.executeUpdate();
         } catch (Exception e) {

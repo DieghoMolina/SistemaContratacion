@@ -37,7 +37,7 @@ public class ProcesarOferta extends HttpServlet {
         Oferta ofer=new Oferta();
         CrudOferta cdof=new CrudOferta();
         
-        ofer.setIdoferta(Integer.parseInt(request.getParameter("codigo")));
+        
         ofer.setNombre(request.getParameter("nombre"));
         ofer.setDescripcion(request.getParameter("descripcion"));
         ofer.setSalario(Double.parseDouble(request.getParameter("salario")));

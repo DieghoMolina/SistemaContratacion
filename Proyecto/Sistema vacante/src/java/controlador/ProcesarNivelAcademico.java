@@ -38,7 +38,7 @@ public class ProcesarNivelAcademico extends HttpServlet {
         CrudNivelAcademico cdnv=new CrudNivelAcademico();
         String val=null;
         
-        nvl.setIdNivelAca(Integer.parseInt(request.getParameter("codigo")));
+        
         nvl.setNombre(request.getParameter("nombre"));
         try 
         {

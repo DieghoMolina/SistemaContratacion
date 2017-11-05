@@ -37,7 +37,7 @@ public class ProcesarTipoEmpresa extends HttpServlet {
         CrudTipoEmpresa cdt=new CrudTipoEmpresa();
         String val=null;
         
-        tp.setIdTipoEmpresa(Integer.parseInt(request.getParameter("codigo")));
+        
         tp.setNombre(request.getParameter("nombre"));
         
         try 

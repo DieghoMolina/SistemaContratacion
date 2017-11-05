@@ -6,7 +6,7 @@
 		<meta name="description" content="" />
 <!--
 
-Urbanic Template nn
+Urbanic Template
 
 http://www.templatemo.com/tm-395-urbanic
 

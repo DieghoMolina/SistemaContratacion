@@ -43,12 +43,12 @@ public class CrudNivelAcademico extends Conexion{
     public void insertarNivelAca(NivelAcademico na)throws Exception{
     
     this.conectar();
-    String sql="insert into nivelacad values (?,?)";
+    String sql="insert into nivelacad(nombre) values (?)";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {
-            ps.setInt(1, na.getIdNivelAca());
-            ps.setString(2, na.getNombre());
+            
+            ps.setString(1, na.getNombre());
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;

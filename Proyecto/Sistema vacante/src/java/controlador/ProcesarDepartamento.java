@@ -34,7 +34,7 @@ public class ProcesarDepartamento extends HttpServlet {
         RequestDispatcher rd=null;
         String val=null;
         
-        dt.setIdDepto(Integer.parseInt(request.getParameter("codigo")));
+       
         dt.setNombre(request.getParameter("nombre"));
          try
         {

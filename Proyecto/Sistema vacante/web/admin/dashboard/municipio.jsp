@@ -89,7 +89,7 @@ A CHINGAR :V ATT: DIEGO
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
-                  <input type="text" name="codigo" class="span11" placeholder="codigo" />
+                  <input type="text" name="codigo" class="span11" placeholder="codigo" readonly="true"/>
               </div>
             </div>
               <div class="control-group">

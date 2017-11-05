@@ -44,12 +44,12 @@ public class CrudProfesion extends Conexion{
     public void insertarProfesion(Profesion pro)throws Exception{
     
     this.conectar();
-    String sql="insert into profesion values (?,?)";
+    String sql="insert into profesion(nombre) values (?)";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {
-            ps.setInt(1, pro.getIdProfesion());
-            ps.setString(2, pro.getNombre());
+           
+            ps.setString(1, pro.getNombre());
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;
