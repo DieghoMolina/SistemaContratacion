@@ -38,8 +38,8 @@ public class ProcesarIdioma extends HttpServlet {
         Idioma idm=new Idioma();
         CrudIdioma cdm=new CrudIdioma();
         String val = null;
-        idm.setIdIdioma(Integer.parseInt(request.getParameter("codigo")));
-             idm.setNombre(request.getParameter("nombre"));
+      
+        idm.setNombre(request.getParameter("nombre"));
         
         try {
             
@@ -51,11 +51,13 @@ public class ProcesarIdioma extends HttpServlet {
             }else
             if(request.getParameter("bntModificar") !=null)
             {
+                idm.setIdIdioma(Integer.parseInt(request.getParameter("codigo")));
                 cdm.modificarIdioma(idm);
              
             }else
             if(request.getParameter("bntEliminar") !=null)
             {
+                idm.setIdIdioma(Integer.parseInt(request.getParameter("codigo")));
                 cdm.eliminarIdioma(idm);
               
             }
