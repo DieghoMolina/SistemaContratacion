@@ -37,7 +37,7 @@ public class ProcesarUsuario extends HttpServlet {
         Usuario us=new Usuario();
         CrudUsuario cdu=new CrudUsuario();
         
-        
+        us.setIdUsuario(Integer.parseInt(request.getParameter("codigo")));
         us.setUsuario(request.getParameter("usuario"));
         us.setPass(request.getParameter("pass"));
         us.setNivel(Integer.parseInt(request.getParameter("nivel")));

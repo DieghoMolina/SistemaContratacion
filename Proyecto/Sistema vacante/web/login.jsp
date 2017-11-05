@@ -40,12 +40,11 @@
                     <span class="pull-left"><input type="submit" name="btnIngresar" value="Ingresar" class="btn btn-success"></span>
                     <span class="pull-right"><a href="index.jsp"><input type="button"  value="Regresar" class="btn btn-success"></a></span>
                     <center>
-                        <span class="pull-center"><a href="usuarior/registrarse/registrarUsu.jsp"><input type="button"  value="Registrarse como Usuario" class="btn btn-success"></a></span>
-                        <br><br>
-                        <span class="pull-center"><a href="empresar/registrarse/registrarEmp.jsp"><input type="button"  value="Registrarse como Empresa" class="btn btn-success"></a></span>
+                    <span class="pull-center"><input type="submit"  value="Registrarse" class="btn btn-success"></span>
                     </center>
                     <br><br>
-                   
+                    <a href="usuarior/registrarse/registrarUsu.jsp">Registarse como usuario</a><br><br>
+                    <a href="#">Registarse como empresa</a>
               </div>
 
             </form>
@@ -64,7 +63,7 @@
               case 2 :
                   sesion.setAttribute("user", nombre);
                   sesion.setAttribute("nivel", "2");
-                  response.sendRedirect("vistausu/index.jsp"); 
+                  response.sendRedirect("vistausu/index.jsp");
                       break;
                       
               case 3 :

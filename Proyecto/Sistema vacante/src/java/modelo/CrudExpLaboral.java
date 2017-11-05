@@ -49,16 +49,16 @@ public class CrudExpLaboral extends Conexion{
     public void insertarExpLaboral(ExpLaboral exp)throws Exception{
     
     this.conectar();
-    String sql="insert into explaboral(nombreEmpresa,cargo,fechaInicio,fechaFin,idCandidato) values (?,?,?,?,?)";
+    String sql="insert into explaboral values (?,?,?,?,?,?)";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {
-            
-            ps.setString(1, exp.getNombre());
-            ps.setString(2, exp.getCargo());
-            ps.setString(3, exp.getFechaInicio());
-            ps.setString(4, exp.getFechaFin());
-            ps.setInt(5, exp.getIdCandidato());
+            ps.setInt(1, exp.getIdExpLaboral());
+            ps.setString(2, exp.getNombre());
+            ps.setString(3, exp.getCargo());
+            ps.setString(4, exp.getFechaInicio());
+            ps.setString(5, exp.getFechaFin());
+            ps.setInt(6, exp.getIdCandidato());
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;

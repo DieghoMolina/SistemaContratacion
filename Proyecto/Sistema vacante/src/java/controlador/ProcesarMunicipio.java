@@ -39,7 +39,7 @@ public class ProcesarMunicipio extends HttpServlet {
         CrudMunicipio cdm=new CrudMunicipio();
         String val = null;
         
-        
+        mpo.setIdMunicipio(Integer.parseInt(request.getParameter("codigo")));
         mpo.setNombre(request.getParameter("nombre"));
         mpo.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
         try 

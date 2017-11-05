@@ -46,14 +46,14 @@ public class CrudCurriculum  extends Conexion{
     public void insertarCurriculum(Curriculum cu)throws Exception{
     
     this.conectar();
-    String sql="insert into curriculum(curriculum,fechaModi,idCandidato) values (?,?,?)";
+    String sql="insert into curriculum values (?,?,?,?)";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {
-            
-            ps.setString(1, cu.getCurriculum());
-            ps.setString(2, cu.getFechaModi());
-            ps.setInt(3, cu.getIdCandidato());
+            ps.setInt(1, cu.getIdCurriculum());
+            ps.setString(2, cu.getCurriculum());
+            ps.setString(3, cu.getFechaModi());
+            ps.setInt(4, cu.getIdCandidato());
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;

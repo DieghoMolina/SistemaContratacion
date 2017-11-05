@@ -45,13 +45,13 @@ public class CrudMunicipio extends Conexion{
     public void insertarMunicipio(Municipio m)throws Exception{
     
     this.conectar();
-    String sql="insert into municipio(nombre,idDepto) values (?,?)";
+    String sql="insert into municipio values (?,?,?)";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {
-           
-            ps.setString(1, m.getNombre());
-             ps.setInt(2, m.getIdDepto());
+            ps.setInt(1, m.getIdMunicipio());
+            ps.setString(2, m.getNombre());
+             ps.setInt(3, m.getIdDepto());
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;

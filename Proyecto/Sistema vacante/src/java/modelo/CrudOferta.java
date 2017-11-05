@@ -51,20 +51,19 @@ public class CrudOferta extends Conexion{
     {
         try {
             this.conectar();
-            String sql="insert into oferta(nombre,descripcion,salario,vacante,edadRequerida,expRequerida,generoRequerido,tipoContratacion,"
-                    + "idEmpresa ) values(?,?,?,?,?,?,?,?,?)";
+            String sql="insert into oferta values(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps=this.getCon().prepareStatement(sql);
            
-            
-            ps.setString(1, o.getNombre());
-            ps.setString(2, o.getDescripcion());
-            ps.setDouble(3, o.getSalario());
-            ps.setInt(4, o.getVacante());
-            ps.setString(5, o.getEdadRequerida());
-            ps.setInt(6, o.getExpRequerida());
-            ps.setString(7, o.getGeneroRequerido());
-            ps.setString(8, o.getTipoContratacion());
-            ps.setInt(9, o.getIdEmpresa());
+            ps.setInt(1, o.getIdoferta());
+            ps.setString(2, o.getNombre());
+            ps.setString(3, o.getDescripcion());
+            ps.setDouble(4, o.getSalario());
+            ps.setInt(5, o.getVacante());
+            ps.setString(6, o.getEdadRequerida());
+            ps.setInt(7, o.getExpRequerida());
+            ps.setString(8, o.getGeneroRequerido());
+            ps.setString(9, o.getTipoContratacion());
+            ps.setInt(10, o.getIdEmpresa());
             ps.executeUpdate();
         } catch (Exception e) {
         throw e;

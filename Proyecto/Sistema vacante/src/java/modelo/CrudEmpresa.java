@@ -50,18 +50,18 @@ public class CrudEmpresa extends Conexion{
     public void insertarEmpresa(Empresa emp)throws Exception{
     
     this.conectar();
-    String sql="insert into empresa(nombre,descripcion,logo,idDepto,idMunicipio,idTipoEmpresa,idUsuario) values (?,?,?,?,?,?,?)";
+    String sql="insert into empresa values (?,?,?,?,?,?,?,?)";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {
-            
-            ps.setString(1, emp.getNombre());
-            ps.setString(2, emp.getDescripcion());
-            ps.setString(3, emp.getLogo());
-            ps.setInt(4, emp.getIdDepto());
-            ps.setInt(5, emp.getIdMunicipio());
-            ps.setInt(6, emp.getIdTipoEmpresa());
-            ps.setInt(7, emp.getIdUsuario());
+            ps.setInt(1, emp.getIdEmpresa());
+            ps.setString(2, emp.getNombre());
+            ps.setString(3, emp.getDescripcion());
+            ps.setString(4, emp.getLogo());
+            ps.setInt(5, emp.getIdDepto());
+            ps.setInt(6, emp.getIdMunicipio());
+            ps.setInt(7, emp.getIdTipoEmpresa());
+            ps.setInt(8, emp.getIdUsuario());
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;

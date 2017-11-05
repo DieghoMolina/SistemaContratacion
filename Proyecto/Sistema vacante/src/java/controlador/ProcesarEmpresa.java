@@ -42,7 +42,7 @@ public class ProcesarEmpresa extends HttpServlet {
         
         try
         {
-           
+           emp.setIdEmpresa(Integer.parseInt(request.getParameter("codigo")));
            emp.setNombre(request.getParameter("nombre"));
            emp.setDescripcion(request.getParameter("descripcion"));
            /* emp.setLogo(request.getParameter("logo")); */

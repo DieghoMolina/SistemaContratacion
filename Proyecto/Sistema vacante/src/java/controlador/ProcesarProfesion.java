@@ -40,7 +40,7 @@ public class ProcesarProfesion extends HttpServlet {
         CrudProfesion cdp=new CrudProfesion();
         String val=null;
         
-        
+        pro.setIdProfesion(Integer.parseInt(request.getParameter("codigo")));
         pro.setNombre(request.getParameter("nombre") );
         
         try 

@@ -56,27 +56,26 @@ public class CrudCandidato extends Conexion{
     public void InsertarCandidato(Candidato c) throws Exception
     {
         this.conectar();
-            String sql="insert into candidato(nombre,apellido,email,tel,genero,fechaNa,foto,idIdioma,"
-                    + "idHabilidad,expLaboral,idDepto,idMunicipio,idProfesion,idNivelAcad,idUsuario) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql="insert into candidato values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps=this.getCon().prepareStatement(sql);
         try {
             
-           
-            ps.setString(1, c.getNombre());
-            ps.setString(2, c.getApellido());
-            ps.setString(3, c.getCorreo());
-            ps.setString(4, c.getTelefono());
-            ps.setString(5, c.getGenero());
-            ps.setString(6, c.getFechaNac());
-            ps.setString(7, c.getFoto());
-            ps.setInt(8, c.getIdioma());
-            ps.setInt(9, c.getHabilidad());
-            ps.setInt(10, c.getExpLaboral());
-            ps.setInt(11, c.getIdDepto());
-            ps.setInt(12, c.getIdMunicipio());
-            ps.setInt(13, c.getIdProfecion());
-            ps.setInt(14, c.getIdNivelAcad());
-            ps.setInt(15, c.getIdUsuario());
+            ps.setInt(1, c.getIdCandidato());
+            ps.setString(2, c.getNombre());
+            ps.setString(3, c.getApellido());
+            ps.setString(4, c.getCorreo());
+            ps.setString(5, c.getTelefono());
+            ps.setString(6, c.getGenero());
+            ps.setString(7, c.getFechaNac());
+            ps.setString(8, c.getFoto());
+            ps.setInt(9, c.getIdioma());
+            ps.setInt(10, c.getHabilidad());
+            ps.setInt(11, c.getExpLaboral());
+            ps.setInt(12, c.getIdDepto());
+            ps.setInt(13, c.getIdMunicipio());
+            ps.setInt(14, c.getIdProfecion());
+            ps.setInt(15, c.getIdNivelAcad());
+            ps.setInt(16, c.getIdUsuario());
             ps.executeUpdate();
         } catch (Exception e) {
         throw e;

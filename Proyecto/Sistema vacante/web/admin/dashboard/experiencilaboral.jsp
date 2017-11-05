@@ -1,5 +1,3 @@
-<%@page import="modelo.CrudCandidato"%>
-<%@page import="modelo.Candidato"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.ExpLaboral"%>
 <%@page import="modelo.CrudExpLaboral"%>
@@ -126,7 +124,7 @@
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
-                  <input type="text" name="codigo" class="span11" placeholder="codigo" readonly="true"/>
+                  <input type="text" name="codigo" class="span11" placeholder="codigo" required />
               </div>
             </div>
             <div class="control-group">
@@ -156,18 +154,7 @@
             <div class="control-group">
               <label class="control-label">Candidato</label>
               <div class="controls">
-                  <select name="candidato">
-                      <%
-                        CrudCandidato crudca = new CrudCandidato();
-                        List<Candidato> listca = crudca.mostrarCandidato();
-                        for(Candidato ver:listca)
-                        {
-                        %>
-                            <option value="<%= ver.getIdCandidato()%>" ><%= ver.getNombre() %></option>
-                            <%
-                        }
-                      %>
-                  </select>
+                  <input type="number" name="candidato" class="span11" placeholder="carga" required />
               </div>
             </div>
             <div class="form-actions">

@@ -132,7 +132,7 @@ if(request.getAttribute("Valor")!=null)
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
-                <input type="text" class="span11" placeholder="codigo" name="codigo" readonly="true"/>
+                <input type="text" class="span11" placeholder="codigo" name="codigo"/>
               </div>
             </div>
             <div class="control-group">

@@ -42,12 +42,12 @@ public class CrudHabilidad extends Conexion{
     public void insertarHabilidad(Habilidad h)throws Exception{
     
     this.conectar();
-    String sql="insert into habilidad(nombre) values (?)";
+    String sql="insert into habilidad values (?,?)";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {
-            
-            ps.setString(1, h.getNombre());
+            ps.setInt(1, h.getIdHabilidad());
+            ps.setString(2, h.getNombre());
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;

@@ -87,7 +87,7 @@ LA IBA A UTILIZAR PARA EL REDIRECCIONAMIENTO REVISENLA USTEDES TALVEZ HAY ALGO Q
             <div class="control-group">
               <label class="control-label">Codigo:</label>
               <div class="controls">
-                  <input type="text" name="codigo" class="span11" placeholder="codigo" readonly="true"/>
+                  <input type="text" name="codigo" class="span11" placeholder="codigo" />
               </div>
             </div>
             <div class="control-group">
