@@ -91,5 +91,5 @@ public class CrudMunicipio extends Conexion{
         } catch (Exception e) {
             throw e;
         }
-    }   
+    }
 }

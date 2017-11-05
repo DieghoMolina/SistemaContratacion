@@ -87,23 +87,4 @@ public class CrudHabilidad extends Conexion{
             throw e;
         }
     }
-      public List mostrarNombre(int ss)throws Exception
-      {
-          List resultado=null;
-           ResultSet rs;
-        try {
-            this.conectar();
-            String sql="select nombre from habilidad where idhabilidad="+ss;
-            PreparedStatement ps=this.getCon().prepareStatement(sql);
-            rs=ps.executeQuery();
-            while(rs.next()){
-            Habilidad h=new Habilidad();
-            h.setNombre(rs.getString("nombre"));
-            resultado.add(h);
-            }
-        } catch (Exception e) {
-            throw e;
-        }
-        return resultado;
-      }
 }

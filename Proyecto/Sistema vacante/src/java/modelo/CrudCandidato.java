@@ -37,8 +37,8 @@ public class CrudCandidato extends Conexion{
             c.setGenero(rs.getString("genero"));
             c.setFechaNac(rs.getString("fechanac"));
             c.setFoto(rs.getString("foto"));
-            c.setIdioma(rs.getInt("ididioma"));
-            c.setHabilidad(rs.getInt("idhabilidad"));
+            c.setIdioma(rs.getString("ididioma"));
+            c.setHabilidad(rs.getString("idhabilidad"));
             c.setExpLaboral(rs.getInt("explaboral"));
             c.setIdDepto(rs.getInt("iddepto"));
             c.setIdMunicipio(rs.getInt("idmunicipio"));
@@ -69,8 +69,8 @@ public class CrudCandidato extends Conexion{
             ps.setString(5, c.getGenero());
             ps.setString(6, c.getFechaNac());
             ps.setString(7, c.getFoto());
-            ps.setInt(8, c.getIdioma());
-            ps.setInt(9, c.getHabilidad());
+            ps.setString(8, c.getIdioma());
+            ps.setString(9, c.getHabilidad());
             ps.setInt(10, c.getExpLaboral());
             ps.setInt(11, c.getIdDepto());
             ps.setInt(12, c.getIdMunicipio());
@@ -97,8 +97,8 @@ public class CrudCandidato extends Conexion{
             ps.setString(5, c.getGenero());
             ps.setString(6, c.getFechaNac());
             ps.setString(7, c.getFoto());
-            ps.setInt(8, c.getIdioma());
-            ps.setInt(9, c.getHabilidad());
+            ps.setString(8, c.getIdioma());
+            ps.setString(9, c.getHabilidad());
             ps.setInt(10, c.getExpLaboral());
             ps.setInt(11, c.getIdDepto());
             ps.setInt(12, c.getIdMunicipio());

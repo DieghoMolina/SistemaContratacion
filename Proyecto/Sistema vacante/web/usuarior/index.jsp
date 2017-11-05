@@ -1,3 +1,8 @@
+<%@page import="java.util.List"%>
+<%@page import="modelo.Usuario"%>
+<%@page import="modelo.CrudRegistroUsuario"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session="true" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,7 +39,7 @@ http://www.templatemo.com/tm-395-urbanic
         <link rel="stylesheet" type="text/css" href="css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
-
+<% String usuario; %>
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -42,7 +47,18 @@ http://www.templatemo.com/tm-395-urbanic
         <![endif]-->
     </head>
     
-
+<%
+        HttpSession sesion = request.getSession();
+      
+        String nivel;
+        String Usuario;
+      
+        
+       if(sesion.getAttribute("user")!=null && sesion.getAttribute("nivel")!=null){
+                 usuario=sesion.getAttribute("user").toString();
+           nivel=sesion.getAttribute("nivel").toString();
+         
+        %>
         <div class="templatemo-top-menu">
             <div class="container">
                 <!-- Static navbar -->
@@ -57,14 +73,21 @@ http://www.templatemo.com/tm-395-urbanic
                                 </button>
                                 <a href="#" class="navbar-brand"><img src="images/templatemo_logo.png" alt="Urbanic Template" title="Urbanic Template" /></a>
                         </div>
-                        <div class="navbar-collapse collapse" id="templatemo-nav-bar">
-                            <ul class="nav navbar-nav navbar-right" style="margin-top: 40px;">
-                                <li class="active"><a href="#templatemo-top">Inicio</a></li>
-                                <li><a href="#templatemo-about">Publicar ofertas</a></li>
-                                <li><a href="#templatemo-portfolio">Login</a></li>
-                                
+                         <div class="navbar-collapse collapse" id="templatemo-nav-bar">
+                            <ul class="nav navbar-brand navbar-right" style="margin-top: 40px;">
+                                <a href="">Inicio</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="">Perfil</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="">ver ofertas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="">Contactarnos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="login/login.jsp">
+                                          <% out.print("<a href='../login.jsp?cerrar=true'> Cerrar Sesion "+usuario+"</a>");    
+       }else{
+       out.print("<script>location.replace('../login.jsp');</script>");
+       }
+        %>
+        </a>                   
                             </ul>
-                        </div><!--/.nav-collapse -->
+                         </div><!--/.nav-collapse -->
                     </div><!--/.container-fluid -->
                 </div><!--/.navbar -->
             </div> <!-- /container -->
@@ -83,10 +106,8 @@ http://www.templatemo.com/tm-395-urbanic
                     <div class="item active">
                         <div class="container">
                             <div class="carousel-caption">
-                                <h1>BIENVENIDOS A TECOLOCAMOS.COM</h1>
-                                <p>MOSTRANDO TODAS LAS OPORTUNIDADES QUE HAY PARA TI</p>
-                                <p><a class="btn btn-lg btn-green" href="#" role="button" style="margin: 20px;">View Demo</a> 
-                                	<a class="btn btn-lg btn-orange" href="#" role="button">Free Download</a></p>
+                               <font color='black'>  <h1>BIENVENIDOS A TECOLOCAMOS.COM</h1>
+                               <p>MOSTRANDO TODAS LAS OPORTUNIDADES QUE HAY PARA TI</p></font>
 
                             </div>
                         </div>
@@ -96,12 +117,14 @@ http://www.templatemo.com/tm-395-urbanic
                         <div class="container">
                                 <div class="carousel-caption">
                                     <div class="col-sm-6 col-md-6">
-                                    	<h1>FLUID</h1>
+                                    	 <font color='black'> <h1>FLUID</h1>
                                         <p>Suspendisse pellentesque, odio vel ultricies interdum, mauris nulla ullamcorper magna, non aliquet odio velit aliquam augue.</p>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                    	<h1>ENERGY</h1>
-                                        <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam mattis fringilla urna.</p>
+                                    	<h1>ENERGY
+                                        
+                                        </h1>
+                                        <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam mattis fringilla urna.</p></font>
                                     </div>
                                 </div>
                         </div>
@@ -109,9 +132,9 @@ http://www.templatemo.com/tm-395-urbanic
                         <div class="item">
                             <div class="container">
                                 <div class="carousel-caption">
-                                	<h1>RESPONSIVE LAYOUT</h1>
+                                	 <font color='black'> <h1>RESPONSIVE LAYOUT</h1>
                                     <p>This website theme is free to download and use for everyone. This layout is based on Bootstrap framework.</p>
-                                    <p><a class="btn btn-lg btn-orange" href="#" role="button">Read More</a></p>
+                                    </font>
                                 </div>
                             </div>
                         </div>
@@ -153,12 +176,10 @@ http://www.templatemo.com/tm-395-urbanic
                                 <img src="images/mobile.png" alt="icon"/>
                                 <span class="templatemo-service-item-header">Visitanos donde quieras.</span>
                             </div>
-							<p>Urbanic is a Bootstrap template from templatemo that is available for free instant download. Credits go to <a rel="nofollow" href="http://getbootstrap.com" target="_parent">Bootstrap</a> and <a rel="nofollow" href="http://unsplash.com" target="_parent">Unsplash</a> for images used in this template. You do not need to provide a credit link to us. You may spread a word about templatemo. Thank you.</p>
-                            <div class="text-center">
-                                <a href="#" 
-                                	class="templatemo-btn-read-more btn btn-orange">READ MORE</a>
-                            </div>
-                            <br class="clearfix"/>
+							<p>
+                                                            Puedes visitanos desde tu dispositivo movil, desde cualquier lugar donde te encuentres,
+                                                            solo tienes que visitar Tecolocamos.com para ver las inumerables ofertas disponebles...
+                                                                                     <br class="clearfix"/>
                         </div>
                         
                     </div>
@@ -167,13 +188,14 @@ http://www.templatemo.com/tm-395-urbanic
                         <div class="templatemo-service-item">
                             <div>
                                 <img src="images/battery.png" alt="icon"/>
-                                <span class="templatemo-service-item-header">HIGH EFFICIENCY</span>
+                                <span class="templatemo-service-item-header">AHORRA TIEMPO </span>
                             </div>
-                            <p>Morbi imperdiet ipsum sit amet dui pharetra, vulputate porta neque tristique. Quisque id turpis tristique, venenatis erat sit amet, venenatis turpis. Ut tellus ipsum, posuere bibendum consectetur vel, egestas sit amet erat. Morbi rhoncus leo fermentum viverra.</p>
-                            <div class="text-center">
-                                <a href="#" 
-                                	class="templatemo-btn-read-more btn btn-orange">READ MORE</a>
-                            </div>
+                            <p>
+                            No tienes el tiempo para salir de tu casa para dejar curriculums vitae? no te compliques visita tecolocamos.com 
+                            en donde encontraras cientos de ofertas de empledo sin necesidad de salir de tu casa.
+                            </p>
+                            
+                            
                             <br class="clearfix"/>
                         </div>
                         <br class="clearfix"/>
@@ -223,7 +245,8 @@ http://www.templatemo.com/tm-395-urbanic
                             <div class="height30"></div>
                         </div>
                         <div class="footer_bottom_content">
-                   			<span id="footer-line">Copyright © 2084 <a href="#">Your Company Name</a></span>
+                   
+                            <span id="footer-line">Copyright Â© 2084 <a href="#">Your Company Name</a></span>
                         </div>
                         
                     </div>
@@ -238,7 +261,7 @@ http://www.templatemo.com/tm-395-urbanic
         <script src="js/templatemo_script.js"  type="text/javascript"></script>
 		<!-- templatemo 395 urbanic -->
         <script>
-            // For Demo purposes onlyvvvf
+            // For Demo purposes only
             [].slice.call( document.querySelectorAll('nav > a') ).forEach( function(el) {
                 el.addEventListener( 'click', function(ev) { ev.preventDefault(); } );
             } );
