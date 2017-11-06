@@ -1,3 +1,5 @@
+<%@page import="modelo.Empresa"%>
+<%@page import="modelo.CrudEmpresa"%>
 <%@page import="modelo.CrudCandidato"%>
 <%@page import="modelo.Candidato"%>
 <%@page import="java.util.List"%>
@@ -132,7 +134,18 @@
             <div class="control-group">
               <label class="control-label">Nombre Empresa:</label>
               <div class="controls">
-                  <input type="text" name="nombre" class="span11" placeholder="Nombre" required />
+                  <select name="nombre" id="nombre">
+                       <%
+                           CrudEmpresa crude = new CrudEmpresa();
+                           List<Empresa> listem = crude.mostrarEmpresa();
+                           for(Empresa ver:listem)
+                           {
+                               %>
+                               <option value="<%= ver.getNombre() %>"><%= ver.getNombre() %></option>
+                               <%
+                           }
+                       %>           
+                  </select>
               </div>
             </div>
             <div class="control-group">
@@ -198,7 +211,7 @@
               <thead>
                 <tr>
                   <th>Codigo</th>
-                  <th>Nombre</th>
+                  <th>Nombre Empresa</th>
                   <th>Cargo</th>
                   <th>Fecha de inicio</th>
                   <th>Fecha de finalización</th>
@@ -219,7 +232,18 @@
                   <td><%= ver.getCargo() %></td>
                   <td><%= ver.getFechaInicio() %></td>
                   <td><%= ver.getFechaFin() %></td>
-                  <td><%= ver.getIdCandidato() %></td>
+                  <td>
+                      <% 
+                          int ss = ver.getIdCandidato();
+                          List<Candidato> listNombrecandi = crudca.mostrarNombre(ss);
+                          for(Candidato var:listNombrecandi)
+                          {
+                              %>
+                                <b><%= var.getNombre() %></b>
+                              <%
+                          }
+                      %>
+                  </td>
                   <td><a href="JavaScript:llenar(<%= ver.getIdExpLaboral() %>,'<%= ver.getNombre() %>','<%= ver.getCargo() %>','<%= ver.getFechaInicio() %>','<%= ver.getFechaFin() %>','<%= ver.getIdCandidato() %>')">Seleccionar</a></td>
                 </tr> 
                    <%

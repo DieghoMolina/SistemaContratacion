@@ -41,25 +41,32 @@ public class ProcesarExpLaboral extends HttpServlet {
         RequestDispatcher rd = null;
         try
         {
-           
-           exp.setNombre(request.getParameter("nombreempresa"));
-           exp.setCargo(request.getParameter("cargo"));
-           exp.setFechaInicio(request.getParameter("fechaini"));
-           exp.setFechaFin(request.getParameter("fechafin"));
-           exp.setIdCandidato(Integer.parseInt(request.getParameter("candidato")));
+          
            
            if(request.getParameter("btnInsertar")!=null)
            {
+               exp.setNombre(request.getParameter("nombreempresa"));
+               exp.setCargo(request.getParameter("cargo"));
+               exp.setFechaInicio(request.getParameter("fechaini"));
+               exp.setFechaFin(request.getParameter("fechafin"));
+               exp.setIdCandidato(Integer.parseInt(request.getParameter("candidato")));
                crud.insertarExpLaboral(exp);
                val = "Datos Insertados Exitosamente";
            }
            if(request.getParameter("btnModificar")!=null)
            {
+                exp.setIdExpLaboral(Integer.parseInt(request.getParameter("codigo")));
+                exp.setNombre(request.getParameter("nombreempresa"));
+                exp.setCargo(request.getParameter("cargo"));
+                exp.setFechaInicio(request.getParameter("fechaini"));
+                exp.setFechaFin(request.getParameter("fechafin"));
+                exp.setIdCandidato(Integer.parseInt(request.getParameter("candidato")));
                crud.modificarExplaboral(exp);
                val = "Datos Modificados Exitosamente";
            }
             if(request.getParameter("btnEliminar")!=null)
            {
+               exp.setIdExpLaboral(Integer.parseInt(request.getParameter("codigo")));
                crud.eliminarExpLaboral(exp);
                val = "Datos Eliminados Exitosamente";
            }

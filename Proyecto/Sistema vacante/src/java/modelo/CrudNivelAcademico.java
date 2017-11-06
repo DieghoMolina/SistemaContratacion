@@ -88,6 +88,26 @@ public class CrudNivelAcademico extends Conexion{
             throw e;
         }
     }
+      
+      public List<NivelAcademico> mostrarNombreNivelAcad(int n)throws Exception{
+    
+        List<NivelAcademico>ls = new ArrayList();
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql="select * from nivelacad where idnivelacad="+n;
+            PreparedStatement ps=this.getCon().prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            NivelAcademico na = new NivelAcademico();
+            na.setNombre(rs.getString("nombre"));
+            ls.add(na);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return ls;
+    }
     
     
 }

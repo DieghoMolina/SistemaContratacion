@@ -42,23 +42,26 @@ public class ProcesarHabilidad extends HttpServlet {
         
         try
         {
-            
-            hab.setNombre(request.getParameter("nombre"));
+           
             
             if(request.getParameter("btnInsertar")!=null)
             {
+                hab.setNombre(request.getParameter("nombre"));
                 crud.insertarHabilidad(hab);
                 val="Datos Insertados Exitosamente";
             }
             
             if(request.getParameter("btnModificar")!=null)
             {
+                 hab.setIdHabilidad(Integer.parseInt(request.getParameter("codigo")));
+                 hab.setNombre(request.getParameter("nombre"));
                 crud.modificarHabilidad(hab);
                 val="Datos Modificados Exitosamente";
             }
             
             if(request.getParameter("btnEliminar")!=null)
             {
+                hab.setIdHabilidad(Integer.parseInt(request.getParameter("codigo")));
                 crud.eliminarHabilidad(hab);
                 val="Datos Eliminados Exitosamente";
             }

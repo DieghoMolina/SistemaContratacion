@@ -89,4 +89,24 @@ public class CrudProfesion extends Conexion{
             throw e;
         }
     }
+      
+       public List<Profesion> mostrarNombreProfesion(int n)throws Exception{
+    
+        List<Profesion>ls = new ArrayList();
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql="select * from profesion where idprofesion="+n;
+            PreparedStatement ps=this.getCon().prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            Profesion pro=new Profesion();
+            pro.setNombre(rs.getString("nombre"));
+            ls.add(pro);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return ls;
+    }
 }

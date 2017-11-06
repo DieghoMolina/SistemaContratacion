@@ -84,4 +84,24 @@ public class CrudTipoEmpresa extends Conexion{
             throw e;
         }
     }
+      
+       public List<TipoEmpresa> nombreTipoEmpresa(int hector)throws Exception{
+    
+        List<TipoEmpresa>ls = new ArrayList();
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql="select * from tipoempresa where idtipoempresa="+hector;
+            PreparedStatement ps=this.getCon().prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            TipoEmpresa tp=new TipoEmpresa();
+            tp.setNombre(rs.getString("nombre"));
+            ls.add(tp);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return ls;
+    }
 }

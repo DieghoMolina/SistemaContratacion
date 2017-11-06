@@ -39,23 +39,27 @@ public class ProcesarIdioma extends HttpServlet {
         CrudIdioma cdm=new CrudIdioma();
         String val = null;
         
-             idm.setNombre(request.getParameter("nombre"));
+             
         
         try {
             
              
             if(request.getParameter("bntInsertar") !=null)
             {
+                idm.setNombre(request.getParameter("nombre"));
                 cdm.insertarIdioma(idm);
               
             }else
             if(request.getParameter("bntModificar") !=null)
             {
+                idm.setIdIdioma(Integer.parseInt(request.getParameter("codigo")));
+                idm.setNombre(request.getParameter("nombre"));
                 cdm.modificarIdioma(idm);
              
             }else
             if(request.getParameter("bntEliminar") !=null)
             {
+                idm.setIdIdioma(Integer.parseInt(request.getParameter("codigo")));
                 cdm.eliminarIdioma(idm);
               
             }

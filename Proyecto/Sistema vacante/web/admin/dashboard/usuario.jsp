@@ -116,7 +116,7 @@
             <div class="control-group">
               <label class="control-label">Nivel:</label>
               <div class="controls">
-                  <input type="text" name="nivel" class="span11" placeholder="admin" />
+                  <input type="text" name="nivel" class="span11" placeholder="admin" value="1" readonly="true" />
               </div>
             </div>
             <div class="form-actions">

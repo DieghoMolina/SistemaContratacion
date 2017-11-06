@@ -37,31 +37,42 @@ public class ProcesarOferta extends HttpServlet {
         Oferta ofer=new Oferta();
         CrudOferta cdof=new CrudOferta();
         
-        
-        ofer.setNombre(request.getParameter("nombre"));
-        ofer.setDescripcion(request.getParameter("descripcion"));
-        ofer.setSalario(Double.parseDouble(request.getParameter("salario")));
-        ofer.setVacante(Integer.parseInt(request.getParameter("vacante")));
-        ofer.setEdadRequerida(request.getParameter("edadr"));
-        ofer.setExpRequerida(Integer.parseInt(request.getParameter("experienciar")));
-        ofer.setGeneroRequerido(request.getParameter("generor"));
-        ofer.setTipoContratacion(request.getParameter("tipoc"));
-        ofer.setIdEmpresa(Integer.parseInt(request.getParameter("empresar")));
+       
         
         try 
         {
             if(request.getParameter("btnInsertar")!=null)
             {
+                ofer.setNombre(request.getParameter("nombre"));
+                ofer.setDescripcion(request.getParameter("descripcion"));
+                ofer.setSalario(Double.parseDouble(request.getParameter("salario")));
+                ofer.setVacante(Integer.parseInt(request.getParameter("vacante")));
+                ofer.setEdadRequerida(request.getParameter("edadr"));
+                ofer.setExpRequerida(Integer.parseInt(request.getParameter("experienciar")));
+                ofer.setGeneroRequerido(request.getParameter("generor"));
+                ofer.setTipoContratacion(request.getParameter("tipoc"));
+                ofer.setIdEmpresa(Integer.parseInt(request.getParameter("empresar")));
                 cdof.InsertarOferta(ofer);
                 
             }
             else if(request.getParameter("btnModificar")!=null)
             {
+                ofer.setIdoferta(Integer.parseInt(request.getParameter("codigo")));
+                ofer.setNombre(request.getParameter("nombre"));
+                ofer.setDescripcion(request.getParameter("descripcion"));
+                ofer.setSalario(Double.parseDouble(request.getParameter("salario")));
+                ofer.setVacante(Integer.parseInt(request.getParameter("vacante")));
+                ofer.setEdadRequerida(request.getParameter("edadr"));
+                ofer.setExpRequerida(Integer.parseInt(request.getParameter("experienciar")));
+                ofer.setGeneroRequerido(request.getParameter("generor"));
+                ofer.setTipoContratacion(request.getParameter("tipoc"));
+                ofer.setIdEmpresa(Integer.parseInt(request.getParameter("empresar")));
                 cdof.ModificarOferta(ofer);
                 
             }
             else if(request.getParameter("btnEliminar")!=null)
             {
+                 ofer.setIdoferta(Integer.parseInt(request.getParameter("codigo")));
                 cdof.EliminarOferta(ofer);
                 
             }

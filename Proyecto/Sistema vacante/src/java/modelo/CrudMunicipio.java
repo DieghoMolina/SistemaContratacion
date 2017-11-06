@@ -92,4 +92,24 @@ public class CrudMunicipio extends Conexion{
             throw e;
         }
     }
+      
+      public List<Municipio> nombreMunicipio(int hector)throws Exception{
+    
+        List<Municipio>ls = new ArrayList();
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql="select * from municipio where idmunicipio="+hector;
+            PreparedStatement ps=this.getCon().prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            Municipio m=new Municipio();
+            m.setNombre(rs.getString("nombre"));
+            ls.add(m);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return ls;
+    }
 }

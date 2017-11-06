@@ -95,4 +95,24 @@ public class CrudUsuario extends Conexion{
             throw e;
         }
     }
+      
+       public List<Usuario> nombreUsuario(int user)throws Exception{
+    
+        List<Usuario>ls = new ArrayList();
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql="select * from usuario where idusuario="+user;
+            PreparedStatement ps=this.getCon().prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            Usuario us= new Usuario();
+            us.setUsuario(rs.getString("usuario"));
+            ls.add(us);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return ls;
+    }
 }

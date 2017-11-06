@@ -1,4 +1,3 @@
-
 package controlador;
 
 import java.io.IOException;
@@ -35,25 +34,29 @@ public class ProcesarDepartamento extends HttpServlet {
         String val=null;
         
        
-        dt.setNombre(request.getParameter("nombre"));
+       
          try
         {
           
             
             if(request.getParameter("btnInsertar")!= null)
             {
+                dt.setNombre(request.getParameter("nombre"));
                 cdd.insertarDepto(dt);
                 val="Datos insertados correctamente";
             }
             
-            else if(request.getParameter("btnModificar")!=null)
+            if(request.getParameter("btnModificar")!=null)
             {
+                dt.setIdDepto(Integer.parseInt(request.getParameter("codigo")));
+                dt.setNombre(request.getParameter("nombre"));
                 cdd.modificarDepto(dt);
                 val="Datos modificados correctamente";
             }
              
-            else if(request.getParameter("btnEliminar")!=null)
+            if(request.getParameter("btnEliminar")!=null)
             {
+                dt.setIdDepto(Integer.parseInt(request.getParameter("codigo")));
                 cdd.eliminarDepto(dt);
                 val="Datos eliminados correctamente";
               

@@ -39,28 +39,33 @@ public class ProcesarCurso extends HttpServlet {
         RequestDispatcher rd = null;
         String val = null;
         
-        
-        cur.setNombre(request.getParameter("nombre"));
-        cur.setYear(Integer.parseInt(request.getParameter("anio")));
-        cur.setIdcandidato(Integer.parseInt(request.getParameter("idc")));
+       
         try
         {
           
             
             if(request.getParameter("btnInsertar")!= null)
             {
+                 cur.setNombre(request.getParameter("nombre"));
+                 cur.setYear(Integer.parseInt(request.getParameter("anio")));
+                 cur.setIdcandidato(Integer.parseInt(request.getParameter("idc")));
                 cdc.insertarCurso(cur);
                 val="Datos insertados correctamente";
             }
             
             else if(request.getParameter("btnModificar")!=null)
             {
+                cur.setIdCurso(Integer.parseInt(request.getParameter("codigo")));
+                cur.setNombre(request.getParameter("nombre"));
+                cur.setYear(Integer.parseInt(request.getParameter("anio")));
+                cur.setIdcandidato(Integer.parseInt(request.getParameter("idc")));
                 cdc.modificarCurso(cur);
                 val="Datos modificados correctamente";
             }
              
             else if(request.getParameter("btnEliminar")!=null)
             {
+                cur.setIdCurso(Integer.parseInt(request.getParameter("codigo")));
                 cdc.eliminarCurso(cur);
                 val="Datos eliminados correctamente";
               

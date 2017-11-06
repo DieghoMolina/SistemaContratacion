@@ -43,29 +43,39 @@ public class ProcesarEmpresa extends HttpServlet {
         try
         {
            
-           emp.setNombre(request.getParameter("nombre"));
-           emp.setDescripcion(request.getParameter("descripcion"));
-           /* emp.setLogo(request.getParameter("logo")); */
-           
-           emp.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
-           emp.setIdMunicipio(Integer.parseInt(request.getParameter("municipio")));
-           emp.setIdTipoEmpresa(Integer.parseInt(request.getParameter("Tempresa")));
-           emp.setIdUsuario(Integer.parseInt(request.getParameter("user")));
            
            if(request.getParameter("btnInsertar")!=null)
            {
+              emp.setNombre(request.getParameter("nombre"));
+              emp.setDescripcion(request.getParameter("descripcion"));
+           /* emp.setLogo(request.getParameter("logo")); */
+            
+               emp.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
+               emp.setIdMunicipio(Integer.parseInt(request.getParameter("municipio")));
+               emp.setIdTipoEmpresa(Integer.parseInt(request.getParameter("Tempresa")));
+               emp.setIdUsuario(Integer.parseInt(request.getParameter("user")));
                crud.insertarEmpresa(emp);
                val="Datos Insertados Correctamente";
            }
            
             if(request.getParameter("btnModificar")!=null)
            {
+                emp.setIdEmpresa(Integer.parseInt("codigo"));
+                emp.setNombre(request.getParameter("nombre"));
+                emp.setDescripcion(request.getParameter("descripcion"));
+                /* emp.setLogo(request.getParameter("logo")); */
+           
+                emp.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
+                emp.setIdMunicipio(Integer.parseInt(request.getParameter("municipio")));
+                emp.setIdTipoEmpresa(Integer.parseInt(request.getParameter("Tempresa")));
+                emp.setIdUsuario(Integer.parseInt(request.getParameter("user")));
                crud.modificarEmpresa(emp);
                val="Datos Modificados Correctamente";
            }
             
              if(request.getParameter("btnEliminar")!=null)
            {
+               emp.setIdEmpresa(Integer.parseInt("codigo"));
                crud.eliminarEmpresa(emp);
                val="Datos Eliminados Correctamente";
            }

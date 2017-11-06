@@ -19,8 +19,8 @@ public class Candidato {
     private String genero;
     private String fechaNac;
     private String foto;
-    private String idioma;
-    private String habilidad;
+    private int idioma;
+    private int habilidad;
     private int expLaboral;
     private int idDepto;
     private int idMunicipio;
@@ -31,7 +31,7 @@ public class Candidato {
     public Candidato() {
     }
 
-    public Candidato(int idCandidato, String nombre, String apellido, String correo, String telefono, String genero, String fechaNac, String foto, String idioma, String habilidad, int expLaboral, int idDepto, int idMunicipio, int idProfecion, int idNivelAcad, int idUsuario) {
+    public Candidato(int idCandidato, String nombre, String apellido, String correo, String telefono, String genero, String fechaNac, String foto, int idioma, int habilidad, int expLaboral, int idDepto, int idMunicipio, int idProfecion, int idNivelAcad, int idUsuario) {
         this.idCandidato = idCandidato;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -114,19 +114,19 @@ public class Candidato {
         this.foto = foto;
     }
 
-    public String getIdioma() {
+    public int getIdioma() {
         return idioma;
     }
 
-    public void setIdioma(String idioma) {
+    public void setIdioma(int idioma) {
         this.idioma = idioma;
     }
 
-    public String getHabilidad() {
+    public int getHabilidad() {
         return habilidad;
     }
 
-    public void setHabilidad(String habilidad) {
+    public void setHabilidad(int habilidad) {
         this.habilidad = habilidad;
     }
 

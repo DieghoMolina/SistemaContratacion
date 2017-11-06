@@ -196,7 +196,7 @@
                   <th>Salario</th>
                   <th>Vacante</th>
                   <th>Edad requerida</th>
-                  <th>Experiencia requerida</th>
+                  <th>Años de Experiencia</th>
                   <th>Genero requerido</th>
                   <th>Tipo de contratación</th>
                   <th>Empresa</th>
@@ -219,7 +219,17 @@
                   <td><%= of.getExpRequerida() %></td>
                   <td><%= of.getGeneroRequerido() %></td>
                   <td><%= of.getTipoContratacion() %></td>
-                  <td><%= of.getIdEmpresa() %></td>
+                  <td>
+                      <%
+                          List<Empresa> listaNomEmp = cde.mostrarNombreEmpresa(of.getIdEmpresa());
+                          for(Empresa ver:listaNomEmp)
+                          {
+                              %>
+                                 <b><%= ver.getNombre() %></b>
+                              <%
+                          }
+                      %>
+                  </td>
                   <td><a href="javascript:cargar(<%= of.getIdoferta()%>,'<%= of.getNombre() %>','<%= of.getDescripcion()%>','<%= of.getSalario()%>','<%= of.getVacante()%>','<%= of.getEdadRequerida()%>','<%= of.getExpRequerida()%>','<%= of.getGeneroRequerido()%>','<%= of.getTipoContratacion()%>','<%= of.getIdEmpresa() %>')">Seleccionar</a></td>
                 </tr> 
                 <% } %>

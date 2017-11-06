@@ -108,5 +108,25 @@ public class CrudEmpresa extends Conexion{
             throw e;
         }
     }
+      
+       public List<Empresa> mostrarNombreEmpresa(int v)throws Exception{
+    
+        List<Empresa>ls = new ArrayList();
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql="select * from empresa where idempresa="+v;
+            PreparedStatement ps=this.getCon().prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            Empresa emp = new Empresa();
+            emp.setNombre(rs.getString("nombre"));
+            ls.add(emp);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return ls;
+    }
     
 }

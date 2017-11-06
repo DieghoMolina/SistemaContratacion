@@ -56,6 +56,10 @@
         <servlet-name>ProcesarCurso</servlet-name>
         <servlet-class>controlador.ProcesarCurso</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcesarDepartamento</servlet-name>
+        <servlet-class>controlador.ProcesarDepartamento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControlCandidato</servlet-name>
         <url-pattern>/controlCandidato</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>ProcesarCurso</servlet-name>
         <url-pattern>/procesarCurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesarDepartamento</servlet-name>
+        <url-pattern>/procesarDepartamento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

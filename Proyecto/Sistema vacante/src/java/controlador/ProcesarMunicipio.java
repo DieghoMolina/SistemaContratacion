@@ -40,22 +40,27 @@ public class ProcesarMunicipio extends HttpServlet {
         String val = null;
         
         
-        mpo.setNombre(request.getParameter("nombre"));
-        mpo.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
+        
         try 
         {
             if(request.getParameter("bntInsertar")!=null)
             {
+                mpo.setNombre(request.getParameter("nombre"));
+                mpo.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
                 cdm.insertarMunicipio(mpo);
                 val="Datos insertados correctamente";
             }
             if(request.getParameter("bntModificar")!=null)
             {
+                mpo.setIdMunicipio(Integer.parseInt(request.getParameter("codigo")));
+                mpo.setNombre(request.getParameter("nombre"));
+                mpo.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
                 cdm.modificarMunicipio(mpo);
                 val="Datos modificados correctamente";
             }
             if(request.getParameter("bntEliminar")!=null)
             {
+                mpo.setIdMunicipio(Integer.parseInt(request.getParameter("codigo")));
                 cdm.eliminarMunicipio(mpo);
                 val="Datos eliminados correctamente";
             }

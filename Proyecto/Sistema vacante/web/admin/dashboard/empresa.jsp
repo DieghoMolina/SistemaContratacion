@@ -1,3 +1,5 @@
+<%@page import="modelo.Usuario"%>
+<%@page import="modelo.CrudUsuario"%>
 <%@page import="modelo.CrudTipoEmpresa"%>
 <%@page import="modelo.TipoEmpresa"%>
 <%@page import="modelo.CrudMunicipio"%>
@@ -267,10 +269,53 @@ if(request.getAttribute("Valor")!=null)
                    <td class="center"> <%= ver.getNombre() %></td>
                    <td class="center"> <%= ver.getDescripcion() %></td>
                    <td class="center"> <%= ver.getLogo() %></td>
-                   <td class="center"> <%= ver.getIdDepto() %></td> 
-                   <td class="center"> <%= ver.getIdMunicipio() %></td>
-                   <td class="center"> <%= ver.getIdTipoEmpresa() %></td>
-                   <td class="center"> <%= ver.getIdUsuario() %></td>
+                   <td class="center">
+                       <%
+                           int nDepto = ver.getIdDepto();
+                           List<Depto> listaNombreDepto = crud.mostrarNombreDepto(nDepto);
+                           for(Depto var:listaNombreDepto)
+                           {
+                               %>
+                                  <b><%= var.getNombre() %></b>
+                               <%
+                           }
+                       %>
+                   </td> 
+                   <td class="center"> 
+                       <% 
+                            int hector = ver.getIdMunicipio();
+                            List<Municipio> listaNombreMuni = crud1.nombreMunicipio(hector);
+                            for(Municipio var:listaNombreMuni)
+                            {
+                                %>
+                                  <b><%= var.getNombre() %></b>
+                                <%
+                            }
+                       %>
+                   </td>
+                   <td class="center"> 
+                       <%
+                           List<TipoEmpresa> listaTipo = cte.nombreTipoEmpresa(ver.getIdTipoEmpresa());
+                           for(TipoEmpresa var:listaTipo)
+                           {
+                               %>
+                                 <b><%= var.getNombre() %></b>
+                               <%
+                           }
+                       %>
+                   </td>
+                   <td class="center"> 
+                       <%
+                           CrudUsuario crudu = new CrudUsuario();
+                           List<Usuario> listaUsu = crudu.nombreUsuario(ver.getIdUsuario());
+                           for(Usuario var:listaUsu)
+                           {
+                               %>
+                                  <b><%= var.getUsuario() %></b>
+                               <%
+                           }
+                       %>
+                   </td>
                    <td class="center"> <a href="JavaScript:llenar(<%= ver.getIdEmpresa() %>,'<%= ver.getNombre() %>','<%= ver.getDescripcion() %>','<%= ver.getLogo() %>','<%= ver.getIdDepto()%>','<%= ver.getIdMunicipio()%>','<%= ver.getIdTipoEmpresa() %>','<%= ver.getIdUsuario() %>')">Seleccionar</a></td>
                 </tr> 
                    <%

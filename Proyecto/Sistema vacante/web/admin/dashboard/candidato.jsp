@@ -1,3 +1,5 @@
+<%@page import="modelo.Usuario"%>
+<%@page import="modelo.CrudUsuario"%>
 <%@page import="modelo.Municipio"%>
 <%@page import="modelo.CrudMunicipio"%>
 <%@page import="modelo.Depto"%>
@@ -242,18 +244,7 @@ Candidato can = new Candidato();
             <div class="control-group">
               <label class="control-label">Experiencia Laboral</label>
               <div class="controls">
-                  <select name="experiencia">
-                      <%
-                         CrudExpLaboral cel = new CrudExpLaboral();
-                         List<ExpLaboral> lsel = cel.mostrarExpLaboral();
-                         for(ExpLaboral ver:lsel)
-                         {
-                             %>
-                             <option value="<%= ver.getIdExpLaboral() %>"><%= ver.getCargo() %></option>
-                             <%
-                         }
-                      %>
-                  </select>
+                  <input name="experiencia" type="number" min="1" max="25">
               </div>
             </div>
               <div class="control-group">
@@ -385,10 +376,10 @@ Candidato can = new Candidato();
                   <th>Habilidad</th>
                   <th>Experiencia Laboral</th>
                   <th>Departamento</th>
-                  <th>Id Municipio</th>
-                  <th>Id Profesion</th>
-                  <th>Id Nivel Academico</th>
-                  <th>Id Usuario</th>
+                  <th>Municipio</th>
+                  <th>Profesion</th>
+                  <th>Nivel Academico</th>
+                  <th>Usuario</th>
                   <th></th>
                 </tr>
                   <%
@@ -398,22 +389,93 @@ Candidato can = new Candidato();
                   
                   %>
                 <tr class="odd gradeX">
-            <td><%= cn.getIdCandidato() %> </td>
-            <td ><center><%= cn.getNombre() %> </center></td>
-            <td ><center><%= cn.getApellido() %> </center></td>
-            <td ><center><%= cn.getCorreo() %> </center></td>
-            <td ><center><%= cn.getTelefono() %> </center></td>
-            <td ><center><%= cn.getGenero() %> </center></td>
-            <td ><center><%= cn.getFechaNac() %> </center></td>
-            <td ><center><%= cn.getFoto() %> </center></td>
-            <td ><center><%= cn.getIdioma() %> </center></td>
-            <td ><center><%= cn.getHabilidad() %> </center></td>
+                    <td><b><%= cn.getIdCandidato() %></b> </td>
+            <td ><center><b><%= cn.getNombre() %> </b></center></td>
+            <td ><center><b><%= cn.getApellido() %></b> </center></td>
+            <td ><center><b><%= cn.getCorreo() %></b> </center></td>
+            <td ><center><b><%= cn.getTelefono() %></b> </center></td>
+            <td ><center><b><%= cn.getGenero() %></b> </center></td>
+            <td ><center><b><%= cn.getFechaNac() %></b> </center></td>
+            <td ><center><b><%= cn.getFoto() %></b> </center></td>
+            <td ><center>
+                <%
+                    List<Idioma> listaidi = crudi.mostrarNombreIdioma(cn.getIdioma());
+                    for(Idioma ver:listaidi)
+                    {
+                        %>
+                           <b><%= ver.getNombre() %></b>
+                        <%
+                    }
+                 %> 
+            </center></td>
+            <td ><center>
+                <%
+                    List<Habilidad> listahabi = crudha.mostrarNombreHabilidad(cn.getHabilidad());
+                    for(Habilidad ver:listahabi)
+                    {
+                        %>
+                           <b><%= ver.getNombre() %></b>
+                        <%
+                    }
+                %>
+            </center></td>
             <td ><center><%= cn.getExpLaboral() %> </center></td>
-            <td ><center><%= cn.getIdDepto() %> </center></td>
-            <td ><center><%= cn.getIdMunicipio() %> </center></td>
-            <td ><center><%= cn.getIdProfecion() %> </center></td>
-            <td ><center><%= cn.getIdNivelAcad() %> </center></td>
-             <td ><center><%= cn.getIdUsuario() %> </center></td>
+            <td ><center>
+                <%
+                    List<Depto> listadepa = cdep.mostrarNombreDepto(cn.getIdDepto());
+                    for(Depto ver:listadepa)
+                    {
+                        %>
+                        <b><%= ver.getNombre() %></b>
+                        <%
+                    }
+                %>
+            </center></td>
+            <td ><center>
+                <%
+                    List<Municipio> listamunil = crudMuni.nombreMunicipio(cn.getIdMunicipio());
+                    for(Municipio ver:listamunil)
+                    {
+                        %>
+                        <b><%= ver.getNombre() %></b>
+                        <%
+                    }
+                %> 
+            </center></td>
+            <td ><center>
+                <% 
+                    List<Profesion> listanPro = cpro.mostrarNombreProfesion(cn.getIdProfecion());
+                    for(Profesion ver:listanPro)
+                    {
+                        %>
+                        <b><%= ver.getNombre() %></b>
+                        <%
+                    }
+                %>
+            </center></td>
+            <td ><center>
+                <%
+                    List<NivelAcademico> lstNA =cna.mostrarNombreNivelAcad(cn.getIdNivelAcad());
+                    for(NivelAcademico ver:lstNA)
+                    {
+                        %>
+                          <b><%= ver.getNombre() %></b>
+                        <%
+                    }
+                %> 
+            </center></td>
+             <td ><center>
+                 <%
+                     CrudUsuario crudu= new CrudUsuario();
+                     List<Usuario>listaUsu = crudu.nombreUsuario(cn.getIdUsuario());
+                     for(Usuario ver:listaUsu)
+                     {
+                         %>
+                            <b><%= ver.getUsuario() %></b>
+                         <%
+                     }
+                 %>
+             </center></td>
             <td ><center><a href="JavaScript:llenar(<%= cn.getIdCandidato() %>,'<%= cn.getNombre() %>','<%= cn.getApellido() %>','<%= cn.getCorreo() %>','<%= cn.getGenero() %>','<%= cn.getFechaNac() %>','<%= cn.getFoto() %>','<%= cn.getIdioma() %>','<%= cn.getExpLaboral() %>','<%= cn.getIdDepto() %>','<%= cn.getIdMunicipio() %>','<%= cn.getIdProfecion() %>','<%= cn.getIdNivelAcad() %>','<%= cn.getIdUsuario() %>')">Seleccionar</a></center></td>
             
             

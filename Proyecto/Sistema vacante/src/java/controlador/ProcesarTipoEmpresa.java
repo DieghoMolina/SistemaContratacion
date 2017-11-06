@@ -38,22 +38,27 @@ public class ProcesarTipoEmpresa extends HttpServlet {
         String val=null;
         
         
-        tp.setNombre(request.getParameter("nombre"));
         
         try 
         {
             if(request.getParameter("btnInsertar")!=null)
             {
+                tp.setNombre(request.getParameter("nombre"));
                 cdt.insertarTipoEmpresa(tp);
                 val="Datos insertados correctamente";
             }
             if(request.getParameter("btnModificar")!=null)
             {
+                  tp.setIdTipoEmpresa(Integer.parseInt(request.getParameter("codigo")));
+                  tp.setNombre(request.getParameter("nombre"));
+         
                 cdt.modificarTipoEmpresa(tp);
                 val="Datos modificados correctamente";
             }
             if(request.getParameter("btnEliminar")!=null)
             {
+                 tp.setIdTipoEmpresa(Integer.parseInt(request.getParameter("codigo")));
+               
                 cdt.eliminarTipoEmpresa(tp);
                 val="Datos eliminados correctamente";
             }

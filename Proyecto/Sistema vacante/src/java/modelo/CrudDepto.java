@@ -46,7 +46,7 @@ public class CrudDepto extends Conexion{
     public void insertarDepto(Depto d)throws Exception{
     
     this.conectar();
-    String sql="insert into depto(nombre) values (?)";
+    String sql="insert into depto(nombre) values(?);";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {

@@ -88,4 +88,25 @@ public class CrudIdioma extends Conexion{
             throw e;
         }
     }
+     
+       public List<Idioma> mostrarNombreIdioma(int n)throws Exception{
+    
+        List<Idioma>ls = new ArrayList();
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql="select * from idioma where ididioma="+n;
+            PreparedStatement ps=this.getCon().prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            Idioma idi=new Idioma();
+            idi.setNombre(rs.getString("nombre"));
+            ls.add(idi);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return ls;
+    }
+      
 }

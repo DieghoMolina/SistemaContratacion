@@ -37,21 +37,24 @@ public class ProcesarUsuario extends HttpServlet {
         Usuario us=new Usuario();
         CrudUsuario cdu=new CrudUsuario();
         
-        
-        us.setUsuario(request.getParameter("usuario"));
-        us.setPass(request.getParameter("pass"));
-        us.setNivel(Integer.parseInt(request.getParameter("nivel")));
+      
         
         try 
         {
             if(request.getParameter("bntInsertar")!=null)
             {
+                us.setUsuario(request.getParameter("usuario"));
+                us.setPass(request.getParameter("pass"));
+                us.setNivel(Integer.parseInt(request.getParameter("nivel")));
                 cdu.insertarUsuario(us);
                 val="Datos insertados correctamente";
             }
             if(request.getParameter("bntModificar")!=null)
             {
-                 us.setIdUsuario(Integer.parseInt(request.getParameter("codigo")));
+                us.setIdUsuario(Integer.parseInt(request.getParameter("codigo")));
+                us.setUsuario(request.getParameter("usuario"));
+                us.setPass(request.getParameter("pass"));
+                us.setNivel(Integer.parseInt(request.getParameter("nivel")));
                 cdu.modificarUsuario(us);
                 val="Datos modificados correctamente";
             }
