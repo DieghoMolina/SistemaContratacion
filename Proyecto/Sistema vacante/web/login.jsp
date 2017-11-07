@@ -118,6 +118,15 @@ http://www.templatemo.com/tm-395-urbanic
                   sesion.setAttribute("nivel", "2");
                   response.sendRedirect("usuarior/index.jsp"); 
                       break;
+                      
+                       case 3 :
+                  sesion.setAttribute("user", nombre);
+                  sesion.setAttribute("nivel", "3");
+                  response.sendRedirect("empresar/index.jsp");
+                      break;
+                      default:
+                          out.write("<font color='white'> <h3>Usuario no existe, o Contraseña invalida</h3></font>");
+                          break;
                   
               }
               }
