@@ -36,7 +36,7 @@ public class Operaciones {
         PreparedStatement pst;
         ResultSet rs;
         int nivel=0;
-        String sql="select nivel from usuario where usuario='" + us + "'and pass='"+ pass +"'";
+        String sql="select nivel from usuario where usuario='"+ us + "'and pass='"+ pass +"'";
         try {
             Class.forName(this.driver);
             con=DriverManager.getConnection(

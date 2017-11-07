@@ -39,7 +39,7 @@ http://www.templatemo.com/tm-395-urbanic
         <link rel="stylesheet" type="text/css" href="css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
-<% String usuario; %>
+
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -49,7 +49,7 @@ http://www.templatemo.com/tm-395-urbanic
     
 <%
         HttpSession sesion = request.getSession();
-      
+      String usuario;
         String nivel;
         String Usuario;
       
@@ -77,8 +77,8 @@ http://www.templatemo.com/tm-395-urbanic
                             <ul class="nav navbar-brand navbar-right" style="margin-top: 40px;">
                                 <a href="">Inicio</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="">Perfil</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="">ver ofertas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="">Contactarnos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="Ofertas.jsp">Ofer ofertas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="contactenos/contactenos.jsp">Contactarnos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="login/login.jsp">
                                           <% out.print("<a href='../login.jsp?cerrar=true'> Cerrar Sesion "+usuario+"</a>");    
        }else{
@@ -254,6 +254,7 @@ http://www.templatemo.com/tm-395-urbanic
             </div>
         </div>
 
+        
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"  type="text/javascript"></script>
         <script src="js/stickUp.min.js"  type="text/javascript"></script>

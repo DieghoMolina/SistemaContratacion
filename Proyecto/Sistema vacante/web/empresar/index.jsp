@@ -1,4 +1,8 @@
-
+<%@page import="java.util.List"%>
+<%@page import="modelo.Usuario"%>
+<%@page import="modelo.CrudRegistroUsuario"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session="true" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,18 +27,18 @@ http://www.templatemo.com/tm-395-urbanic
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
         
         <!-- Bootstrap core CSS -->
-        <link href="usuarior/css/bootstrap.css" rel='stylesheet' type='text/css'>
+        <link href="css/bootstrap.css" rel='stylesheet' type='text/css'>
 
         <!-- Custom styles for this template -->
-        <link href="usuarior/js/colorbox/colorbox.css"  rel='stylesheet' type='text/css'>
-        <link href="usuarior/css/templatemo_style.css"  rel='stylesheet' type='text/css'>
+        <link href="js/colorbox/colorbox.css"  rel='stylesheet' type='text/css'>
+        <link href="css/templatemo_style.css"  rel='stylesheet' type='text/css'>
         <meta name="description" content="Arrow Navigation Styles: Ideas and styles for arrow navigations" />
         <meta name="keywords" content="arrow navigation, effect, web design, inspiration" />
         <meta name="author" content="Codrops" />
-        <link rel="shortcut icon" href="../../favicon.ico">
-        <link rel="stylesheet" type="text/css" href="usuarior/css/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="usuarior/css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="usuarior/css/component.css" />
+        <link rel="shortcut icon" href="../favicon.ico">
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/component.css" />
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -43,7 +47,18 @@ http://www.templatemo.com/tm-395-urbanic
         <![endif]-->
     </head>
     
-
+<%
+        HttpSession sesion = request.getSession();
+      String usuario;
+        String nivel;
+        String Usuario;
+      
+        
+       if(sesion.getAttribute("user")!=null && sesion.getAttribute("nivel")!=null){
+                 usuario=sesion.getAttribute("user").toString();
+           nivel=sesion.getAttribute("nivel").toString();
+         
+        %>
         <div class="templatemo-top-menu">
             <div class="container">
                 <!-- Static navbar -->
@@ -56,23 +71,30 @@ http://www.templatemo.com/tm-395-urbanic
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 </button>
-                                <a href="#" class="navbar-brand"><img src="usuarior/images/templatemo_logo.png" alt="Urbanic Template" title="Urbanic Template" /></a>
+                                <a href="#" class="navbar-brand"><img src="images/templatemo_logo.png" alt="Urbanic Template" title="Urbanic Template" /></a>
                         </div>
-                        <div class="navbar-collapse collapse" id="templatemo-nav-bar">
+                         <div class="navbar-collapse collapse" id="templatemo-nav-bar">
                             <ul class="nav navbar-brand navbar-right" style="margin-top: 40px;">
                                 <a href="">Inicio</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="lempresa.jsp">Publicar ofertas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="login.jsp">Login</a>
-                                
+                                <a href="">Perfil</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="Ofertas.jsp">Ofer ofertas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="contactenos/contactenos.jsp">Contactarnos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="login/login.jsp">
+                                          <% out.print("<a href='../login.jsp?cerrar=true'> Cerrar Sesion "+usuario+"</a>");    
+       }else{
+       out.print("<script>location.replace('../login.jsp');</script>");
+       }
+        %>
+        </a>                   
                             </ul>
-                        </div><!--/.nav-collapse -->
+                         </div><!--/.nav-collapse -->
                     </div><!--/.container-fluid -->
                 </div><!--/.navbar -->
             </div> <!-- /container -->
         </div>
         
         <div>
-             <!-- Carousel -->
+            <!-- Carousel -->
             <div id="templatemo-carousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -122,7 +144,7 @@ http://www.templatemo.com/tm-395-urbanic
             </div><!-- /#templatemo-carousel -->
         </div>
       
-      
+
         <div class="templatemo-welcome" id="templatemo-welcome">
             <div class="container">
                 <div class="templatemo-slogan text-center">
@@ -138,7 +160,7 @@ http://www.templatemo.com/tm-395-urbanic
                     <div class="col-md-4">
                         <div class="templatemo-service-item">
                             <div>
-                                <img src="usuarior/images/leaf.png" alt="icon" />
+                                <img src="images/leaf.png" alt="icon" />
                                 <span class="templatemo-service-item-header">350 Empresas Afileadas</span>
                             </div>
                             <p>Contamos con 1000 empresas afileadas a nuestra plataforma, de las cuales se general 250 ofertas por dia, haciendo  de Tecolocamos.com un portal que te garantisza encuntrar un traba con mas rapides</p>
@@ -151,7 +173,7 @@ http://www.templatemo.com/tm-395-urbanic
                     <div class="col-md-4">
                         <div class="templatemo-service-item">
                             <div>
-                                <img src="usuarior/images/mobile.png" alt="icon"/>
+                                <img src="images/mobile.png" alt="icon"/>
                                 <span class="templatemo-service-item-header">Visitanos donde quieras.</span>
                             </div>
 							<p>
@@ -165,14 +187,16 @@ http://www.templatemo.com/tm-395-urbanic
                     <div class="col-md-4">
                         <div class="templatemo-service-item">
                             <div>
-                                <img src="usuarior/images/battery.png" alt="icon"/>
+                                <img src="images/battery.png" alt="icon"/>
                                 <span class="templatemo-service-item-header">AHORRA TIEMPO </span>
                             </div>
                             <p>
                             No tienes el tiempo para salir de tu casa para dejar curriculums vitae? no te compliques visita tecolocamos.com 
                             en donde encontraras cientos de ofertas de empledo sin necesidad de salir de tu casa.
                             </p>
-                                <br class="clearfix"/>
+                            
+                            
+                            <br class="clearfix"/>
                         </div>
                         <br class="clearfix"/>
                     </div>
@@ -221,7 +245,8 @@ http://www.templatemo.com/tm-395-urbanic
                             <div class="height30"></div>
                         </div>
                         <div class="footer_bottom_content">
-                   			<span id="footer-line">Copyright � 2084 <a href="#">Your Company Name</a></span>
+                   
+                            <span id="footer-line">Copyright Â© 2084 <a href="#">Your Company Name</a></span>
                         </div>
                         
                     </div>
@@ -229,11 +254,59 @@ http://www.templatemo.com/tm-395-urbanic
             </div>
         </div>
 
-        <script src="usuarior/js/jquery.min.js" type="text/javascript"></script>
-        <script src="usuarior/js/bootstrap.min.js"  type="text/javascript"></script>
-        <script src="usuarior/js/stickUp.min.js"  type="text/javascript"></script>
-        <script src="usuarior/js/colorbox/jquery.colorbox-min.js"  type="text/javascript"></script>
-        <script src="usuarior/js/templatemo_script.js"  type="text/javascript"></script>
+        
+
+        <div class="templatemo-footer" >
+            <div class="container">
+                <div class="row">
+                    <div class="text-center">
+
+                        <div class="footer_container">
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="#">
+                                        <span class="social-icon-fb"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="social-icon-rss"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="social-icon-twitter"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="social-icon-linkedin"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="social-icon-dribbble"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="height30"></div>
+                            
+                            <div class="height30"></div>
+                        </div>
+                        <div class="footer_bottom_content">
+                   
+                            <span id="footer-line">Copyright Â© 2084 <a href="#">Your Company Name</a></span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js"  type="text/javascript"></script>
+        <script src="js/stickUp.min.js"  type="text/javascript"></script>
+        <script src="js/colorbox/jquery.colorbox-min.js"  type="text/javascript"></script>
+        <script src="js/templatemo_script.js"  type="text/javascript"></script>
 		<!-- templatemo 395 urbanic -->
         <script>
             // For Demo purposes only

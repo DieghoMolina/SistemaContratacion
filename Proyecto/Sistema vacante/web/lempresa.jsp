@@ -61,7 +61,6 @@ http://www.templatemo.com/tm-395-urbanic
                         <div class="navbar-collapse collapse" id="templatemo-nav-bar">
                             <ul class="nav navbar-brand navbar-right" style="margin-top: 40px;">
                                 <a href="index.jsp ">Inicio</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="lempresa.jsp ">Publicar Ofertas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 
                             </ul>
                         </div><!--/.nav-collapse -->
@@ -80,7 +79,7 @@ http://www.templatemo.com/tm-395-urbanic
         
                  
            <div id="login">   
-          <h1>Bienvenido de nuevo!</h1>
+          <h1>Inicie sesion para publicar Oferta!</h1>
           
           <form action="login.jsp" method="post">
           
@@ -97,7 +96,7 @@ http://www.templatemo.com/tm-395-urbanic
                 <input type="password" name="txtcontra">
         </div>
           
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
+             <font color="white"  class="forgot"><h3>Registrece</h3></font>
           
           <button class="button button-block" name="btnIngresar" />Iniciar sesion</button>
           
@@ -116,8 +115,17 @@ http://www.templatemo.com/tm-395-urbanic
               case 2 :
                   sesion.setAttribute("user", nombre);
                   sesion.setAttribute("nivel", "2");
-                  response.sendRedirect("PRUEBA.jsp"); 
+                  response.sendRedirect("usuarior/index.jsp"); 
                       break;
+                      
+              case 3 :
+                  sesion.setAttribute("user", nombre);
+                  sesion.setAttribute("nivel", "3");
+                  response.sendRedirect("indexempresa.jsp");
+                      break;
+                      default:
+                          out.write("<font color='white'> <h3>Usuario no existe, o Contraseña invalida</h3></font>");
+                          break;
                   
               }
               }
