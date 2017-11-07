@@ -42,24 +42,24 @@ Candidato can = new Candidato();
  <%
     }
  %>
- <script Languge="JavaScript">
+ <script Language="JavaScript">
      function llenar(id,nom,apelli,email,tel,gen,fecha,foto,idioma,habi,labor,depto,muni,profe,nivel,usu)
      {
          document.frm1.codigo.value=id;
          document.frm1.nombre.value=nom;
          document.frm1.apellido.value=apelli;
+         document.frm1.fecha.value=fecha;
          document.frm1.email.value=email;
          document.frm1.tel.value=tel;
-         document.frm1.fecha.value=fecha;
          document.frm1.foto.value=foto;
          document.frm1.genero.value=gen;
          document.frm1.habilidad.value=habi;
+         document.frm1.profesion.value=profe;
          document.frm1.experiencia.value=labor;
          document.frm1.nivel.value=nivel;
          document.frm1.idioma.value=idioma;
          document.frm1.departamento.value=depto;
-         document.frm1.municipio.value=muni;
-         document.frm1.profesion.value=profe;
+         document.frm1.municipio.value=muni;   
          document.frm1.user.value=usu;
          
      }
@@ -367,20 +367,20 @@ Candidato can = new Candidato();
                   <th>Codigo Candidato</th>
                   <th>Nombre</th>
                   <th>Apellido</th>
+                  <th>Fecha Nacimiento</th>
                   <th>email</th>
                   <th>Telefono</th>
-                  <th>Genero</th>
-                  <th>Fecha Nacimiento</th>
                   <th>Foto</th>
-                  <th>Idioma</th>
+                  <th>Genero</th>
                   <th>Habilidad</th>
-                  <th>Experiencia Laboral</th>
-                  <th>Departamento</th>
-                  <th>Municipio</th>
                   <th>Profesion</th>
+                  <th>Experiencia Laboral</th>
                   <th>Nivel Academico</th>
+                  <th>Idioma</th>
+                  <th>Departamento</th>
+                  <th>Municipio</th>                  
                   <th>Usuario</th>
-                  <th></th>
+                  <th>Seleccionar</th>
                 </tr>
                   <%
                   List<Candidato> ls = crud.mostrarCandidato();
@@ -392,22 +392,12 @@ Candidato can = new Candidato();
                     <td><b><%= cn.getIdCandidato() %></b> </td>
             <td ><center><b><%= cn.getNombre() %> </b></center></td>
             <td ><center><b><%= cn.getApellido() %></b> </center></td>
+            <td ><center><b><%= cn.getFechaNac() %></b> </center></td>
             <td ><center><b><%= cn.getCorreo() %></b> </center></td>
             <td ><center><b><%= cn.getTelefono() %></b> </center></td>
-            <td ><center><b><%= cn.getGenero() %></b> </center></td>
-            <td ><center><b><%= cn.getFechaNac() %></b> </center></td>
             <td ><center><b><%= cn.getFoto() %></b> </center></td>
-            <td ><center>
-                <%
-                    List<Idioma> listaidi = crudi.mostrarNombreIdioma(cn.getIdioma());
-                    for(Idioma ver:listaidi)
-                    {
-                        %>
-                           <b><%= ver.getNombre() %></b>
-                        <%
-                    }
-                 %> 
-            </center></td>
+            <td ><center><b><%= cn.getGenero() %></b> </center></td> 
+            
             <td ><center>
                 <%
                     List<Habilidad> listahabi = crudha.mostrarNombreHabilidad(cn.getHabilidad());
@@ -419,7 +409,47 @@ Candidato can = new Candidato();
                     }
                 %>
             </center></td>
+            
+            <td ><center>
+                <% 
+                    List<Profesion> listanPro = cpro.mostrarNombreProfesion(cn.getIdProfecion());
+                    for(Profesion ver:listanPro)
+                    {
+                        %>
+                        <b><%= ver.getNombre() %></b>
+                        <%
+                    }
+                %>
+            </center></td>
+            
+            
+            
             <td ><center><%= cn.getExpLaboral() %> </center></td>
+            
+            <td ><center>
+                <%
+                    List<NivelAcademico> lstNA =cna.mostrarNombreNivelAcad(cn.getIdNivelAcad());
+                    for(NivelAcademico ver:lstNA)
+                    {
+                        %>
+                          <b><%= ver.getNombre() %></b>
+                        <%
+                    }
+                %> 
+            </center></td>
+            
+            <td ><center>
+                <%
+                    List<Idioma> listaidi = crudi.mostrarNombreIdioma(cn.getIdioma());
+                    for(Idioma ver:listaidi)
+                    {
+                        %>
+                           <b><%= ver.getNombre() %></b>
+                        <%
+                    }
+                 %> 
+            </center></td>
+            
             <td ><center>
                 <%
                     List<Depto> listadepa = cdep.mostrarNombreDepto(cn.getIdDepto());
@@ -442,28 +472,8 @@ Candidato can = new Candidato();
                     }
                 %> 
             </center></td>
-            <td ><center>
-                <% 
-                    List<Profesion> listanPro = cpro.mostrarNombreProfesion(cn.getIdProfecion());
-                    for(Profesion ver:listanPro)
-                    {
-                        %>
-                        <b><%= ver.getNombre() %></b>
-                        <%
-                    }
-                %>
-            </center></td>
-            <td ><center>
-                <%
-                    List<NivelAcademico> lstNA =cna.mostrarNombreNivelAcad(cn.getIdNivelAcad());
-                    for(NivelAcademico ver:lstNA)
-                    {
-                        %>
-                          <b><%= ver.getNombre() %></b>
-                        <%
-                    }
-                %> 
-            </center></td>
+            
+            
              <td ><center>
                  <%
                      CrudUsuario crudu= new CrudUsuario();
@@ -476,7 +486,7 @@ Candidato can = new Candidato();
                      }
                  %>
              </center></td>
-            <td ><center><a href="JavaScript:llenar(<%= cn.getIdCandidato() %>,'<%= cn.getNombre() %>','<%= cn.getApellido() %>','<%= cn.getCorreo() %>','<%= cn.getGenero() %>','<%= cn.getFechaNac() %>','<%= cn.getFoto() %>','<%= cn.getIdioma() %>','<%= cn.getExpLaboral() %>','<%= cn.getIdDepto() %>','<%= cn.getIdMunicipio() %>','<%= cn.getIdProfecion() %>','<%= cn.getIdNivelAcad() %>','<%= cn.getIdUsuario() %>')">Seleccionar</a></center></td>
+            <td ><center><a href="JavaScript:llenar(<%= cn.getIdCandidato() %>,'<%= cn.getNombre() %>','<%= cn.getApellido() %>','<%= cn.getFechaNac() %>','<%= cn.getCorreo() %>','<%= cn.getTelefono() %>','<%= cn.getFoto() %>','<%= cn.getGenero() %>','<%= cn.getHabilidad() %>','<%= cn.getIdProfecion() %>','<%= cn.getExpLaboral() %>','<%= cn.getIdNivelAcad() %>','<%= cn.getIdioma() %>','<%= cn.getIdDepto() %>','<%= cn.getIdMunicipio() %>','<%= cn.getIdUsuario() %>')">Seleccionar</a></center></td>
             
             
                   

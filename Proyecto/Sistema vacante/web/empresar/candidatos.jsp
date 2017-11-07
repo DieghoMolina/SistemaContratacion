@@ -4,6 +4,21 @@
     Author     : diego
 --%>
 
+<%@page import="modelo.CrudUsuario"%>
+<%@page import="modelo.CrudNivelAcademico"%>
+<%@page import="modelo.NivelAcademico"%>
+<%@page import="modelo.CrudProfesion"%>
+<%@page import="modelo.Profesion"%>
+<%@page import="modelo.CrudMunicipio"%>
+<%@page import="modelo.Municipio"%>
+<%@page import="modelo.CrudDepto"%>
+<%@page import="modelo.Depto"%>
+<%@page import="modelo.Habilidad"%>
+<%@page import="modelo.CrudHabilidad"%>
+<%@page import="modelo.CrudIdioma"%>
+<%@page import="modelo.Idioma"%>
+<%@page import="modelo.Candidato"%>
+<%@page import="modelo.CrudCandidato"%>
 <%@page import="modelo.Empresa"%>
 <%@page import="modelo.CrudEmpresa"%>
 <%@page import="modelo.CrudOferta"%>
@@ -87,7 +102,7 @@ http://www.templatemo.com/tm-395-urbanic
                          <div class="navbar-collapse collapse" id="templatemo-nav-bar">
                             <ul class="nav navbar-brand navbar-right" style="margin-top: 40px;">
                                 <a href="index.jsp">Inicio</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="">Perfil</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="#">Perfil</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="Ofertas.jsp">Publicar Ofertas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="candidatos.jsp">Ver Candidatos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="contactenos/contactenos.jsp">Contactarnos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -112,7 +127,7 @@ http://www.templatemo.com/tm-395-urbanic
                 <div class="row">
                     <div class="templatemo-line-header" style="margin-top: 0px;" >
                         <div class="text-center">
-                            <hr class="team_hr team_hr_left hr_gray"/><span class="span_blog txt_darkgrey">Ofertas de Empleo</span>
+                            <hr class="team_hr team_hr_left hr_gray"/><span class="span_blog txt_darkgrey">Candidatos</span>
                             <hr class="team_hr team_hr_right hr_gray" />
                         </div>
                     </div>
@@ -120,9 +135,9 @@ http://www.templatemo.com/tm-395-urbanic
                 </div>
                 
                  <%
-               CrudOferta cdf = new CrudOferta();
-                      List<Oferta> lof=cdf.mostrarOferta();
-                      for(Oferta of:lof)
+               CrudCandidato cdf = new CrudCandidato();
+                      List<Candidato> lof=cdf.mostrarCandidato();
+                      for(Candidato ca:lof)
                       {
                   %>
                
@@ -136,7 +151,7 @@ http://www.templatemo.com/tm-395-urbanic
                             </li>
                             <li  class="col-md-8">
                                 <div class="pull-left">
-                                    <span class="blog_header">  <%= of.getNombre() %> </span><br/>
+                                    <span class="blog_header"><%= ca.getNombre()%> <%= ca.getApellido() %> </span><br/>
                                                 <span>Posted by : <a class="link_orange" href="#"><span class="txt_orange">
                                         
                   
@@ -144,25 +159,93 @@ http://www.templatemo.com/tm-395-urbanic
                                                             
                                             </span></a></span>
                                 </div>
-                                <div class="pull-right">
-                                    <a class="btn btn-orange" href="#" role="button">Enviar Curriculum</a>
-                                </div>
+                                
                                 <div class="clearfix"> </div>
                                 <p class="blog_text">
-                                    Descripcion: <%= of.getDescripcion() %> <br>
-               Salario: <%= of.getSalario() %><br>
-               Cantidad de vacantes: <%= of.getVacante() %><br>
-                Edad necesaria: <%= of.getEdadRequerida() %><br>
-                Experiencia: <%= of.getExpRequerida() %><br>
-               Genero Requerido:  <%= of.getGeneroRequerido() %><br>
-                Tipo de contratacion: <%= of.getTipoContratacion() %><br>
-                Id Empresa: <%= of.getIdEmpresa() %><br>
+                                    Nombre del Candidato: <%= ca.getNombre()%> <br>
+               Apellido del Candidato: <%= ca.getApellido() %><br>
+               Correo: <%= ca.getCorreo() %><br>
+                Telefono: <%= ca.getTelefono() %><br>
+                Genero: <%= ca.getGenero() %><br>
+               Fecha de Nacimiento:  <%= ca.getFechaNac() %><br>
+               Foto : <%= ca.getFoto() %><br>
+                Idioma:  <%
+                    CrudIdioma crudi=new CrudIdioma();
+                    List<Idioma> listaidi = crudi.mostrarNombreIdioma(ca.getIdioma());
+                    for(Idioma ver:listaidi)
+                    {
+                        %>
+                           <%= ver.getNombre() %>
+                        <%
+                    }
+                 %> <br>
+                 Habilidad: <%
+                     CrudHabilidad crudha=new CrudHabilidad();
+                    List<Habilidad> listahabi = crudha.mostrarNombreHabilidad(ca.getHabilidad());
+                    for(Habilidad ver:listahabi)
+                    {
+                        %>
+                           <%= ver.getNombre() %>
+                        <%
+                    }
+                %><br>
+                Años de Experiencia: <%= ca.getExpLaboral() %> años<br>
+                Departamento:  <%
+                    CrudDepto cdep=new CrudDepto();
+                    List<Depto> listadepa = cdep.mostrarNombreDepto(ca.getIdDepto());
+                    for(Depto ver:listadepa)
+                    {
+                        %>
+                        <%= ver.getNombre() %>
+                        <%
+                    }
+                %><br>
+                Municipio: <%
+                    CrudMunicipio crudMuni=new CrudMunicipio();
+                    List<Municipio> listamunil = crudMuni.nombreMunicipio(ca.getIdMunicipio());
+                    for(Municipio ver:listamunil)
+                    {
+                        %>
+                        <%= ver.getNombre() %>
+                        <%
+                    }
+                %> <br>
+                Profesion:  <% 
+                    CrudProfesion cpro=new CrudProfesion();
+                    List<Profesion> listanPro = cpro.mostrarNombreProfesion(ca.getIdProfecion());
+                    for(Profesion ver:listanPro)
+                    {
+                        %>
+                        <%= ver.getNombre() %>
+                        <%
+                    }
+                %><br>
+                Nivel Academico: <%
+                    CrudNivelAcademico cna=new CrudNivelAcademico();
+                    List<NivelAcademico> lstNA =cna.mostrarNombreNivelAcad(ca.getIdNivelAcad());
+                    for(NivelAcademico ver:lstNA)
+                    {
+                        %>
+                          <%= ver.getNombre() %>
+                        <%
+                    }
+                %> <br>
+                Id Usuario: <%
+                     CrudUsuario crudu= new CrudUsuario();
+                     List<Usuario>listaUsu = crudu.nombreUsuario(ca.getIdUsuario());
+                     for(Usuario ver:listaUsu)
+                     {
+                         %>
+                            <%= ver.getUsuario() %>
+                         <%
+                     }
+                 %><br><br>
                                 </p>
                             </li>
                         </ul>
                     </div> <!-- /.blog_post 1 -->  
          
-                     <% } %>
+                     <%}  %>
                 </div>
             </div>
         </div>

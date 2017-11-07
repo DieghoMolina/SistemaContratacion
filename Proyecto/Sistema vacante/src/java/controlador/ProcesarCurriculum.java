@@ -38,7 +38,7 @@ public class ProcesarCurriculum extends HttpServlet {
         Curriculum cur = new Curriculum();
         RequestDispatcher rd = null;
        
-            cur.setIdCurriculum(Integer.parseInt(request.getParameter("codigo")));
+            
             cur.setCurriculum(request.getParameter("curri"));
             cur.setFechaModi(request.getParameter("fechamodi"));
             cur.setIdCandidato(Integer.parseInt(request.getParameter("candidato")));
