@@ -116,7 +116,7 @@ http://www.templatemo.com/tm-395-urbanic
               case 2 :
                   sesion.setAttribute("user", nombre);
                   sesion.setAttribute("nivel", "2");
-                  response.sendRedirect("PRUEBA.jsp"); 
+                  response.sendRedirect("usuarior/index.jsp"); 
                       break;
                   
               }
