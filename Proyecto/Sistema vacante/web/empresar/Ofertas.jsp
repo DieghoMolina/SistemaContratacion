@@ -58,18 +58,23 @@ http://www.templatemo.com/tm-395-urbanic
         <![endif]-->
     </head>
     
-<%
+  <%
         HttpSession sesion = request.getSession();
       String usuario;
         String nivel;
         String Usuario;
+        String id;
+        String idempresa;
       
         
        if(sesion.getAttribute("user")!=null && sesion.getAttribute("nivel")!=null){
-                 usuario=sesion.getAttribute("user").toString();
+          usuario=sesion.getAttribute("user").toString();
            nivel=sesion.getAttribute("nivel").toString();
+            id=sesion.getAttribute("id").toString();
+           // idempresa=sesion.getAttribute("idempresa").toString();
          
         %>
+        
         <div class="templatemo-top-menu">
             <div class="container">
                 <!-- Static navbar -->
@@ -92,9 +97,12 @@ http://www.templatemo.com/tm-395-urbanic
                                 <a href="candidatos.jsp">Ver Candidatos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="contactenos/contactenos.jsp">Contactarnos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="login/login.jsp">
-                                          <% out.print("<a href='../login.jsp?cerrar=true'> Cerrar Sesion "+usuario+"</a>");    
+                                          <% out.print("<a href='../index.jsp?cerrar=true'> Cerrar Sesion "+usuario+ id  +"</a>");   
+                                          //+idempresa+
+                                          %>
+      <%
        }else{
-       out.print("<script>location.replace('../login.jsp');</script>");
+       out.print("<script>location.replace('../loginEmpresa.jsp');</script>");
        }
         %>
         </a>                   

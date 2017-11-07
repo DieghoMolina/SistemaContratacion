@@ -16,43 +16,45 @@ import java.util.List;
  */
 public class CrudRegistroUsuario extends Conexion{
     
-    public Usuario mostrarId()throws Exception{
-    
-       Usuario us=null;
-        ResultSet res;
-        
-        try {
-            this.conectar();
-            String sql="select idusuario from usuario where usuario='marvin'";
-            PreparedStatement pre=this.getCon().prepareStatement(sql);
-            res=pre.executeQuery();
-            while(res.next()){
-            us=new Usuario();
-            us.setIdUsuario(res.getInt("idusuario"));
 
-            }
-        } catch (Exception e) {
-            throw e;
-        }
-        return us;
-    }
    
     public void insertarUsuario(Usuario us)throws Exception{
     
     this.conectar();
-    String sql="insert into usuario(usuario,pass,nivel) values (?,?,2)";
+    String sql="insert into usuario (usuario, pass, nivel) values (?,?,2)";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {
             ps.setString(1, us.getUsuario());
             ps.setString(2, us.getPass());
-            ps.setInt(3, us.getNivel());
+      
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;
         }
         
     }
+    
+    
+    
+    
+    public void insertarEmpresa(Usuario us)throws Exception{
+    
+    this.conectar();
+    String sql="insert into usuario (usuario, pass, nivel) values (?,?,3)";
+    PreparedStatement ps=this.getCon().prepareStatement(sql);
+    
+        try {
+            ps.setString(1, us.getUsuario());
+            ps.setString(2, us.getPass());
+      
+            ps.executeUpdate();
+        } catch (Exception e) {
+            throw e;
+        }
+        
+    }
+    
      public void InsertarCandidato(Candidato c, Usuario us) throws Exception
     {
         this.conectar();

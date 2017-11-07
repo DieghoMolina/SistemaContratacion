@@ -19,32 +19,26 @@
       String usuario;
         String nivel;
         String Usuario;
+        String id;
+        String idempresa;
       
         
        if(sesion.getAttribute("user")!=null && sesion.getAttribute("nivel")!=null){
-                 usuario=sesion.getAttribute("user").toString();
+          usuario=sesion.getAttribute("user").toString();
            nivel=sesion.getAttribute("nivel").toString();
+            id=sesion.getAttribute("id").toString();
+            idempresa=sesion.getAttribute("idempresa").toString();
          
         %>
         
            
-                                             <% out.print("<a href='../login.jsp?cerrar=true'> Cerrar Sesion "+usuario+"</a>");    %>
+                                             <% out.print("<a href='loginEmpresa.jsp?cerrar=true'> Cerrar Sesion "+usuario+ id + idempresa +"</a>");    %>
     
-                                       
-                                             <% 
-                          Cp cp= new Cp();
-                          List<Usuario> lsd= cp.mostrarIdUsuario(usuario);
-                          for(Usuario dto:lsd)
-                          {
-                              %>
-                                 <% dto.getIdUsuario(); %>
-                              <%
-                          }
-                      %>
+                                      
         
     <%
        }else{
-       out.print("<script>location.replace('../login.jsp');</script>");
+       out.print("<script>location.replace('loginEmpresa.jsp');</script>");
        }
         %>
     <body>

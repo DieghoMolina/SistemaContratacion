@@ -69,17 +69,22 @@
         <!-- /.col -->
       </div>
     </form>
-   <%
+  <%
     Operaciones op = new Operaciones();
     
               if(request.getParameter("btnIngresar")!=null){
               String nombre=request.getParameter("txtusuario");
               String contra=request.getParameter("txtcontra");
               HttpSession sesion = request.getSession();
-              
-              switch(op.loguear(nombre, contra)){
+              String vec[]=op.loguear(nombre, contra);
+              int var=Integer.parseInt( vec[3]);
+              switch(var){
+          
+                      
+             
               case 1 :
-                  sesion.setAttribute("user", nombre);
+                  sesion.setAttribute("id", vec[0]);
+                  sesion.setAttribute("user", vec[1]);
                   sesion.setAttribute("nivel", "1");
                   response.sendRedirect("dashboard/candidato.jsp");
                       break;
@@ -87,7 +92,7 @@
                           out.write("<h3>Usuario no existe, o Contraseña invalida</h3>");
                           break;
                   
-              }
+                 }
               }
               
           if(request.getParameter("cerrar")!=null){

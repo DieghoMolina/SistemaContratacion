@@ -60,6 +60,14 @@
         <servlet-name>ProcesarDepartamento</servlet-name>
         <servlet-class>controlador.ProcesarDepartamento</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroUsuario</servlet-name>
+        <servlet-class>controlador.RegistroUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistroEmpresa</servlet-name>
+        <servlet-class>controlador.RegistroEmpresa</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControlCandidato</servlet-name>
         <url-pattern>/controlCandidato</url-pattern>
@@ -119,6 +127,14 @@
     <servlet-mapping>
         <servlet-name>ProcesarDepartamento</servlet-name>
         <url-pattern>/procesarDepartamento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroUsuario</servlet-name>
+        <url-pattern>/registroUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroEmpresa</servlet-name>
+        <url-pattern>/registroEmpresa</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

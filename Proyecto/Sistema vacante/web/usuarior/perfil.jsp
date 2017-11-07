@@ -52,13 +52,18 @@ http://www.templatemo.com/tm-395-urbanic
       String usuario;
         String nivel;
         String Usuario;
+        String id;
+        String idempresa;
       
         
        if(sesion.getAttribute("user")!=null && sesion.getAttribute("nivel")!=null){
-                 usuario=sesion.getAttribute("user").toString();
+          usuario=sesion.getAttribute("user").toString();
            nivel=sesion.getAttribute("nivel").toString();
+            id=sesion.getAttribute("id").toString();
+         
          
         %>
+    
         <div class="templatemo-top-menu">
             <div class="container">
                 <!-- Static navbar -->
@@ -75,18 +80,17 @@ http://www.templatemo.com/tm-395-urbanic
                         </div>
                          <div class="navbar-collapse collapse" id="templatemo-nav-bar">
                             <ul class="nav navbar-brand navbar-right" style="margin-top: 40px;">
-                                <a href="">Inicio</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="index.jsp">Inicio</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="">Perfil</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="Ofertas.jsp">Publicar Ofertas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="candidatos.jsp">Ver Candidatos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="Ofertas.jsp">Ver ofertas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="contactenos/contactenos.jsp">Contactarnos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="login/login.jsp">
-                                          <% out.print("<a href='../index.jsp?cerrar=true'> Cerrar Sesion "+usuario+"</a>");    
+                                <a href="">
+                                          <% out.print("<a href='../index.jsp?cerrar=true'> Cerrar Sesion "+usuario+ id +"</a>");    %>
+     <%
        }else{
-       out.print("<script>location.replace('../loginEmpresa.jsp');</script>");
+       out.print("<script>location.replace('../login.jsp');</script>");
        }
-        %>
-        </a>                   
+        %>            
                             </ul>
                          </div><!--/.nav-collapse -->
                     </div><!--/.container-fluid -->
@@ -256,53 +260,6 @@ http://www.templatemo.com/tm-395-urbanic
         </div>
 
         
-
-        <div class="templatemo-footer" >
-            <div class="container">
-                <div class="row">
-                    <div class="text-center">
-
-                        <div class="footer_container">
-                            <ul class="list-inline">
-                                <li>
-                                    <a href="#">
-                                        <span class="social-icon-fb"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="social-icon-rss"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="social-icon-twitter"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="social-icon-linkedin"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="social-icon-dribbble"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="height30"></div>
-                            
-                            <div class="height30"></div>
-                        </div>
-                        <div class="footer_bottom_content">
-                   
-                            <span id="footer-line">Copyright Â© 2084 <a href="#">Your Company Name</a></span>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"  type="text/javascript"></script>
         <script src="js/stickUp.min.js"  type="text/javascript"></script>

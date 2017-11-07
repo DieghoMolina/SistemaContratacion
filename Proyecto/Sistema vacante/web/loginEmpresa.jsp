@@ -61,7 +61,7 @@ http://www.templatemo.com/tm-395-urbanic
                         <div class="navbar-collapse collapse" id="templatemo-nav-bar">
                             <ul class="nav navbar-brand navbar-right" style="margin-top: 40px;">
                                 <a href="index.jsp ">Inicio</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="loginEmpresa.jsp ">Iniciar como Empresa</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="login.jsp ">Iniciar como candidato</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 
                             </ul>
                         </div><!--/.nav-collapse -->
@@ -80,9 +80,9 @@ http://www.templatemo.com/tm-395-urbanic
         
                  
            <div id="login">   
-          <h1>Bienvenido de nuevo!</h1>
+          <h1>Empresa!</h1>
           
-          <form action="login.jsp" method="post">
+          <form action="loginEmpresa.jsp" method="post">
           
             <div class="field-wrap">
             
@@ -103,30 +103,31 @@ http://www.templatemo.com/tm-395-urbanic
           
           </form>
 <%
-   Operaciones op = new Operaciones();
+    Operaciones op = new Operaciones();
     
               if(request.getParameter("btnIngresar")!=null){
               String nombre=request.getParameter("txtusuario");
               String contra=request.getParameter("txtcontra");
               HttpSession sesion = request.getSession();
-              String vec[]=op.loguear(nombre, contra);
+              String vec[]=op.loguearEmpresa(nombre, contra);
               int var=Integer.parseInt( vec[3]);
               switch(var){
+          
                       
-              case 2 :
-                   sesion.setAttribute("id", vec[0]);
+            
+                      
+                       case 3 :
+                     sesion.setAttribute("id", vec[0]);
                   sesion.setAttribute("user", vec[1]);
-                  sesion.setAttribute("nivel", "2");
-                 
-                  response.sendRedirect("usuarior/index.jsp"); 
+                  sesion.setAttribute("nivel", "3");
+                  //sesion.setAttribute("idempresa", vec[4]);
+                  response.sendRedirect("empresar/index.jsp");
                       break;
-                      
-                      
                       default:
                           out.write("<font color='white'> <h3>Usuario no existe, o Contraseña invalida</h3></font>");
                           break;
                   
-              }
+                     }
               }
               
           if(request.getParameter("cerrar")!=null){
@@ -137,7 +138,7 @@ http://www.templatemo.com/tm-395-urbanic
         <div id="signup">   
           <h1>Registrate, es gratis!</h1>
           
-          <form action="registroUsuario" method="post">
+          <form action="registroEmpresa" method="post">
           
           <div class="top-wrap">
             <div class="field-wrap">

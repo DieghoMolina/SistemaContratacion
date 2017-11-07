@@ -24,13 +24,14 @@ public class Cp extends Conexion{
           ResultSet rs;
         try {
             this.conectar();
-            String sql="select idusuario from usuario where usuario=" +usuario+"desc limit 1";
+            String sql="select idusuario from usuario where  usuario =' " + usuario +" ' "; 
             PreparedStatement ps=this.getCon().prepareStatement(sql);
             rs=ps.executeQuery();
             while(rs.next()){
             Usuario u=new Usuario();
             u.setIdUsuario(rs.getInt("idusuario"));
             ls.add(u);
+            
             }
         } catch (Exception e) {
             throw e;

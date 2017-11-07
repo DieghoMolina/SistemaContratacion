@@ -12,17 +12,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Candidato;
-import modelo.CrudCandidato;
 import modelo.CrudRegistroUsuario;
-import modelo.CrudUsuario;
 import modelo.Usuario;
 
 /**
  *
  * @author diego
  */
-public class ControlRegistroUsuario extends HttpServlet {
+public class RegistroEmpresa extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,36 +33,35 @@ public class ControlRegistroUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         PrintWriter out = response.getWriter();
-        
+       PrintWriter out = response.getWriter();
         RequestDispatcher rd=null;
-        CrudRegistroUsuario cc=new CrudRegistroUsuario();
-        Usuario us = new Usuario();
-        Candidato c= new Candidato();
-    
-            
-        
         String val=null;
+        Usuario us=new Usuario();
+        CrudRegistroUsuario cdu=new CrudRegistroUsuario();
         
-        try {
-            
-        us.setUsuario(request.getParameter("usuario"));
-        us.setPass(request.getParameter("pass"));
-            if(request.getParameter("btnInsertar")!=null)
+      
+        
+        try 
+        {
+            if(request.getParameter("Insertar")!=null)
             {
-                cc.InsertarCandidato(c, us);
-            cc.insertarUsuario(us);
+                us.setUsuario(request.getParameter("nom"));
+                us.setPass(request.getParameter("contra"));
+               
+                cdu.insertarEmpresa(us);
+                val="Datos insertados correctamente";
+            }
            
-            val="Datos Insertados Exitosamente";
-            } 
-            
-            rd=request.getRequestDispatcher("/usuarior/registrarse/registrarUsu.jsp");
+            rd=request.getRequestDispatcher("loginEmpresa.jsp");
             request.setAttribute("valor", val);
-        } catch (Exception e) {
+        }
+        
+        
+        catch (Exception e) 
+        {
             request.setAttribute("error", e.toString());
         }
         rd.forward(request, response);
-      
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
