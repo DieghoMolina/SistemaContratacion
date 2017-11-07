@@ -124,7 +124,7 @@
               <button type="submit" name="bntInsertar" onclick="confirmar()" class="btn btn-success">Insertar</button>&nbsp;&nbsp;
               <button type="submit" name="bntModificar" onclick="confirmar()" class="btn btn-success">Modificar</button>&nbsp;&nbsp;
               <button type="submit" name="bntEliminar" onclick="confirmar()" class="btn btn-success">Eliminar</button>&nbsp;&nbsp;
-              <button type="reset" name="bntCancelar" onclick="confirmar()" class="btn btn-success">Cancelar</button>
+              <button type="reset" name="bntCancelar" class="btn btn-success">Cancelar</button>
               </center>
             </div>
           </form>

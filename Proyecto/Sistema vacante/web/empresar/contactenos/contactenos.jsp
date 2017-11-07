@@ -81,7 +81,7 @@ http://www.templatemo.com/tm-395-urbanic
                             <ul class="nav navbar-brand navbar-right" style="margin-top: 40px;">
                                 <a href="../index.jsp">Inicio</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="">Perfil</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="../Ofertas.jsp">Publicar Ofertas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="../registaremp/datosemp.jsp">Publicar Ofertas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="../candidatos.jsp">Ver Candidatos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 
                                 <a href="">Contactarnos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -133,7 +133,7 @@ http://www.templatemo.com/tm-395-urbanic
 			<div class="col-lg-6 col-md-6 col-sm-6">
 				<div class="cnt_info">
 					<ul>
-						<li><i class="fa fa-facebook"></i><p>121 King Street, Melbourne Victoria 3000 Australia</p></li>
+						<li><i class="fa fa-facebook"></i><p>121 King Street, Melbourne Victoria 3000 Australia </p></li>
 						<li><i class="fa fa-envelope"></i><p>EstudianteSv@info.com</p></li>
 						<li><i class="fa fa-phone"></i><p>+503 22577777 (+012345678)</p></li>
 					</ul>

@@ -68,6 +68,10 @@
         <servlet-name>RegistroEmpresa</servlet-name>
         <servlet-class>controlador.RegistroEmpresa</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControlIngresoEmp</servlet-name>
+        <servlet-class>controlador.ControlIngresoEmp</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControlCandidato</servlet-name>
         <url-pattern>/controlCandidato</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>RegistroEmpresa</servlet-name>
         <url-pattern>/registroEmpresa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlIngresoEmp</servlet-name>
+        <url-pattern>/controlIngresoEmp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

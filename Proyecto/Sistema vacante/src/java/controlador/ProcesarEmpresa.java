@@ -48,8 +48,7 @@ public class ProcesarEmpresa extends HttpServlet {
            {
               emp.setNombre(request.getParameter("nombre"));
               emp.setDescripcion(request.getParameter("descripcion"));
-           /* emp.setLogo(request.getParameter("logo")); */
-            
+           emp.setLogo(request.getParameter("logo"));
                emp.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
                emp.setIdMunicipio(Integer.parseInt(request.getParameter("municipio")));
                emp.setIdTipoEmpresa(Integer.parseInt(request.getParameter("Tempresa")));
@@ -63,7 +62,7 @@ public class ProcesarEmpresa extends HttpServlet {
                 emp.setIdEmpresa(Integer.parseInt("codigo"));
                 emp.setNombre(request.getParameter("nombre"));
                 emp.setDescripcion(request.getParameter("descripcion"));
-                /* emp.setLogo(request.getParameter("logo")); */
+                 emp.setLogo(request.getParameter("logo"));
            
                 emp.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
                 emp.setIdMunicipio(Integer.parseInt(request.getParameter("municipio")));
