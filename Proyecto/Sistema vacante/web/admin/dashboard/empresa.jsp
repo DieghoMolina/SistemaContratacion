@@ -152,7 +152,7 @@ if(request.getAttribute("Valor")!=null)
             <div class="control-group">
               <label class="control-label">Logo:</label>
               <div class="controls">
-                  <input type="file" class="span11" name="logo" />
+                  <input type="text" class="span11" name="logo" />
             </div>
             </div>
            

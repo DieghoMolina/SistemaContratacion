@@ -45,7 +45,7 @@ public class ProcesarExpLaboral extends HttpServlet {
            
            if(request.getParameter("btnInsertar")!=null)
            {
-               exp.setNombre(request.getParameter("nombreempresa"));
+               exp.setNombre(request.getParameter("nombre"));
                exp.setCargo(request.getParameter("cargo"));
                exp.setFechaInicio(request.getParameter("fechaini"));
                exp.setFechaFin(request.getParameter("fechafin"));
@@ -56,7 +56,7 @@ public class ProcesarExpLaboral extends HttpServlet {
            if(request.getParameter("btnModificar")!=null)
            {
                 exp.setIdExpLaboral(Integer.parseInt(request.getParameter("codigo")));
-                exp.setNombre(request.getParameter("nombreempresa"));
+                exp.setNombre(request.getParameter("nombre"));
                 exp.setCargo(request.getParameter("cargo"));
                 exp.setFechaInicio(request.getParameter("fechaini"));
                 exp.setFechaFin(request.getParameter("fechafin"));

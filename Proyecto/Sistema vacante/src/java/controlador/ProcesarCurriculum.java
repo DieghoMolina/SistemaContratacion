@@ -48,18 +48,26 @@ public class ProcesarCurriculum extends HttpServlet {
             
             if(request.getParameter("btnInsertar")!= null)
             {
+                cur.setCurriculum(request.getParameter("curri"));
+            cur.setFechaModi(request.getParameter("fechamodi"));
+            cur.setIdCandidato(Integer.parseInt(request.getParameter("candidato")));
                 crud.insertarCurriculum(cur);
               
             }
             
             else if(request.getParameter("btnModificar")!=null)
             {
+                cur.setIdCurriculum(Integer.parseInt(request.getParameter("codigo")));
+                cur.setCurriculum(request.getParameter("curri"));
+            cur.setFechaModi(request.getParameter("fechamodi"));
+            cur.setIdCandidato(Integer.parseInt(request.getParameter("candidato")));
                 crud.modificarCurriculum(cur); 
                 
             }
              
             else if(request.getParameter("btnEliminar")!=null)
             {
+                 cur.setIdCurriculum(Integer.parseInt(request.getParameter("codigo")));
                 crud.eliminarCurriculum(cur);
               
             }

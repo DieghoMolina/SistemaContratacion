@@ -74,7 +74,7 @@ public class CrudEmpresa extends Conexion{
      public void modificarEmpresa(Empresa emp)throws Exception{
     
     this.conectar();
-    String sql="update empresa set nombre=?, descripcion=?, logo=?, iddepto=?, idmunicipio=?, idtipoempresa=?, idusuario=? where idempresa=?";
+    String sql="update empresa set nombre=?, descripcion=?, logo=?, idDepto=?, idMunicipio=?, idTipoempresa=?, idUsuario=? where idEmpresa=?";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try { 

@@ -49,7 +49,7 @@ public class CrudExpLaboral extends Conexion{
     public void insertarExpLaboral(ExpLaboral exp)throws Exception{
     
     this.conectar();
-    String sql="insert into explaboral(nombreEmpresa,cargo,fechaInicio,fechaFin,idCandidato) values (?,?,?,?,?)";
+    String sql="insert into explaboral(nombreempresa,cargo,fechainicio,fechafin,idcandidato) values (?,?,?,?,?)";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {
@@ -71,7 +71,7 @@ public class CrudExpLaboral extends Conexion{
      public void modificarExplaboral(ExpLaboral exp)throws Exception{
     
     this.conectar();
-    String sql="update explaboral set nombre=?, cargo=?, fechainicio=?, fechafin=?, idcandidato=? where idexplaboral=?";
+    String sql="update explaboral set nombreempresa=?, cargo=?, fechainicio=?, fechafin=?, idcandidato=? where idexplaboral=?";
     PreparedStatement ps=this.getCon().prepareStatement(sql);
     
         try {           

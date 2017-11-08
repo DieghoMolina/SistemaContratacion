@@ -59,7 +59,7 @@ public class ProcesarEmpresa extends HttpServlet {
            
             if(request.getParameter("btnModificar")!=null)
            {
-                emp.setIdEmpresa(Integer.parseInt("codigo"));
+                emp.setIdEmpresa(Integer.parseInt(request.getParameter("codigo")));
                 emp.setNombre(request.getParameter("nombre"));
                 emp.setDescripcion(request.getParameter("descripcion"));
                  emp.setLogo(request.getParameter("logo"));
@@ -74,7 +74,7 @@ public class ProcesarEmpresa extends HttpServlet {
             
              if(request.getParameter("btnEliminar")!=null)
            {
-               emp.setIdEmpresa(Integer.parseInt("codigo"));
+               emp.setIdEmpresa(Integer.parseInt(request.getParameter("codigo")));
                crud.eliminarEmpresa(emp);
                val="Datos Eliminados Correctamente";
            }
