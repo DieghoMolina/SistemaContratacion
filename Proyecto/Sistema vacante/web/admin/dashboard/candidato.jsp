@@ -43,7 +43,7 @@ Candidato can = new Candidato();
     }
  %>
  <script Language="JavaScript">
-     function llenar(id,nom,apelli,email,tel,gen,fecha,foto,idioma,habi,labor,depto,muni,profe,nivel,usu)
+     function llenar(id,nom,apelli,fecha,email,tel,foto,gen,habi,profe,labor,nivel,idioma,depto,muni,usu)
      {
          document.frm1.codigo.value=id;
          document.frm1.nombre.value=nom;

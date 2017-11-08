@@ -56,7 +56,7 @@ public class CrudCandidato extends Conexion{
     public void InsertarCandidato(Candidato c) throws Exception
     {
         this.conectar();
-            String sql="insert into candidato(nombre,apellido,email,tel,genero,fechaNa,foto,idIdioma,"
+            String sql="insert into candidato(nombre,apellido,email,tel,genero,fechanac,foto,idIdioma,"
                     + "idHabilidad,expLaboral,idDepto,idMunicipio,idProfesion,idNivelAcad,idUsuario) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps=this.getCon().prepareStatement(sql);
         try {
@@ -88,7 +88,7 @@ public class CrudCandidato extends Conexion{
     {
         try {
             this.conectar();
-            String sql="update  candidato set nombre=?, apellido=?, email=?, tel=?, genero=?, fechanac=?, foto=?, ididioma=?, idhabilidad=?, explaboral=?, iddepto=?, idmunicipio=?, idprofesion=?, idnivelAcad=?, idusuario=? where idcandidato=?)";
+            String sql="update  candidato set nombre=?, apellido=?, email=?, tel=?, genero=?, fechanac=?, foto=?, ididioma=?, idhabilidad=?, explaboral=?, iddepto=?, idmunicipio=?, idprofesion=?, idnivelAcad=?, idusuario=? where idcandidato=?";
             PreparedStatement ps=this.getCon().prepareStatement(sql);
             ps.setString(1, c.getNombre());
             ps.setString(2, c.getApellido());

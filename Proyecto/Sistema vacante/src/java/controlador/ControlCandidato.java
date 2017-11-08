@@ -43,23 +43,7 @@ public class ControlCandidato extends HttpServlet {
         String val=null;
         
         try {
-            
-            c.setNombre((request.getParameter("nombre")));
-            c.setApellido((request.getParameter("apellido")));
-            c.setCorreo((request.getParameter("email")));
-            c.setTelefono((request.getParameter("tel")));
-            c.setGenero((request.getParameter("genero")));
-            c.setFechaNac((request.getParameter("fecha")));
-            c.setFoto((request.getParameter("foto")));
-            c.setIdioma(Integer.parseInt(request.getParameter("idioma"))); 
-            c.setHabilidad(Integer.parseInt(request.getParameter("habilidad")));
-            c.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
-            c.setExpLaboral(Integer.parseInt(request.getParameter("experiencia")));
-            c.setIdMunicipio(Integer.parseInt(request.getParameter("municipio")));
-            c.setIdProfecion(Integer.parseInt(request.getParameter("profesion")));
-            c.setIdNivelAcad(Integer.parseInt(request.getParameter("nivel")));
-            c.setIdUsuario(Integer.parseInt(request.getParameter("user")));
-            us.setIdUsuario(Integer.parseInt(request.getParameter("user")));
+           
             if(request.getParameter("btnInsertar")!=null)
             {
             cc.InsertarCandidato(c);
@@ -67,11 +51,31 @@ public class ControlCandidato extends HttpServlet {
             } 
             if(request.getParameter("btnModificar")!=null)
             {
+                 c.setIdCandidato(Integer.parseInt(request.getParameter("codigo")));
+                 c.setNombre((request.getParameter("nombre")));
+                 c.setApellido((request.getParameter("apellido")));
+                 c.setCorreo((request.getParameter("email")));
+                 c.setTelefono((request.getParameter("tel")));
+                 c.setGenero((request.getParameter("genero")));
+                 c.setFechaNac((request.getParameter("fecha")));
+                 c.setFoto((request.getParameter("foto")));
+                 c.setIdioma(Integer.parseInt(request.getParameter("idioma"))); 
+                 c.setHabilidad(Integer.parseInt(request.getParameter("habilidad")));
+                 c.setIdDepto(Integer.parseInt(request.getParameter("departamento")));
+                 c.setExpLaboral(Integer.parseInt(request.getParameter("experiencia")));
+                 c.setIdMunicipio(Integer.parseInt(request.getParameter("municipio")));
+                 c.setIdProfecion(Integer.parseInt(request.getParameter("profesion")));
+                 c.setIdNivelAcad(Integer.parseInt(request.getParameter("nivel")));
+                 c.setIdUsuario(Integer.parseInt(request.getParameter("user")));
+                
+                
             cc.ModificarCandidato(c);
             val="Datos Modificados Exitosamente";
             }
             if(request.getParameter("btnEliminar")!=null)
             {
+             c.setIdCandidato(Integer.parseInt(request.getParameter("codigo")));
+             us.setIdUsuario(Integer.parseInt(request.getParameter("user")));
             cc.EliminarCandidato(c);
             cu.eliminarUsuario(us); 
             val="Datos Insertados Exitosamente";
